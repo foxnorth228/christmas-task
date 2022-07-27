@@ -1,0 +1,108 @@
+:root {
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    background-image: url("assets/bg.jpg");
+    background-attachment: fixed;
+    background-position-x: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+.headerBody {
+    width: 100%;
+    height: 10%;
+    background-color: black;
+}
+
+.mainBody {
+    width: 100%;
+    min-height: 80%;
+}
+
+.footerBody {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    background-color: black;
+}
+
+.githubDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.githubIcon {
+    height: 80%;
+    min-height: 50px;
+    min-width: 50px;
+    width: 100%;
+    background-color: white;
+    mask-image: url("github.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition-property: background-color;
+    transition-duration: 1.1s;
+}
+
+.githubIcon:hover {
+    cursor: pointer;
+    background-color: rgb(119, 119, 119);
+}
+
+.yearDiv {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+
+.yearText {
+    font-size: 1em;
+    color: white;
+}
+
+.rsschoolDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:20%;
+    height: 100%;
+}
+
+.rsschoolIcon {
+    height: 80%;
+    min-height: 50px;
+    min-width: 50px;
+    width: 100%;
+    background-color: white;
+    mask-image: url("rsschool.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition-property: background-color;
+    transition-duration: 1.1s;
+}
+
+.rsschoolIcon:hover {
+    cursor: pointer;
+    background-color: rgb(119, 119, 119);
+}

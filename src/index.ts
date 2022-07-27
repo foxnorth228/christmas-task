@@ -1,2 +1,1 @@
-const x: string = "L";
-console.log(x);
+import "./index.css";
