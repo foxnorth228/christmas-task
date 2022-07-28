@@ -1,0 +1,59 @@
+.startPage {
+    justify-content: center;
+    align-items: center;
+}
+
+.startPageElems {
+    min-width: 500px;
+    min-height: 380px;
+    width: 60%;
+    height: 40%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.startPageText {
+    width: 80%;
+    min-width: 500px;
+    margin-top: -70px;
+    text-align: center;
+    font-size: 700;
+    color:rgb(255, 241, 228);
+    font-size: calc(3rem + 2vw);
+    text-shadow: 1px 1px 1px whitesmoke, -1px -1px 1px whitesmoke,
+                 1px -1px 1px whitesmoke, -1px 1px 1px whitesmoke;
+    z-index: 1;
+}
+
+.startPageButton {
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: calc(100px + 5vw);
+    height: calc(60px + 3vw);
+    font-size: 2.5rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.startPageToy {
+    width: calc(150px + 5vw);
+    height: auto;
+    position: absolute;
+    top: calc(30% - 8vw);
+    left: -40px;
+    right: 0;
+    bottom: 0;
+}
+
+.startPageToy2 {
+    width: calc(120px + 4vw);
+    height: auto;
+    position: absolute;
+    top: calc(80% - 5vw);
+    left: 80%;
+    right: 0;
+    bottom: 0;
+}

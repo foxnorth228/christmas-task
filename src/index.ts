@@ -1,24 +1,6 @@
 import "./main.css";
 type ElemOrNull = Element | null;
 
-const startPageSwitch: ElemOrNull = document.querySelector(".startPageSwitch");
-const toyPageSwitch: ElemOrNull = document.querySelector(".toyPageSwitch");
-const treePageSwitch: ElemOrNull = document.querySelector(".treePageSwitch");
-const startPage: ElemOrNull = document.querySelector(".startPage");
-const toyPage: ElemOrNull = document.querySelector(".toyPage");
-const treePage: ElemOrNull = document.querySelector(".treePage");
-let currentPage: ElemOrNull = startPage;
-
-startPageSwitch?.addEventListener("click", function() {
-    changePage(startPage);
-});
-toyPageSwitch?.addEventListener("click", function() {
-    changePage(toyPage);
-});
-treePageSwitch?.addEventListener("click", function() {
-    changePage(treePage);
-});
-
 function changePage(oldPage: ElemOrNull) {
     if (currentPage === oldPage || oldPage === null) {
         return;
@@ -30,7 +12,17 @@ function changePage(oldPage: ElemOrNull) {
     currentPage?.classList.add("pageDisFlex");
 }
 
+const startPageSwitch: ElemOrNull = document.querySelector(".startPageSwitch");
+const toyPageSwitch: ElemOrNull = document.querySelector(".toyPageSwitch");
+const treePageSwitch: ElemOrNull = document.querySelector(".treePageSwitch");
+const startPage: ElemOrNull = document.querySelector(".startPage");
+const toyPage: ElemOrNull = document.querySelector(".toyPage");
+const treePage: ElemOrNull = document.querySelector(".treePage");
+let currentPage: ElemOrNull = startPage;
+
+startPageSwitch?.addEventListener("click", function() {changePage(startPage);});
+toyPageSwitch?.addEventListener("click", function() {changePage(toyPage);});
+treePageSwitch?.addEventListener("click", function() {changePage(treePage);});
+
 const startPageButton = document.querySelector(".startPageButton");
-startPageButton?.addEventListener("click", function() {
-    changePage(toyPage);
-})
+startPageButton?.addEventListener("click", function() {changePage(toyPage);});
