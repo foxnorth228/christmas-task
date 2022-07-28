@@ -1,7 +1,7 @@
 .footerBody {
     display: flex;
     width: 100%;
-    height: 10%;
+    min-height: 10vh;
     background-color: black;
 }
 
@@ -18,17 +18,7 @@
     min-height: 50px;
     min-width: 50px;
     width: 100%;
-    background-color: white;
     mask-image: url("assets/icons/github.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    transition-property: background-color;
-    transition-duration: 1.1s;
-}
-
-.githubIcon:hover {
-    cursor: pointer;
-    background-color: rgb(119, 119, 119);
 }
 
 .yearDiv {
@@ -57,15 +47,5 @@
     min-height: 50px;
     min-width: 50px;
     width: 100%;
-    background-color: white;
     mask-image: url("assets/icons/rsschool.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    transition-property: background-color;
-    transition-duration: 1.1s;
-}
-
-.rsschoolIcon:hover {
-    cursor: pointer;
-    background-color: rgb(119, 119, 119);
 }

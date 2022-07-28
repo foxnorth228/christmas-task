@@ -1,38 +1,57 @@
 .headerBody {
     width: 100%;
-    height: 10%;
+    min-height: 10vh;
     background-color: black;
     display: flex;
 }
 
 .pageNav {
-    width: calc(60% - 100px);
+    width: 50%;
     height: 100%;
-    min-width: 300px;
+    min-width: 334px;
+    display: flex;
 }
 
 .startPageSelector {
+    min-width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
+.startPageSwitch {
+    width: 100%;
+    height: 60%;
+    mask-image: url("assets/svg/tree.svg");
 }
 
 .toyPageSelector {
-
+    min-width: 138px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .treePageSelector {
-
+    min-width: 138px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toySearch {
     width: 40%;
-    min-width: 200px;
+    min-width: 194px;
     height: 100%;
 }
 
 .favToyCount {
     display: flex;
     justify-content: center;
-    min-width: 100px;
+    width: 10%;
+    min-width: 72px;
     height: 100%;
     background-image: url("assets/svg/ball.svg");
     background-position: center;
@@ -41,6 +60,6 @@
 
 .favToyCounter {
     margin-top: 3.5vh;
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: 600;
 }

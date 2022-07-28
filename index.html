@@ -8,9 +8,15 @@
     <body>
         <header class="headerBody">
             <nav class="pageNav">
-                <div class="startPageSelector"></div>
-                <div class="toyPageSelector"></div>
-                <div class="treePageSelector"></div>
+                <div class="startPageSelector">
+                    <div class="svgIcon startPageSwitch"></div>
+                </div>
+                <div class="toyPageSelector">
+                    <span class="textSwitch toyPageSwitch">Игрушки</span>
+                </div>
+                <div class="treePageSelector">
+                    <span class="textSwitch treePageSwitch">Ёлочка</span>
+                </div>
             </nav>
             <div class="toySearch"></div>
             <div class="favToyCount">
@@ -18,19 +24,26 @@
             </div>
         </header>
         <main class="mainBody">
-            <div class="startPage"></div>
-            <div class="toyPage"></div>
-            <div class="treePage"></div>
+            <div class="page pageDisFlex startPage">
+                <div class="startPageElems">
+                    <img src="./src/assets/ball/1.png" class="startPageToy"></img>
+                    <span class="startPageText">Новогодняя игра "Наряди ёлку"</span>
+                    <button class="startPageButton">Начать</button>
+                    <img src="./src/assets/ball/2.png" class="startPageToy2"></img>
+                </div>
+            </div>
+            <div class="page pageDisNone toyPage"></div>
+            <div class="page pageDisNone treePage"></div>
         </main>
         <footer class="footerBody">
             <div class="githubDiv">
-                <div class="githubIcon"></div>
+                <div class="svgIcon githubIcon"></div>
             </div>
             <div class="yearDiv">
                 <span class="yearText">2022</span>
             </div>
             <div class="rsschoolDiv">
-                <div class="rsschoolIcon"></div>
+                <div class="svgIcon rsschoolIcon"></div>
             </div>
         </footer>
     </body>
