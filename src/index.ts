@@ -1,8 +1,35 @@
 import "./main.css";
-let data;
+import { createCards } from "./createToyCards.js"
+
+export type toy = {
+    num: number,
+    name: string,
+    count: number,
+    year: number,
+    shape: string,
+    color: string,
+    size: string,
+    favorite: boolean,
+};
+
+export let data: toy[];
 import("./data.json")
 .then(fileData => {
-    data = fileData.default;
+    const elems = fileData.default;
+    data = [];
+    for(let elem of elems) {
+        const toy: toy = {
+            num: Number.parseInt(elem.num),
+            name: elem.name,
+            count: Number.parseInt(elem.count),
+            year: Number.parseInt(elem.year),
+            shape: elem.shape,
+            color: elem.color,
+            size: elem.size,
+            favorite: elem.favorite
+        }
+        data.push(toy);
+    }
     console.log(data);
 });
 
