@@ -1,0 +1,192 @@
+.toyPage {
+    width: 100%;
+    height: 100%;
+}
+
+.toyFilters {
+    width: 100%;
+    height: 40vh;
+    min-height: 40vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toyFiltersType {
+    height: 90%;
+    background-color: rgba(47, 132, 172, 0.849);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.toyFiltersValueName {
+    text-align: center;
+    font-size: calc(1.5rem + 0.4vw);
+}
+
+.toyFiltersValue {
+    width: 30%;
+}
+
+.toyFiltersRange {
+    width: 30%;
+}
+
+.toyFiltersSort {
+    width: 30%;
+}
+
+.toyFiltersValueType {
+    width: 90%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: calc(1.3rem + 0.3vw);
+}
+
+.toyFiltersValueShape{ 
+    
+}
+
+.toyFiltersValueShapeElems {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toyFiltersValueShapeElem {
+    min-width: 30px;
+    min-height: 30px;
+    width: 2.1vw;
+    height: 2.1vw;
+}
+
+.toyFiltersValueShapeElem:hover {
+    cursor: pointer;
+    background-color: rgb(119, 119, 119);
+}
+
+.toyFiltersValueShapeBall {
+    mask-image: url("../../assets/svg/ball.svg");
+}
+
+.toyFiltersValueShapeBell {
+    mask-image: url("../../assets/svg/bell.svg");
+}
+
+.toyFiltersValueShapeCone {
+    mask-image: url("../../assets/svg/cone.svg");
+}
+
+.toyFiltersValueShapeSnow {
+    mask-image: url("../../assets/svg/snowflake.svg");
+}
+
+.toyFiltersValueShapeToy {
+    mask-image: url("../../assets/svg/toy.svg");
+}
+
+.toyFiltersValueColor {
+    
+}
+
+.toyFiltersValueColorElems {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toyFiltersValueColorElem {
+    border-radius: 3px;
+    border-width: 3px;
+    border-style: solid;
+    min-width: 25px;
+    min-height: 25px;
+    width: 1.8vw;
+    height: 1.8vw;
+    transition-property: border-color;
+    transition-duration: 1.1s;
+}
+
+.toyFiltersValueColorElem:hover {
+    cursor: pointer;
+    border-color: blueviolet;
+}
+
+.toyFiltersValueColorWhite {
+    background-color: white;
+    border-color: white;
+}
+
+.toyFiltersValueColorYellow {
+    background-color: yellow;
+    border-color: yellow;
+}
+
+.toyFiltersValueColorRed {
+    background-color: red;
+    border-color: red;
+}
+
+.toyFiltersValueColorBlue {
+    background-color: blue;
+    border-color: blue;
+}
+
+.toyFiltersValueColorGreen{
+    background-color: green;
+    border-color: green;
+}
+
+.toyFiltersValueSize {
+    
+}
+
+.toyFiltersValueSizeElems {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toyFiltersValueSizeElem {
+    min-width: 30px;
+    min-height: 30px;
+    mask-image: url("../../assets/svg/ball.svg");
+}
+
+.toyFiltersValueSizeBig {
+    min-width: 35px;
+    min-height: 35px;
+    width: 2.4vw;
+    height: 2.4vw;
+}
+
+.toyFiltersValueSizeMedium {
+    min-width: 30px;
+    min-height: 30px;
+    width: 2.1vw;
+    height: 2.1vw;
+}
+
+.toyFiltersValueSizeSmall {
+    min-width: 25px;
+    min-height: 25px;
+    width: 1.8vw;
+    height: 1.8vw;
+}
+
+
+.toyFiltersValueFav {
+    
+}

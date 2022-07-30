@@ -1,6 +1,7 @@
 @import url("footer.css");
 @import url("header.css");
-@import url("startPage.css");
+@import url("pages/startPage/startPage.css");
+@import url("pages/toyPage/toyPage.css");
 
 :root {
     box-sizing: border-box;
@@ -41,14 +42,6 @@ body {
 
 .pageDisNone {
     display: none;
-}
-
-.toyPage {
-
-}
-
-.treePage {
-
 }
 
 button {
