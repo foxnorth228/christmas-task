@@ -1,4 +1,11 @@
 import "./main.css";
+let data;
+import("./data.json")
+.then(fileData => {
+    data = fileData.default;
+    console.log(data);
+});
+
 type ElemOrNull = Element | null;
 
 function changePage(oldPage: ElemOrNull) {
