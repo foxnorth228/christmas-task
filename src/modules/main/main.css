@@ -1,8 +1,3 @@
-@import url("footer.css");
-@import url("header.css");
-@import url("pages/startPage/startPage.css");
-@import url("pages/toyPage/toyPage.css");
-
 :root {
     box-sizing: border-box;
 }
@@ -20,7 +15,7 @@ body {
     width: 100vw;
     height: 100vh;
     min-height: 100vh;
-    background-image: url("assets/bg.jpg");
+    background-image: var(--bg-jpg);
     background-attachment: fixed;
     background-position-x: center;
 }

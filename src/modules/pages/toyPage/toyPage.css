@@ -74,23 +74,23 @@
 }
 
 .toyFiltersValueShapeBall {
-    mask-image: url("../../assets/svg/ball.svg");
+    mask-image: url("../../../assets/svg/ball.svg");
 }
 
 .toyFiltersValueShapeBell {
-    mask-image: url("../../assets/svg/bell.svg");
+    mask-image: url("../../../assets/svg/bell.svg");
 }
 
 .toyFiltersValueShapeCone {
-    mask-image: url("../../assets/svg/cone.svg");
+    mask-image: url("../../../assets/svg/cone.svg");
 }
 
 .toyFiltersValueShapeSnow {
-    mask-image: url("../../assets/svg/snowflake.svg");
+    mask-image: url("../../../assets/svg/snowflake.svg");
 }
 
 .toyFiltersValueShapeToy {
-    mask-image: url("../../assets/svg/toy.svg");
+    mask-image: url("../../../assets/svg/toy.svg");
 }
 
 .toyFiltersValueColor {
@@ -162,7 +162,7 @@
 .toyFiltersValueSizeElem {
     min-width: 30px;
     min-height: 30px;
-    mask-image: url("../../assets/svg/ball.svg");
+    mask-image: url("../../../assets/svg/ball.svg");
 }
 
 .toyFiltersValueSizeBig {

@@ -1,12 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-
-import './main.css';
 import data from './data.json';
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
 
+import './index.css';
+import Header from './modules/header/Header';
+import Main from './modules/main/Main';
+import Footer from './modules/footer/Footer';
+
+console.log(data);
 export type toy = {
   num: number;
   name: string;
@@ -18,7 +19,7 @@ export type toy = {
   favorite: boolean;
 };
 
-type ElemOrNull = Element | null;
+//type ElemOrNull = Element | null;
 
 function App() {
   return (

@@ -2,6 +2,7 @@
     display: flex;
     width: 100%;
     min-height: 10vh;
+    height: 1px;
     background-color: black;
 }
 
@@ -18,7 +19,7 @@
     min-height: 50px;
     min-width: 50px;
     width: 100%;
-    mask-image: url("assets/icons/github.svg");
+    mask-image: var(--github-svg);
 }
 
 .yearDiv {
@@ -47,5 +48,5 @@
     min-height: 50px;
     min-width: 50px;
     width: 100%;
-    mask-image: url("assets/icons/rsschool.svg");
+    mask-image: var(--rsschool-svg);
 }

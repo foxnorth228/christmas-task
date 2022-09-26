@@ -1,0 +1,7 @@
+:root {
+    --github-svg: url('./assets/icons/github.svg');
+    --rsschool-svg: url('./assets/icons/rsschool.svg');
+    --tree-svg: url('assets/svg/tree.svg');
+    --ball-svg: url('./assets/svg/ball.svg');
+    --bg-jpg: url('./assets/bg.jpg');
+}

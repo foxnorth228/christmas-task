@@ -1,6 +1,7 @@
 .headerBody {
     width: 100%;
     min-height: 10vh;
+    height: 1px;
     background-color: black;
     display: flex;
 }
@@ -22,7 +23,7 @@
 .startPageSwitch {
     width: 100%;
     height: 60%;
-    mask-image: url("assets/svg/tree.svg");
+    mask-image: var(--tree-svg);
 }
 
 .toyPageSelector {
@@ -53,7 +54,7 @@
     width: 10%;
     min-width: 72px;
     height: 100%;
-    background-image: url("assets/svg/ball.svg");
+    background-image: var(--ball-svg);
     background-position: center;
     background-repeat: no-repeat;
 }
