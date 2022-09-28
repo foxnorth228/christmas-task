@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState, Dispatch } from 'react';
 import { createRoot } from 'react-dom/client';
-import data from './data.json';
+import dataToys from './data.json';
 
 import './index.css';
 import Header from './modules/header/Header';
 import Main from './modules/main/Main';
 import Footer from './modules/footer/Footer';
 
+export const data: toy[] = dataToys.map((el) => {
+  return {
+    ...el,
+    num: Number.parseInt(el.num),
+    count: Number.parseInt(el.count),
+    year: Number.parseInt(el.year),
+  };
+});
+
 console.log(data);
+
 export type toy = {
   num: number;
   name: string;
@@ -21,11 +31,16 @@ export type toy = {
 
 //type ElemOrNull = Element | null;
 
+export interface ChangePageFunc {
+  changePage: Dispatch<React.SetStateAction<number>>;
+}
+
 function App() {
+  const [page, setPage] = useState(0);
   return (
     <>
-      <Header />
-      <Main />
+      <Header changePage={setPage} />
+      <Main page={page} changePage={setPage} />
       <Footer />
     </>
   );

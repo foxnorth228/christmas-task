@@ -3,5 +3,9 @@
     --rsschool-svg: url('./assets/icons/rsschool.svg');
     --tree-svg: url('assets/svg/tree.svg');
     --ball-svg: url('./assets/svg/ball.svg');
+    --bell-svg: url('./assets/svg/bell.svg');
+    --cone-svg: url('./assets/svg/cone.svg');
+    --snowflake-svg: url('./assets/svg/snowflake.svg');
+    --toy-svg: url('./assets/svg/toy.svg');
     --bg-jpg: url('./assets/bg.jpg');
 }

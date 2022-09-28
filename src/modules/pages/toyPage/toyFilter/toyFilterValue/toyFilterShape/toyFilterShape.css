@@ -1,0 +1,52 @@
+.toyFilterShape{ 
+    
+}
+
+.toyFilterShapeElems {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toyFilterShapeElem {
+    cursor: pointer;
+    background-color: white;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition-property: background-color;
+    transition-duration: 1.1s;
+    min-width: 30px;
+    min-height: 30px;
+    width: 2.1vw;
+    height: 2.1vw;
+}
+
+.greyBack:hover {
+    background-color: rgb(119, 119, 119);
+}
+
+.toyFilterShapeClicked {
+    background-color: burlywood;
+}
+
+.toyFilterShapeBall {
+    mask-image: var(--ball-svg);
+}
+
+.toyFilterShapeBell {
+    mask-image: var(--bell-svg);
+}
+
+.toyFilterShapeCone {
+    mask-image: var(--cone-svg);
+}
+
+.toyFilterShapeSnow {
+    mask-image: var(--snowflake-svg);
+}
+
+.toyFilterShapeToy {
+    mask-image: var(--toy-svg);
+}

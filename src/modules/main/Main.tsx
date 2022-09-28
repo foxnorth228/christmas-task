@@ -1,79 +1,109 @@
-import React from 'react';
+import React, { useReducer, Dispatch } from 'react';
 import './main.css';
 
-function Main() {
+import StartPage from '../pages/startPage/startPage';
+import ToyPage from '../pages/toyPage/toyPage';
+import TreePage from '../pages/treePage/treePage';
+
+interface PageHook {
+  page: number;
+  changePage: Dispatch<React.SetStateAction<number>>;
+}
+
+function Main({ page, changePage }: PageHook) {
+  const [filterShape, setFilterShape] = useReducer(filterReducer, FilterCreation());
+  const pages = [
+    <StartPage key="0" changePage={changePage} />,
+    <ToyPage key="1" filter={filterShape} changeToyFilter={setFilterShape} />,
+    <TreePage key="2" />,
+  ];
   return (
     <>
-      <main className="mainBody">
-        <div className="page pageDisFlex startPage">
-          <div className="startPageElems">
-            <img src="./src/assets/ball/1.png" className="startPageToy"></img>
-            <span className="startPageText">{'Новогодняя игра "Наряди ёлку"'}</span>
-            <button className="startPageButton">Начать</button>
-            <img src="./src/assets/ball/2.png" className="startPageToy2"></img>
-          </div>
-        </div>
-        <div className="page pageDisNone toyPage">
-          <div className="toyFilters">
-            <div className="toyFiltersType toyFiltersValue">
-              <span className="toyFiltersValueName">Фильтры по значению</span>
-              <div className="toyFiltersValueType toyFiltersValueShape">
-                <span className="toyFiltersValueShapeName">Форма:</span>
-                <div className="toyFiltersValueShapeElems">
-                  <div className="svgIcon toyFiltersValueShapeElem toyFiltersValueShapeBall"></div>
-                  <div className="svgIcon toyFiltersValueShapeElem toyFiltersValueShapeBell"></div>
-                  <div className="svgIcon toyFiltersValueShapeElem toyFiltersValueShapeCone"></div>
-                  <div className="svgIcon toyFiltersValueShapeElem toyFiltersValueShapeSnow"></div>
-                  <div className="svgIcon toyFiltersValueShapeElem toyFiltersValueShapeToy"></div>
-                </div>
-              </div>
-              <div className="toyFiltersValueType toyFiltersValueColor">
-                <span className="toyFiltersValueColorName">Цвет:</span>
-                <div className="toyFiltersValueColorElems">
-                  <div className="toyFiltersValueColorElem toyFiltersValueColorWhite"></div>
-                  <div className="toyFiltersValueColorElem toyFiltersValueColorYellow"></div>
-                  <div className="toyFiltersValueColorElem toyFiltersValueColorRed"></div>
-                  <div className="toyFiltersValueColorElem toyFiltersValueColorBlue"></div>
-                  <div className="toyFiltersValueColorElem toyFiltersValueColorGreen"></div>
-                </div>
-              </div>
-              <div className="toyFiltersValueType toyFiltersValueSize">
-                <span className="toyFiltersValueSizeName">Размер:</span>
-                <div className="toyFiltersValueSizeElems">
-                  <div className="svgIcon toyFiltersValueSizeElem toyFiltersValueSizeBig"></div>
-                  <div className="svgIcon toyFiltersValueSizeElem toyFiltersValueSizeMedium"></div>
-                  <div className="svgIcon toyFiltersValueSizeElem toyFiltersValueSizeSmall"></div>
-                </div>
-              </div>
-              <div className="toyFiltersValueType toyFiltersValueFav">
-                <span className="toyFiltersValueFavName">Только любимые:</span>
-                <div className="toyFiltersValueFavElems"></div>
-              </div>
-            </div>
-            <div className="toyFiltersType toyFiltersRange">
-              <span>Name</span>
-              <div className="toyFilterRangeSecNumber">
-                <span>Name</span>
-                <div className="toyFilterRangeNumber"></div>
-              </div>
-              <div className="toyFilterRangeSecYear">
-                <span>Name</span>
-                <div className="toyFilterRangeYear"></div>
-              </div>
-            </div>
-            <div className="toyFiltersType toyFiltersSort">
-              <span>Name</span>
-              <select></select>
-              <button></button>
-              <button></button>
-            </div>
-          </div>
-          <div className="toyList"></div>
-        </div>
-        <div className="page pageDisNone treePage"></div>
-      </main>
+      <main className="mainBody">{pages[page]}</main>
     </>
   );
 }
 
 export default Main;
+
+function FilterCreation(): IFilter {
+  return {
+    shapes: {
+      ball: false,
+      bell: false,
+      cone: false,
+      snow: false,
+      toy: false,
+    },
+    colors: {
+      white: false,
+      yellow: false,
+      red: false,
+      blue: false,
+      green: false,
+    },
+    sizes: {
+      small: false,
+      medium: false,
+      big: false,
+    },
+    fav: {
+      favorite: false,
+    },
+  };
+}
+
+function filterReducer(state: IFilter, action: IChangeFilter) {
+  let a = state[action.type];
+  if (action.elem in a) {
+    const b: [string, boolean] | undefined = Object.entries(a).find((el) => el[0] === action.elem);
+    if (b) {
+      a = { ...a, [action.elem]: !b[1] };
+    }
+    console.log(a);
+  }
+  return { ...state, [action.type]: a };
+}
+
+export interface IChangeFilter {
+  type: 'shapes' | 'colors' | 'sizes' | 'fav';
+  elem: IShapesElems | IColorsElems | ISizesElems | iFavElems;
+}
+
+export interface IFilter {
+  shapes: IShapes;
+  colors: IColors;
+  sizes: ISizes;
+  fav: IFav;
+}
+
+interface IShapes {
+  ball: boolean;
+  bell: boolean;
+  cone: boolean;
+  snow: boolean;
+  toy: boolean;
+}
+
+interface IColors {
+  white: boolean;
+  yellow: boolean;
+  red: boolean;
+  blue: boolean;
+  green: boolean;
+}
+
+interface ISizes {
+  small: boolean;
+  medium: boolean;
+  big: boolean;
+}
+
+interface IFav {
+  favorite: boolean;
+}
+
+type IShapesElems = 'ball' | 'bell' | 'cone' | 'snow' | 'toy';
+type IColorsElems = 'white' | 'yellow' | 'red' | 'blue' | 'green';
+type ISizesElems = 'small' | 'medium' | 'big';
+type iFavElems = 'favorite';
