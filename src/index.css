@@ -9,3 +9,16 @@
     --toy-svg: url('./assets/svg/toy.svg');
     --bg-jpg: url('./assets/bg.jpg');
 }
+
+.textSwitch {
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    transition-property: color;
+    transition-duration: 1.1s;
+}
+
+.textSwitch:hover {
+    cursor: pointer;
+    color: rgb(119, 119, 119);
+}

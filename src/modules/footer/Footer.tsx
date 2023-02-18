@@ -7,13 +7,11 @@ import YearBlock from './yearBlock/yearBlock';
 
 function Footer() {
   return (
-    <>
-      <footer className="footer">
-        <GithubIcon />
-        <YearBlock />
-        <RSSIcon />
-      </footer>
-    </>
+    <footer className="footer">
+      <GithubIcon />
+      <YearBlock />
+      <RSSIcon />
+    </footer>
   );
 }
 

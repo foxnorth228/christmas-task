@@ -3,11 +3,9 @@ import './rssIcon.scss';
 
 function RSSIcon() {
   return (
-    <>
-      <div className="rsschoolBlock">
-        <div className="svgIcon rsschoolBlock__icon"></div>
-      </div>
-    </>
+    <div className="rsschoolBlock">
+      <div className="svgIcon rsschoolBlock__icon"></div>
+    </div>
   );
 }
 
