@@ -20,6 +20,7 @@
     min-width: 50px;
     width: 100%;
     mask-image: var(--github-svg);
+    -webkit-mask-image: var(--github-svg);
 }
 
 .yearDiv {
@@ -49,4 +50,5 @@
     min-width: 50px;
     width: 100%;
     mask-image: var(--rsschool-svg);
+    -webkit-mask-image: var(--rsschool-svg);
 }

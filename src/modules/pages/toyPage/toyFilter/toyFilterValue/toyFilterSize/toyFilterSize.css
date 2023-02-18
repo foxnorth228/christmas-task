@@ -14,11 +14,14 @@
     background-color: white;
     mask-repeat: no-repeat;
     mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
     transition-property: background-color;
     transition-duration: 1.1s;
     min-width: 30px;
     min-height: 30px;
     mask-image: var(--ball-svg);
+    -webkit-mask-image: var(--ball-svg);
 }
 
 .greyBack:hover {

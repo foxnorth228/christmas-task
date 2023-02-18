@@ -5,17 +5,27 @@ import { IFilter } from '../../main/Main.js';
 
 const checkFilter = (filter: IFilter, elem: toy) => {
   let answer = 'none';
-  const shapeValue = shape.find((el) => el[1] === elem.shape);
-  const colorValue = color.find((el) => el[1] === elem.color);
-  const sizeValue = size.find((el) => el[1] === elem.size);
+  const allFilterShapesOff = Object.values(filter.shapes).some((el) => el);
+  const allFilterColorsOff = Object.values(filter.colors).some((el) => el);
+  const allFilterSizesOff = Object.values(filter.sizes).some((el) => el);
+  const shapeEngValue = shape.find((el) => el[1] === elem.shape);
+  const colorEngValue = color.find((el) => el[1] === elem.color);
+  const sizeEngValue = size.find((el) => el[1] === elem.size);
   const favValue = elem.favorite;
-  if (shapeValue && colorValue && sizeValue) {
-    const isShape = Object.entries(filter.shapes).find((el) => el[0] === shapeValue[0]);
-    const isColor = Object.entries(filter.colors).find((el) => el[0] === colorValue[0]);
-    const isSize = Object.entries(filter.sizes).find((el) => el[0] === sizeValue[0]);
-    const isFav = filter.fav.favorite;
-    if (!(isShape && isColor && isSize && isFav)) {
-      answer = 'flex';
+  if (shapeEngValue && colorEngValue && sizeEngValue) {
+    const isShapeOn = Object.entries(filter.shapes).find((el) => el[0] === shapeEngValue[0]);
+    const isColorOn = Object.entries(filter.colors).find((el) => el[0] === colorEngValue[0]);
+    const isSizeOn = Object.entries(filter.sizes).find((el) => el[0] === sizeEngValue[0]);
+    const isFavOn = filter.fav.favorite;
+    console.log(isShapeOn, isColorOn, isSizeOn, allFilterShapesOff);
+    if (isShapeOn && isColorOn && isSizeOn) {
+      if (
+        (isShapeOn[1] || !allFilterShapesOff) &&
+        (isColorOn[1] || !allFilterColorsOff) &&
+        (isSizeOn[1] || !allFilterSizesOff)
+      ) {
+        answer = 'flex';
+      }
     }
   }
   return answer;
