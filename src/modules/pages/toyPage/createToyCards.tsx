@@ -36,7 +36,7 @@ export function createCards(data: toy[], filter: IFilter) {
   for (const elem of data) {
     elems.push(
       <>
-        <div className="card" style={{ display: checkFilter(filter, elem) }}>
+        <div key={elem.num} className="card" style={{ display: checkFilter(filter, elem) }}>
           <p className="cardName">{elem.name}</p>
           <div style={{ display: 'flex' }}>
             <img className="cardImage" src={`./src/assets/toys/${elem.num}.png`}></img>

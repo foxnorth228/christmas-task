@@ -1,4 +1,5 @@
 import React from 'react';
+import './toyFilterValue.scss';
 import { IChangeToyFilter } from '../../toyPage';
 
 import ToyFilterShape from './toyFilterShape/toyFilterShape';

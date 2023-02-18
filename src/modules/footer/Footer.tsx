@@ -1,19 +1,16 @@
 import React from 'react';
 import './footer.css';
+import GithubIcon from './githubIcon/githubIcon';
+import RSSIcon from './rssIcon/rssIcon';
+import YearBlock from './yearBlock/yearBlock';
 
 function Footer() {
   return (
     <>
       <footer className="footerBody">
-        <div className="githubDiv">
-          <div className="svgIcon githubIcon"></div>
-        </div>
-        <div className="yearDiv">
-          <span className="yearText">2022</span>
-        </div>
-        <div className="rsschoolDiv">
-          <div className="svgIcon rsschoolIcon"></div>
-        </div>
+        <GithubIcon />
+        <YearBlock />
+        <RSSIcon />
       </footer>
     </>
   );

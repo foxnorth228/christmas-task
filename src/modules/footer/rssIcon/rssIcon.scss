@@ -1,0 +1,16 @@
+.rsschoolDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:20%;
+    height: 100%;
+}
+
+.rsschoolIcon {
+    height: 80%;
+    min-height: 50px;
+    min-width: 50px;
+    width: 100%;
+    mask-image: var(--rsschool-svg);
+    -webkit-mask-image: var(--rsschool-svg);
+}

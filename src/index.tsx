@@ -16,8 +16,6 @@ export const data: toy[] = dataToys.map((el) => {
   };
 });
 
-console.log(data);
-
 export type toy = {
   num: number;
   name: string;
@@ -28,8 +26,6 @@ export type toy = {
   size: string;
   favorite: boolean;
 };
-
-//type ElemOrNull = Element | null;
 
 export interface ChangePageFunc {
   changePage: Dispatch<React.SetStateAction<number>>;
