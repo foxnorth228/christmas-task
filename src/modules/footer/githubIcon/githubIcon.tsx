@@ -4,8 +4,8 @@ import './githubIcon.scss';
 function GithubIcon() {
   return (
     <>
-      <div className="githubDiv">
-        <div className="svgIcon githubIcon"></div>
+      <div className="githubBlock">
+        <div className="svgIcon githubBlock__icon"></div>
       </div>
     </>
   );

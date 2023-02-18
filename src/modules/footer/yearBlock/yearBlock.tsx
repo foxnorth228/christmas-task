@@ -4,8 +4,8 @@ import './yearBlock.scss';
 function YearBlock() {
   return (
     <>
-      <div className="yearDiv">
-        <span className="yearText">2022</span>
+      <div className="yearBlock">
+        <span className="yearBlock__text">2022</span>
       </div>
     </>
   );
