@@ -1,9 +1,3 @@
-.cardList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .card {
     display: flex;
     flex-direction: column;
@@ -34,4 +28,3 @@
 .cardDescriptionField {
     font-size: calc(0.65rem + 0.2vw);
 }
-

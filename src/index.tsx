@@ -1,20 +1,13 @@
 import React, { useState, Dispatch } from 'react';
 import { createRoot } from 'react-dom/client';
-import dataToys from './data.json';
 
 import './index.css';
 import Header from './modules/header/Header';
 import Main from './modules/main/Main';
 import Footer from './modules/footer/Footer';
+import { getData } from './getData';
 
-export const data: toy[] = dataToys.map((el) => {
-  return {
-    ...el,
-    num: Number.parseInt(el.num),
-    count: Number.parseInt(el.count),
-    year: Number.parseInt(el.year),
-  };
-});
+export const data: toy[] = getData();
 
 export type toy = {
   num: number;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './footer.css';
+import './footer.scss';
 
 import GithubIcon from './githubIcon/githubIcon';
 import RSSIcon from './rssIcon/rssIcon';

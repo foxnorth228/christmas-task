@@ -3,7 +3,7 @@
     align-items: center;
 }
 
-.startPageElems {
+.startPage__elems {
     min-width: 500px;
     min-height: 380px;
     width: 60%;
@@ -15,7 +15,7 @@
     flex-direction: column;
 }
 
-.startPageText {
+.startPage__text {
     width: 80%;
     min-width: 500px;
     margin-top: -70px;
@@ -28,7 +28,7 @@
     z-index: 1;
 }
 
-.startPageButton {
+.startPage__button {
     border: none;
     border-radius: 5px;
     outline: none;
@@ -38,7 +38,7 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-.startPageToy {
+.startPage__firstToy {
     width: calc(150px + 5vw);
     height: auto;
     position: absolute;
@@ -48,7 +48,7 @@
     bottom: 0;
 }
 
-.startPageToy2 {
+.startPage__secondToy {
     width: calc(120px + 4vw);
     height: auto;
     position: absolute;
