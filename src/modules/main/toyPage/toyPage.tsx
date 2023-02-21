@@ -1,13 +1,14 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import './toyPage.css';
 import '../page.scss';
-import { CardList } from './cardList/createToyCards';
-import { IChangeFilter, IFilter } from '../../main/filterTypes';
+import { CardList } from './cardList/CardList';
+import { IFilter } from '../../main/filterTypes';
 import ToyFilters from './toyFilters/toyFilters';
+import { updatedReducer } from '../Main';
 
 export interface IChangeToyFilter {
   filter: IFilter;
-  changeToyFilter: Dispatch<IChangeFilter>;
+  changeToyFilter: updatedReducer;
 }
 
 function ToyPage({ filter, changeToyFilter }: IChangeToyFilter) {

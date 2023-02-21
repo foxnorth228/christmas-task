@@ -1,7 +1,7 @@
 import React from 'react';
 import { toy } from '../../../../index.js';
 import './cardList.css';
-import { IFilter } from '../../../main/filterTypes';
+import { IFilter } from '../../filterTypes';
 import { data } from '../../../../index';
 import Card from './card/Card';
 

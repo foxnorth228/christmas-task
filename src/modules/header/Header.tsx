@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.scss';
+import './Header.scss';
 import { ChangePageFunc } from '../../index';
 import Nav from './nav/nav';
 import ToyCounter from './toyCounter/toyCounter';

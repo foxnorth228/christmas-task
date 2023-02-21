@@ -14,31 +14,31 @@ function ToyFilterShape({ filter, changeToyFilter }: IChangeToyFilter) {
           <div
             className={`toyFilterShapeElem toyFilterShapeBall ${clicked(shapes.ball)}`}
             onClick={() => {
-              changeToyFilter({ type: 'shapes', elem: 'ball' });
+              changeToyFilter('shapes', 'ball');
             }}
           ></div>
           <div
             className={`toyFilterShapeElem toyFilterShapeBell ${clicked(shapes.bell)}`}
             onClick={() => {
-              changeToyFilter({ type: 'shapes', elem: 'bell' });
+              changeToyFilter('shapes', 'bell');
             }}
           ></div>
           <div
             className={`toyFilterShapeElem toyFilterShapeCone ${clicked(shapes.cone)}`}
             onClick={() => {
-              changeToyFilter({ type: 'shapes', elem: 'cone' });
+              changeToyFilter('shapes', 'cone');
             }}
           ></div>
           <div
             className={`toyFilterShapeElem toyFilterShapeSnow ${clicked(shapes.snow)}`}
             onClick={() => {
-              changeToyFilter({ type: 'shapes', elem: 'snow' });
+              changeToyFilter('shapes', 'snow');
             }}
           ></div>
           <div
             className={`toyFilterShapeElem toyFilterShapeToy ${clicked(shapes.toy)}`}
             onClick={() => {
-              changeToyFilter({ type: 'shapes', elem: 'toy' });
+              changeToyFilter('shapes', 'toy');
             }}
           ></div>
         </div>

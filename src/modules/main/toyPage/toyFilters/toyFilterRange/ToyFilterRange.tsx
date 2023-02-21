@@ -1,11 +1,12 @@
 import React from 'react';
+import './ToyFilterRange.css';
 import { IChangeToyFilter } from '../../toyPage';
 
 function ToyFilterRange({ filter, changeToyFilter }: IChangeToyFilter) {
   return (
     <>
       <div className="toyFiltersType toyFiltersRange">
-        <span>Фильтры по </span>
+        <span className="toyFiltersRangeName">Фильтры по диапазону</span>
         <div className="toyFilterRangeSecNumber">
           <span>Количество</span>
           <div className="toyFilterRangeNumber"></div>

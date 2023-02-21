@@ -14,19 +14,19 @@ function ToyFilterSize({ filter, changeToyFilter }: IChangeToyFilter) {
           <div
             className={`toyFilterSizeElem toyFilterSizeBig ${clicked(sizes.big)}`}
             onClick={() => {
-              changeToyFilter({ type: 'sizes', elem: 'big' });
+              changeToyFilter('sizes', 'big');
             }}
           ></div>
           <div
             className={`toyFilterSizeElem toyFilterSizeMedium ${clicked(sizes.medium)}`}
             onClick={() => {
-              changeToyFilter({ type: 'sizes', elem: 'medium' });
+              changeToyFilter('sizes', 'medium');
             }}
           ></div>
           <div
             className={`toyFilterSizeElem toyFilterSizeSmall ${clicked(sizes.small)}`}
             onClick={() => {
-              changeToyFilter({ type: 'sizes', elem: 'small' });
+              changeToyFilter('sizes', 'small');
             }}
           ></div>
         </div>

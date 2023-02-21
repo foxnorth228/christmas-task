@@ -11,7 +11,7 @@ function ToyFilterFav({ /*filter,*/ changeToyFilter }: IChangeToyFilter) {
         <div
           className="toyFiltersValueFavElems"
           onClick={() => {
-            changeToyFilter({ type: 'fav', elem: 'favorite' });
+            changeToyFilter('fav', 'favorite');
           }}
         ></div>
       </div>

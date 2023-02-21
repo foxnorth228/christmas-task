@@ -1,7 +1,17 @@
 export interface IChangeFilter {
-  type: 'shapes' | 'colors' | 'sizes' | 'fav';
-  elem: IShapesElems | IColorsElems | ISizesElems | iFavElems;
+  section: filterSections;
+  position: filterPositions;
 }
+
+export type filterSections = 'shapes' | 'colors' | 'sizes' | 'fav';
+export type filterPositions = IShapesElems | IColorsElems | ISizesElems | iFavElems;
+
+export const createIChangeFilter = (
+  section: filterSections,
+  position: filterPositions
+): IChangeFilter => {
+  return { section: section, position: position };
+};
 
 export interface IFilter {
   shapes: IShapes;
@@ -41,7 +51,7 @@ type IColorsElems = 'white' | 'yellow' | 'red' | 'blue' | 'green';
 type ISizesElems = 'small' | 'medium' | 'big';
 type iFavElems = 'favorite';
 
-export type filterPos = [string, boolean] | undefined;
+export type filterPosOrUndefined = [string, boolean] | undefined;
 
 export function FilterCreation(): IFilter {
   return {

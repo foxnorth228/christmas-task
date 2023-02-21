@@ -1,5 +1,6 @@
 import React from 'react';
 import { toy } from '../../../../..';
+import { convertDataShape, convertDataColor, convertDataSize } from '../../../../../getData';
 import './Card.scss';
 
 function Card({ elem }: { elem: toy }) {
@@ -11,9 +12,9 @@ function Card({ elem }: { elem: toy }) {
         <div className="cardDescription">
           <span className="cardDescriptionField">Количество: {elem.count}</span>
           <span className="cardDescriptionField">Год: {elem.year}</span>
-          <span className="cardDescriptionField">Фигура: {elem.shape}</span>
-          <span className="cardDescriptionField">Цвет: {elem.color}</span>
-          <span className="cardDescriptionField">Размер: {elem.size}</span>
+          <span className="cardDescriptionField">Фигура: {convertDataShape(elem.shape)}</span>
+          <span className="cardDescriptionField">Цвет: {convertDataColor(elem.color)}</span>
+          <span className="cardDescriptionField">Размер: {convertDataSize(elem.size)}</span>
           <span className="cardDescriptionField">Любимое: {elem.favorite ? 'Да' : 'Нет'}</span>
         </div>
       </div>

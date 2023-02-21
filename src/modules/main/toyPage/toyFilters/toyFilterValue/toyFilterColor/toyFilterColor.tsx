@@ -14,31 +14,31 @@ function ToyFilterColor({ filter, changeToyFilter }: IChangeToyFilter) {
           <div
             className={`toyFilterColorElem toyFilterColorWhite ${clicked(colors.white)}`}
             onClick={() => {
-              changeToyFilter({ type: 'colors', elem: 'white' });
+              changeToyFilter('colors', 'white');
             }}
           ></div>
           <div
             className={`toyFilterColorElem toyFilterColorYellow ${clicked(colors.yellow)}`}
             onClick={() => {
-              changeToyFilter({ type: 'colors', elem: 'yellow' });
+              changeToyFilter('colors', 'yellow');
             }}
           ></div>
           <div
             className={`toyFilterColorElem toyFilterColorRed ${clicked(colors.red)}`}
             onClick={() => {
-              changeToyFilter({ type: 'colors', elem: 'red' });
+              changeToyFilter('colors', 'red');
             }}
           ></div>
           <div
             className={`toyFilterColorElem toyFilterColorBlue ${clicked(colors.blue)}`}
             onClick={() => {
-              changeToyFilter({ type: 'colors', elem: 'blue' });
+              changeToyFilter('colors', 'blue');
             }}
           ></div>
           <div
             className={`toyFilterColorElem toyFilterColorGreen ${clicked(colors.green)}`}
             onClick={() => {
-              changeToyFilter({ type: 'colors', elem: 'green' });
+              changeToyFilter('colors', 'green');
             }}
           ></div>
         </div>

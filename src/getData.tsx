@@ -28,6 +28,21 @@ export function getData() {
   });
 }
 
+export function convertDataShape(type: string) {
+  const newType = shape.find((el) => el[0] === type);
+  return newType ? newType[1] : '';
+}
+
+export function convertDataColor(type: string) {
+  const newType = color.find((el) => el[0] === type);
+  return newType ? newType[1] : '';
+}
+
+export function convertDataSize(type: string) {
+  const newType = size.find((el) => el[0] === type);
+  return newType ? newType[1] : '';
+}
+
 const shape = [
   ['ball', 'шар'],
   ['bell', 'колокольчик'],
