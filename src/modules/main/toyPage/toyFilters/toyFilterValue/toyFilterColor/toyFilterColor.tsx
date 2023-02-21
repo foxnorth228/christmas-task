@@ -8,35 +8,45 @@ function ToyFilterColor({ filter, changeToyFilter }: IChangeToyFilter) {
   const colors = filter.colors;
   return (
     <>
-      <div className="toyFiltersValueType toyFilterColor">
-        <span className="toyFilterColorName">Цвет:</span>
-        <div className="toyFilterColorElems">
+      <div className="toyFilterSector toyFilterSectorColor">
+        <span className="toyFilterSectorColor__name">Цвет:</span>
+        <div className="toyFilterSectorColor__elems">
           <div
-            className={`toyFilterColorElem toyFilterColorWhite ${clicked(colors.white)}`}
+            className={`toyFilterSectorColor__elem toyFilterSectorColor__elem_white ${clicked(
+              colors.white
+            )}`}
             onClick={() => {
               changeToyFilter('colors', 'white');
             }}
           ></div>
           <div
-            className={`toyFilterColorElem toyFilterColorYellow ${clicked(colors.yellow)}`}
+            className={`toyFilterSectorColor__elem toyFilterSectorColor__elem_yellow ${clicked(
+              colors.yellow
+            )}`}
             onClick={() => {
               changeToyFilter('colors', 'yellow');
             }}
           ></div>
           <div
-            className={`toyFilterColorElem toyFilterColorRed ${clicked(colors.red)}`}
+            className={`toyFilterSectorColor__elem toyFilterSectorColor__elem_red ${clicked(
+              colors.red
+            )}`}
             onClick={() => {
               changeToyFilter('colors', 'red');
             }}
           ></div>
           <div
-            className={`toyFilterColorElem toyFilterColorBlue ${clicked(colors.blue)}`}
+            className={`toyFilterSectorColor__elem toyFilterSectorColor__elem_blue ${clicked(
+              colors.blue
+            )}`}
             onClick={() => {
               changeToyFilter('colors', 'blue');
             }}
           ></div>
           <div
-            className={`toyFilterColorElem toyFilterColorGreen ${clicked(colors.green)}`}
+            className={`toyFilterSectorColor__elem toyFilterSectorColor__elem_green ${clicked(
+              colors.green
+            )}`}
             onClick={() => {
               changeToyFilter('colors', 'green');
             }}

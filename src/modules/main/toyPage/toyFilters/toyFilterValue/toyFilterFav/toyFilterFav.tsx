@@ -6,10 +6,10 @@ function ToyFilterFav({ /*filter,*/ changeToyFilter }: IChangeToyFilter) {
   //const fav = filter.fav;
   return (
     <>
-      <div className="toyFiltersValueType toyFiltersValueFav">
-        <span className="toyFiltersValueFavName">Только любимые:</span>
+      <div className="toyFilterSector toyFilterSectorFav">
+        <span className="toyFilterSectorFav__name">Только любимые:</span>
         <div
-          className="toyFiltersValueFavElems"
+          className="toyFilterSectorFav__elems"
           onClick={() => {
             changeToyFilter('fav', 'favorite');
           }}

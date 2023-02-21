@@ -1,4 +1,5 @@
 import React from 'react';
+import './toyFilterSort.scss';
 import { IChangeToyFilter } from '../../toyPage';
 
 function ToyFilterSort({ filter, changeToyFilter }: IChangeToyFilter) {

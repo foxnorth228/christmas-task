@@ -8,23 +8,29 @@ function ToyFilterSize({ filter, changeToyFilter }: IChangeToyFilter) {
   const sizes = filter.sizes;
   return (
     <>
-      <div className="toyFiltersValueType toyFilterSize">
-        <span className="toyFilterSizeName">Размер:</span>
-        <div className="toyFilterSizeElems">
+      <div className="toyFilterSector toyFilterSectorSize">
+        <span className="toyFilterSectorSize__name">Размер:</span>
+        <div className="toyFilterSectorSize__elems">
           <div
-            className={`toyFilterSizeElem toyFilterSizeBig ${clicked(sizes.big)}`}
+            className={`toyFilterSectorSize__elem toyFilterSectorSize__elem_big ${clicked(
+              sizes.big
+            )}`}
             onClick={() => {
               changeToyFilter('sizes', 'big');
             }}
           ></div>
           <div
-            className={`toyFilterSizeElem toyFilterSizeMedium ${clicked(sizes.medium)}`}
+            className={`toyFilterSectorSize__elem toyFilterSectorSize__elem_medium ${clicked(
+              sizes.medium
+            )}`}
             onClick={() => {
               changeToyFilter('sizes', 'medium');
             }}
           ></div>
           <div
-            className={`toyFilterSizeElem toyFilterSizeSmall ${clicked(sizes.small)}`}
+            className={`toyFilterSectorSize__elem toyFilterSectorSize__elem_small ${clicked(
+              sizes.small
+            )}`}
             onClick={() => {
               changeToyFilter('sizes', 'small');
             }}

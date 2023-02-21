@@ -1,8 +1,8 @@
-.toyFilterShape{ 
+.toyFilterSectorShape{ 
     
 }
 
-.toyFilterShapeElems {
+.toyFilterSectorShape__elems {
     max-width: 220px;
     width: 100%;
     display: flex;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.toyFilterShapeElem {
+.toyFilterSectorShape__elem {
     cursor: pointer;
     background-color: white;
     mask-repeat: no-repeat;
@@ -33,27 +33,27 @@
     background-color: burlywood;
 }
 
-.toyFilterShapeBall {
+.toyFilterSectorShape__elem_ball {
     mask-image: var(--ball-svg);
     -webkit-mask-image: var(--ball-svg);
 }
 
-.toyFilterShapeBell {
+.toyFilterSectorShape__elem_bell {
     mask-image: var(--bell-svg);
     -webkit-mask-image: var(--bell-svg);
 }
 
-.toyFilterShapeCone {
+.toyFilterSectorShape__elem_cone {
     mask-image: var(--cone-svg);
     -webkit-mask-image: var(--cone-svg);
 }
 
-.toyFilterShapeSnow {
+.toyFilterSectorShape__elem_snow {
     mask-image: var(--snowflake-svg);
     -webkit-mask-image: var(--snowflake-svg);
 }
 
-.toyFilterShapeToy {
+.toyFilterSectorShape__elem_toy {
     mask-image: var(--toy-svg);
     -webkit-mask-image: var(--toy-svg);
 }

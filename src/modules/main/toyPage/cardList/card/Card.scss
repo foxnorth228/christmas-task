@@ -9,22 +9,22 @@
     background-color: white;
 }
 
-.cardName {
+.card_name {
     text-align: center;
     font-size: calc(0.9rem + 0.2vw);
 }
 
-.cardImage {
+.card_image {
     width: calc(70px + 1.8vw);
     height: calc(70px + 1.8vw);
 }
 
-.cardDescription {
+.card_descriptionBlock {
     display: inline-flex;
     flex-direction: column;
     min-height: 120px;
 }
 
-.cardDescriptionField {
+.card_property {
     font-size: calc(0.65rem + 0.2vw);
 }

@@ -1,6 +1,5 @@
 import React, { useReducer, Dispatch } from 'react';
 import './main.css';
-
 import {
   IFilter,
   IChangeFilter,
@@ -39,7 +38,6 @@ function Main({ page, changePage }: PageHook) {
 }
 
 export type updatedReducer = (section: filterSections, position: filterPositions) => void;
-
 export default Main;
 
 function filterReducer(filter: IFilter, { section, position }: IChangeFilter) {

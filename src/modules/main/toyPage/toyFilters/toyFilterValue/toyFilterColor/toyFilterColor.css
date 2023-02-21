@@ -1,8 +1,8 @@
-.toyFilterColor {
+.toyFilterSectorColor {
     
 }
 
-.toyFilterColorElems {
+.toyFilterSectorColor__elems {
     max-width: 220px;
     width: 100%;
     display: flex;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.toyFilterColorElem {
+.toyFilterSectorColor__elem {
     cursor: pointer;
     border-radius: 3px;
     border-width: 3px;
@@ -27,27 +27,27 @@
     border-color: blueviolet;
 }
 
-.toyFilterColorWhite {
+.toyFilterSectorColor__elem_white {
     background-color: white;
     border-color: white;
 }
 
-.toyFilterColorYellow {
+.toyFilterSectorColor__elem_yellow {
     background-color: yellow;
     border-color: yellow;
 }
 
-.toyFilterColorRed {
+.toyFilterSectorColor__elem_red {
     background-color: red;
     border-color: red;
 }
 
-.toyFilterColorBlue {
+.toyFilterSectorColor__elem_blue {
     background-color: blue;
     border-color: blue;
 }
 
-.toyFilterColorGreen{
+.toyFilterSectorColor__elem_green{
     background-color: green;
     border-color: green;
 }

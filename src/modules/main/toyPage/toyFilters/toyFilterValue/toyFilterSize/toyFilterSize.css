@@ -1,8 +1,8 @@
-.toyFilterSize {
+.toyFilterValueSectorSize {
     
 }
 
-.toyFilterSizeElems {
+.toyFilterSectorSize__elems {
     max-width: 220px;
     width: 100%;
     display: flex;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.toyFilterSizeElem {
+.toyFilterSectorSize__elem {
     background-color: white;
     mask-repeat: no-repeat;
     mask-position: center;
@@ -32,21 +32,21 @@
     background-color: burlywood;
 }
 
-.toyFilterSizeBig {
+.toyFilterSectorSize__elem_big {
     min-width: 35px;
     min-height: 35px;
     width: 2.4vw;
     height: 2.4vw;
 }
 
-.toyFilterSizeMedium {
+.toyFilterSectorSize__elem_medium {
     min-width: 30px;
     min-height: 30px;
     width: 2.1vw;
     height: 2.1vw;
 }
 
-.toyFilterSizeSmall {
+.toyFilterSectorSize__elem_small {
     min-width: 25px;
     min-height: 25px;
     width: 1.8vw;
