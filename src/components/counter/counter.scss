@@ -1,4 +1,4 @@
-.toyCounter {
+.counter {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
 }
 
-.toyCounter__text {
+.counter__text {
     color: white;
     margin-top: 3.5vh;
     font-size: 2rem;

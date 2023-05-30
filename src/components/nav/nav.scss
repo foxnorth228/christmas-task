@@ -1,6 +1,28 @@
+@use '@services/icons/icon.scss' as ic;
 .pageNav {
     display: flex;
     width: 100%;
     height: 100%;
     min-width: 334px;
+}
+
+.pageSelector {
+    min-width: 138px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageSelector__icon {
+    min-width: 70px;
+    height: 100%;
+}
+
+.treeIcon {
+    @include ic.iconSvg("@assets/svg/tree.svg");
+    width: 100%;
+    height: 60%;
+    mask-image: var(--tree-svg);
+    -webkit-mask-image: var(--tree-svg);
 }

@@ -1,53 +1,46 @@
 import React from 'react';
-import './toyFilterShape.css';
+import './toyFilterShape.scss';
+import clickIcon from '@src/services/icons/clickIcon';
 import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
 
-const clicked = (el: boolean) => (el ? 'toyFilterShapeClicked' : 'greyBack');
-
 function ToyFilterShape({ filter, changeToyFilter }: IChangeToyFilter) {
-  const shapes = filter.shapes;
   return (
     <>
       <div className="toyFilterSector toyFilterSectorShape">
         <span className="toyFilterSectorShape__name">Форма:</span>
         <div className="toyFilterSectorShape__elems">
           <div
-            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_ball ${clicked(
-              shapes.ball
-            )}`}
-            onClick={() => {
+            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_ball`}
+            onClick={(e) => {
+              clickIcon(e.currentTarget);
               changeToyFilter('shapes', 'ball');
             }}
           ></div>
           <div
-            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_bell ${clicked(
-              shapes.bell
-            )}`}
-            onClick={() => {
+            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_bell`}
+            onClick={(e) => {
+              clickIcon(e.currentTarget);
               changeToyFilter('shapes', 'bell');
             }}
           ></div>
           <div
-            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_cone ${clicked(
-              shapes.cone
-            )}`}
-            onClick={() => {
+            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_cone`}
+            onClick={(e) => {
+              clickIcon(e.currentTarget);
               changeToyFilter('shapes', 'cone');
             }}
           ></div>
           <div
-            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_snow ${clicked(
-              shapes.snow
-            )}`}
-            onClick={() => {
+            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_snow`}
+            onClick={(e) => {
+              clickIcon(e.currentTarget);
               changeToyFilter('shapes', 'snow');
             }}
           ></div>
           <div
-            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_toy ${clicked(
-              shapes.toy
-            )}`}
-            onClick={() => {
+            className={`toyFilterSectorShape__elem toyFilterSectorShape__elem_toy`}
+            onClick={(e) => {
+              clickIcon(e.currentTarget);
               changeToyFilter('shapes', 'toy');
             }}
           ></div>

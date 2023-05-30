@@ -4,7 +4,7 @@ import './rssIcon.scss';
 function RSSIcon() {
   return (
     <div className="rsschoolBlock">
-      <div className="svgIcon rsschoolBlock__icon"></div>
+      <div className="rsschoolBlock__icon"></div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import './Header.scss';
-import { ChangePageFunc } from '@main/index';
+import { ChangePageFunc } from '@src/index';
 import Nav from '@components/nav/nav';
-import ToyCounter from '@components/toyCounter/toyCounter';
+import Counter from '@src/components/counter/counter';
 import ToySearcher from '@components/toySearcher/toySearcher';
 
 function Header({ changePage }: ChangePageFunc) {
@@ -10,7 +10,7 @@ function Header({ changePage }: ChangePageFunc) {
     <header className="header">
       <Nav changePage={changePage} />
       <ToySearcher />
-      <ToyCounter />
+      <Counter />
     </header>
   );
 }

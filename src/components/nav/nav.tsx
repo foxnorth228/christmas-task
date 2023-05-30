@@ -1,17 +1,39 @@
 import React from 'react';
 import './nav.scss';
 import { ChangePageFunc } from '../..';
-import StartPageSelector from './startPageSelector/startPageSelector';
-import ToyPageSelector from './toyPageSelector/toyPageSelector';
-import TreePageSelector from './treePageSelector/treePageSelector';
 
 function Nav({ changePage }: ChangePageFunc) {
   return (
     <>
       <nav className="pageNav">
-        <StartPageSelector changePage={changePage} />
-        <ToyPageSelector changePage={changePage} />
-        <TreePageSelector changePage={changePage} />
+        <div className="pageSelector pageSelector__icon">
+          <div
+            className="treeIcon startPageSwitch"
+            onClick={() => {
+              changePage(0);
+            }}
+          ></div>
+        </div>
+        <div className="pageSelector">
+          <span
+            className="textSwitch toyPageSwitch"
+            onClick={() => {
+              changePage(1);
+            }}
+          >
+            Игрушки
+          </span>
+        </div>
+        <div className="pageSelector">
+          <span
+            className="textSwitch"
+            onClick={() => {
+              changePage(2);
+            }}
+          >
+            Ёлочка
+          </span>
+        </div>
       </nav>
     </>
   );

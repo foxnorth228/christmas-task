@@ -1,0 +1,41 @@
+@use '@services/icons/icon.scss' as ic;
+
+.toyFilterSectorShape__elems {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toyFilterSectorShape__elem {
+    min-width: 30px;
+    min-height: 30px;
+    width: 2.1vw;
+    height: 2.1vw;
+}
+
+.toyFilterSectorShape__elem_ball {
+    @extend .toyFilterSectorShape__elem;
+    @include ic.iconSvg(var(--ball-svg));
+}
+
+.toyFilterSectorShape__elem_bell {
+    @extend .toyFilterSectorShape__elem;
+    @include ic.iconSvg(var(--bell-svg));
+}
+
+.toyFilterSectorShape__elem_cone {
+    @extend .toyFilterSectorShape__elem;
+    @include ic.iconSvg(var(--cone-svg));
+}
+
+.toyFilterSectorShape__elem_snow {
+    @extend .toyFilterSectorShape__elem;
+    @include ic.iconSvg(var(--snowflake-svg));
+}
+
+.toyFilterSectorShape__elem_toy {
+    @extend .toyFilterSectorShape__elem;
+    @include ic.iconSvg(var(--toy-svg));
+}
