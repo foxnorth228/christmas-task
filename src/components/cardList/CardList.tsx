@@ -3,7 +3,7 @@ import { toy } from '@src/index';
 import './cardList.css';
 import { IFilter } from './filterTypes';
 import { data } from '@src/index';
-import Card from './card/Card';
+import Card from '../card/Card';
 
 function filterCards(filter: IFilter) {
   const isAllFilterShapesOff = Object.values(filter.shapes).some((el) => el);
