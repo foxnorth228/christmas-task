@@ -1,6 +1,6 @@
 import React from 'react';
 import './startPageSelector.scss';
-import { ChangePageFunc } from '../../../..';
+import { ChangePageFunc } from '../../..';
 
 function StartPageSelector({ changePage }: ChangePageFunc) {
   return (

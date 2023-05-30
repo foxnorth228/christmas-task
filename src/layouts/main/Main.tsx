@@ -8,10 +8,10 @@ import {
   filterSections,
   filterPositions,
   createIChangeFilter,
-} from './filterTypes';
-import StartPage from './startPage/startPage';
-import ToyPage from './toyPage/toyPage';
-import TreePage from './treePage/treePage';
+} from '../../pages/toyPage/cardList/filterTypes';
+import StartPage from '../../pages/startPage/startPage';
+import ToyPage from '../../pages/toyPage/toyPage';
+import TreePage from '../../pages/treePage/treePage';
 
 interface PageHook {
   page: number;

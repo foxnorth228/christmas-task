@@ -1,6 +1,6 @@
 import React from 'react';
 import './nav.scss';
-import { ChangePageFunc } from '../../..';
+import { ChangePageFunc } from '../..';
 import StartPageSelector from './startPageSelector/startPageSelector';
 import ToyPageSelector from './toyPageSelector/toyPageSelector';
 import TreePageSelector from './treePageSelector/treePageSelector';

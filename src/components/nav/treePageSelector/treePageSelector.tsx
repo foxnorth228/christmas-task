@@ -1,6 +1,6 @@
 import React from 'react';
 import './treePageSelector.scss';
-import { ChangePageFunc } from '../../../..';
+import { ChangePageFunc } from '../../..';
 
 function TreePageSelector({ changePage }: ChangePageFunc) {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import './toyPageSelector.scss';
-import { ChangePageFunc } from '../../../..';
+import { ChangePageFunc } from '../../..';
 
 function ToyPageSelector({ changePage }: ChangePageFunc) {
   return (

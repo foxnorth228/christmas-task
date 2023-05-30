@@ -1,7 +1,7 @@
 import React from 'react';
 import './startPage.css';
 import '../page.scss';
-import { ChangePageFunc } from '../../../index';
+import { ChangePageFunc } from '../../index';
 
 function StartPage({ changePage }: ChangePageFunc) {
   return (
