@@ -1,6 +1,6 @@
 import React from 'react';
 import './toyFilterValue.scss';
-import { IChangeToyFilter } from '../../toyPage';
+import { IChangeToyFilter } from '../../../pages/toyPage/toyPage';
 
 import ToyFilterShape from './toyFilterShape/toyFilterShape';
 import ToyFilterColor from './toyFilterColor/toyFilterColor';

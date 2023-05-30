@@ -1,6 +1,6 @@
 import React from 'react';
 import './toyFilterSize.css';
-import { IChangeToyFilter } from '../../../toyPage';
+import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
 
 const clicked = (el: boolean) => (el ? 'toyFilterSizeClicked' : 'greyBack');
 

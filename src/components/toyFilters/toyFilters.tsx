@@ -4,7 +4,7 @@ import './toyFilters.scss';
 import ToyFilterValue from './toyFilterValue/toyFilterValue';
 import ToyFilterRange from './toyFilterRange/ToyFilterRange';
 import ToyFilterSort from './toyFIlterOther/toyFilterSort';
-import { IChangeToyFilter } from '../toyPage';
+import { IChangeToyFilter } from '../../pages/toyPage/toyPage';
 
 function ToyFilters({ filter, changeToyFilter }: IChangeToyFilter) {
   return (

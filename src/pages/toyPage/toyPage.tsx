@@ -1,10 +1,10 @@
 import React from 'react';
 import './toyPage.css';
 import '../page.scss';
-import { CardList } from './cardList/CardList';
-import { IFilter } from '../../main/filterTypes';
-import ToyFilters from './toyFilters/toyFilters';
-import { updatedReducer } from '../Main';
+import { CardList } from '@components/cardList/CardList';
+import { IFilter } from '@components/cardList/filterTypes';
+import ToyFilters from '../../components/toyFilters/toyFilters';
+import { updatedReducer } from '@layouts/main/Main';
 
 export interface IChangeToyFilter {
   filter: IFilter;

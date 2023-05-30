@@ -1,6 +1,6 @@
 import React from 'react';
 import './toyFilterSort.scss';
-import { IChangeToyFilter } from '../../toyPage';
+import { IChangeToyFilter } from '../../../pages/toyPage/toyPage';
 
 function ToyFilterSort({ filter, changeToyFilter }: IChangeToyFilter) {
   return (

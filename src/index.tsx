@@ -2,7 +2,7 @@ import React, { useState, Dispatch } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import './index.css';
-import Header from './layouts/Header';
+import Header from './layouts/header/Header';
 import Main from './layouts/main/Main';
 import Footer from './layouts/footer/Footer';
 import { getData } from './getData';

@@ -8,7 +8,7 @@ import {
   filterSections,
   filterPositions,
   createIChangeFilter,
-} from '../../pages/toyPage/cardList/filterTypes';
+} from '@components/cardList/filterTypes';
 import StartPage from '../../pages/startPage/startPage';
 import ToyPage from '../../pages/toyPage/toyPage';
 import TreePage from '../../pages/treePage/treePage';

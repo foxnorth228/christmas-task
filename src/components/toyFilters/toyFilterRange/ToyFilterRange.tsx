@@ -1,6 +1,6 @@
 import React from 'react';
 import './ToyFilterRange.scss';
-import { IChangeToyFilter } from '../../toyPage';
+import { IChangeToyFilter } from '../../../pages/toyPage/toyPage';
 import Range from './Range/Range';
 
 function ToyFilterRange({ filter, changeToyFilter }: IChangeToyFilter) {

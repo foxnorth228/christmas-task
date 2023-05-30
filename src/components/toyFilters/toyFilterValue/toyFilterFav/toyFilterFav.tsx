@@ -1,6 +1,6 @@
 import React from 'react';
 import './toyFilterFav.css';
-import { IChangeToyFilter } from '../../../toyPage';
+import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
 
 function ToyFilterFav({ /*filter,*/ changeToyFilter }: IChangeToyFilter) {
   //const fav = filter.fav;

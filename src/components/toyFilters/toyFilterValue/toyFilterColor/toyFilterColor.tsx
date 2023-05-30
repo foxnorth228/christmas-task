@@ -1,6 +1,6 @@
 import React from 'react';
 import './toyFilterColor.css';
-import { IChangeToyFilter } from '../../../toyPage';
+import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
 
 const clicked = (el: boolean) => (el ? 'toyFilterColorClicked' : 'violetBorder');
 
