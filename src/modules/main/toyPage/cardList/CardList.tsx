@@ -22,7 +22,6 @@ function filterCards(filter: IFilter) {
     const isSizeOn = sizes.find((el) => el[0] === elem.size);
     //const isFavOn = filter.fav.favorite;
 
-    console.log(isShapeOn, isColorOn, isSizeOn, isAllFilterShapesOff);
     if (isShapeOn && isColorOn && isSizeOn) {
       if (
         (isShapeOn[1] || !isAllFilterShapesOff) &&

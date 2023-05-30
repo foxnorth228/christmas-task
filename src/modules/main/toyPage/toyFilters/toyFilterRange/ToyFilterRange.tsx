@@ -1,19 +1,34 @@
 import React from 'react';
-import './ToyFilterRange.css';
+import './ToyFilterRange.scss';
 import { IChangeToyFilter } from '../../toyPage';
+import Range from './Range/Range';
 
 function ToyFilterRange({ filter, changeToyFilter }: IChangeToyFilter) {
+  const numberParams = {
+    leftPos: 1,
+    rightPos: 12,
+    step: 1,
+  };
+  const ageParams = {
+    leftPos: 1940,
+    rightPos: 2020,
+    step: 10,
+  };
   return (
     <>
-      <div className="toyFiltersType toyFiltersRange">
-        <span className="toyFiltersRangeName">Фильтры по диапазону</span>
-        <div className="toyFilterRangeSecNumber">
-          <span>Количество</span>
-          <div className="toyFilterRangeNumber"></div>
+      <div className="toyFilterUnit toyFilterUnitRange">
+        <span className="toyFilterUnitRange__name">Фильтры по диапазону</span>
+        <div className="toyFilterRSector toyFilterRangeNumber">
+          <span className="toyFilterRangeNumber__name">Количество</span>
+          <div className="toyFilterRangeNumber__range">
+            <Range params={numberParams} />
+          </div>
         </div>
-        <div className="toyFilterRangeSecYear">
+        <div className="toyFilterRSector toyFilterRangeYear">
           <span>Год</span>
-          <div className="toyFilterRangeYear"></div>
+          <div className="toyFilterRangeYear__range">
+            <Range params={ageParams} />
+          </div>
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ import { IChangeToyFilter } from '../../toyPage';
 function ToyFilterSort({ filter, changeToyFilter }: IChangeToyFilter) {
   return (
     <>
-      <div className="toyFiltersType toyFiltersSort">
+      <div className="toyFilterUnit toyFilterSort">
         <span>Сортировка</span>
         <select></select>
         <button></button>

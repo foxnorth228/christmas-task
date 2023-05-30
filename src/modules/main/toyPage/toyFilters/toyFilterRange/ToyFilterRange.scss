@@ -1,0 +1,26 @@
+.toyFilterSectorRange {
+    
+}
+
+.toyFilterUnitRange__name {
+    text-align: center;
+    font-size: calc(1.2rem + 0.48vw);
+}
+
+.toyFilterRSector {
+    width: 90%;
+    height: 39%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: calc(1rem + 0.37vw);
+}
+
+.toyFilterRangeNumber__range {
+    width: 100%;
+}
+
+.toyFilterRangeYear__range {
+    width: 100%;
+}

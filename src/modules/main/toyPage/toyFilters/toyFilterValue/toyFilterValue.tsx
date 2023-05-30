@@ -10,7 +10,7 @@ import ToyFilterFav from './toyFilterFav/toyFilterFav';
 function ToyFilterValue({ filter, changeToyFilter }: IChangeToyFilter) {
   return (
     <>
-      <div className="toyFiltersType toyFiltersValue">
+      <div className="toyFilterUnit toyFilterValue">
         <span className="toyFiltersValueName">Фильтры по значению</span>
         <ToyFilterShape filter={filter} changeToyFilter={changeToyFilter} />
         <ToyFilterColor filter={filter} changeToyFilter={changeToyFilter} />
