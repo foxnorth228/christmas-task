@@ -1,5 +1,5 @@
 import React, { useReducer, Dispatch, useCallback, useContext } from 'react';
-import './main.css';
+import './main.scss';
 import {
   IFilter,
   IChangeFilter,

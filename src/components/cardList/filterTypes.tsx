@@ -4,6 +4,7 @@ export interface IChangeFilter {
 }
 
 export type filterSections = 'shapes' | 'colors' | 'sizes' | 'fav';
+export type filterSectionObject = IShapes | IColors | ISizes | IFav;
 export type filterPositions = IShapesElems | IColorsElems | ISizesElems | iFavElems;
 
 export const createIChangeFilter = (

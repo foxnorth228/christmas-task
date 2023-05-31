@@ -3,7 +3,7 @@ import './toyPage.css';
 import '../page.scss';
 import { CardList } from '@components/cardList/CardList';
 import { IFilter } from '@components/cardList/filterTypes';
-import ToyFilters from '../../components/toyFilters/toyFilters';
+import FilterBlocks from '../../components/Filters/FilterBlocks';
 import { updatedReducer } from '@layouts/main/Main';
 import useFilter from '@src/hooks/useFilter';
 
@@ -16,7 +16,7 @@ function ToyPage() {
   const [filter, filterReducer] = useFilter();
   return (
     <div className="page toyPage">
-      <ToyFilters filter={filter} changeToyFilter={filterReducer} />
+      <FilterBlocks />
       <CardList filter={filter} />
     </div>
   );

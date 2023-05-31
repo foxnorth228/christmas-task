@@ -1,9 +1,10 @@
 import React from 'react';
 import './toyFilterFav.css';
 import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
+import useFilter from '@src/hooks/useFilter';
 
-function ToyFilterFav({ /*filter,*/ changeToyFilter }: IChangeToyFilter) {
-  //const fav = filter.fav;
+function ToyFilterFav() {
+  const [filter, changeToyFilter] = useFilter();
   return (
     <>
       <div className="toyFilterSector toyFilterSectorFav">

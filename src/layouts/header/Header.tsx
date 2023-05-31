@@ -3,7 +3,7 @@ import './Header.scss';
 import { ChangePageFunc } from '@src/index';
 import Nav from '@components/nav/nav';
 import Counter from '@src/components/counter/counter';
-import ToySearcher from '@components/toySearcher/toySearcher';
+import ToySearcher from '@src/components/Searcher/Searcher';
 
 function Header({ changePage }: ChangePageFunc) {
   return (

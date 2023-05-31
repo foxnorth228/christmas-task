@@ -1,5 +1,5 @@
 import React from 'react';
-import './toySearcher.scss';
+import './Searcher.scss';
 
 function ToySearcher() {
   return <div className="toySearcher"></div>;

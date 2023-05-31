@@ -1,6 +1,6 @@
 @use '@services/icons/icon.scss' as ic;
 
-.toyFilterSectorSize__elems {
+.FilterSectorSizes__elems {
     max-width: 220px;
     width: 100%;
     display: flex;
@@ -8,25 +8,25 @@
     align-items: center;
 }
 
-.toyFilterSectorSize__elem {
-    @include ic.iconSvg(var(--ball-svg));
+.FilterSectorSizes__elem {
+    @include ic.iconSvg(url("@assets/svg/ball.svg"));
 }
 
-.toyFilterSectorSize__elem_big {
+.FilterSectorSizes__elem_big {
     min-width: 35px;
     min-height: 35px;
     width: 2.4vw;
     height: 2.4vw;
 }
 
-.toyFilterSectorSize__elem_medium {
+.FilterSectorSizes__elem_medium {
     min-width: 30px;
     min-height: 30px;
     width: 2.1vw;
     height: 2.1vw;
 }
 
-.toyFilterSectorSize__elem_small {
+.FilterSectorSizes__elem_small {
     min-width: 25px;
     min-height: 25px;
     width: 1.8vw;
