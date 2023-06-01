@@ -41,6 +41,15 @@
     z-index: -1;
 }
 
+.Range__slider_wrapper {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.Range__slider_wrapper {
+
+}
 
 .Range__scopeLine {
     position:absolute;
@@ -54,6 +63,8 @@
 }
 
 .Range__rightSlider {
-    
+    position: absolute;
+    left: auto;
+    right: 0;
 }
 

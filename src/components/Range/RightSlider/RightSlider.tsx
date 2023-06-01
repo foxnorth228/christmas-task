@@ -38,7 +38,7 @@ function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
   }
 
   useEffect(() => {
-    setShift((pos - params.leftPos) * step.current);
+    setShift(((params.rightPos - pos) / (params.rightPos - params.leftPos)) * 100);
     console.log('shift', shift, step.current, pos);
   }, [pos, step]);
 
@@ -52,10 +52,10 @@ function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
   }, [isCanBeMoved, onSliderMove]);
 
   return (
+    <div style={{ right: `${shift}%` }} className="Range__baseLine Range__slider_wrapper">
     <div
       ref={refEndSlider}
       className="Range__slider Range__rightSlider"
-      style={{ left: shift }}
       onMouseDown={(e) => {
         refIsPushedDown.current = true;
         window.cancelAnimationFrame(refAnimFrame.current);
@@ -75,6 +75,7 @@ function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
         }
       }}
     ></div>
+    </div>
   );
 }
 

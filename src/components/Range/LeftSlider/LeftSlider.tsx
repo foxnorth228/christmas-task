@@ -38,8 +38,7 @@ function LeftSlider({ refer: ref, pos, secondPos, params, step, setPos }: ILeftS
   }
 
   useEffect(() => {
-    setShift((pos - params.leftPos) * step.current);
-    console.log('shift', shift, step.current, pos);
+    setShift(((pos - params.leftPos) / (params.rightPos - params.leftPos)) * 100);
   }, [pos, step]);
 
   useEffect(() => {
@@ -52,29 +51,31 @@ function LeftSlider({ refer: ref, pos, secondPos, params, step, setPos }: ILeftS
   }, [isCanBeMoved, onSliderMove]);
 
   return (
-    <div
-      ref={ref}
-      className="Range__slider Range__rightSlider"
-      style={{ left: shift }}
-      onMouseDown={(e) => {
-        refIsPushedDown.current = true;
-        window.cancelAnimationFrame(refAnimFrame.current);
-        refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
-        onSliderDown(e, setIsCanBeMoved, onSliderUp);
-      }}
-      onMouseEnter={() => {
-        if (!refIsPushedDown.current) {
-          refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
-        }
-      }}
-      onMouseLeave={() => {
-        if (!refIsPushedDown.current) {
-          ref!.current!.style.backgroundImage = '';
-          ref!.current!.style.boxShadow = '';
+    <div style={{ left: `${shift}%` }} className="Range__baseLine Range__slider_wrapper">
+      <div
+        ref={ref}
+        className="Range__slider Range__rightSlider"
+        style={{ left: 0 }}
+        onMouseDown={(e) => {
+          refIsPushedDown.current = true;
           window.cancelAnimationFrame(refAnimFrame.current);
-        }
-      }}
-    ></div>
+          refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
+          onSliderDown(e, setIsCanBeMoved, onSliderUp);
+        }}
+        onMouseEnter={() => {
+          if (!refIsPushedDown.current) {
+            refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
+          }
+        }}
+        onMouseLeave={() => {
+          if (!refIsPushedDown.current) {
+            ref!.current!.style.backgroundImage = '';
+            ref!.current!.style.boxShadow = '';
+            window.cancelAnimationFrame(refAnimFrame.current);
+          }
+        }}
+      ></div>
+    </div>
   );
 }
 

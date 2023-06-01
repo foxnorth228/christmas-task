@@ -1,8 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Range.scss';
-import './Range.css';
 import RightSlider from './RightSlider/RightSlider';
 import LeftSlider from './LeftSlider/LeftSlider';
+
+export interface RangeParameter {
+  leftPos: number;
+  rightPos: number;
+  step: number;
+}
 
 function Range({ params }: { params: RangeParameter }) {
   const [startPos, setStartPos] = useState(params.leftPos);
@@ -12,8 +17,8 @@ function Range({ params }: { params: RangeParameter }) {
   const refBaseLine = useRef<HTMLDivElement>(null);
   const step = useRef(10);
   const refBaseWidth = useRef<number>(0);
+
   useEffect(() => {
-    console.log(refBaseLine.current, refSlider.current);
     if (refBaseLine.current && refSlider.current) {
       const baseWidth = Number.parseInt(
         window.getComputedStyle(refBaseLine.current).getPropertyValue('width')
@@ -24,7 +29,6 @@ function Range({ params }: { params: RangeParameter }) {
       refBaseWidth.current = baseWidth;
       step.current = (baseWidth - sliderWidth) / (endPos - startPos);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scalePos = params.rightPos - endPos + startPos - params.leftPos;
@@ -63,9 +67,3 @@ function Range({ params }: { params: RangeParameter }) {
 }
 
 export default Range;
-
-export interface RangeParameter {
-  leftPos: number;
-  rightPos: number;
-  step: number;
-}
