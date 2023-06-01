@@ -39,7 +39,7 @@ function LeftSlider({ refer: ref, pos, secondPos, params, step, setPos }: ILeftS
 
   useEffect(() => {
     setShift(((pos - params.leftPos) / (params.rightPos - params.leftPos)) * 100);
-  }, [pos, step]);
+  }, [params.leftPos, params.rightPos, pos, step]);
 
   useEffect(() => {
     if (isCanBeMoved) {

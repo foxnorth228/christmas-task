@@ -40,7 +40,7 @@ function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
   useEffect(() => {
     setShift(((params.rightPos - pos) / (params.rightPos - params.leftPos)) * 100);
     console.log('shift', shift, step.current, pos);
-  }, [pos, step]);
+  }, [params.leftPos, params.rightPos, pos, shift, step]);
 
   useEffect(() => {
     if (isCanBeMoved) {
@@ -53,28 +53,28 @@ function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
 
   return (
     <div style={{ right: `${shift}%` }} className="Range__baseLine Range__slider_wrapper">
-    <div
-      ref={refEndSlider}
-      className="Range__slider Range__rightSlider"
-      onMouseDown={(e) => {
-        refIsPushedDown.current = true;
-        window.cancelAnimationFrame(refAnimFrame.current);
-        refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
-        onSliderDown(e, setIsCanBeMoved, onSliderUp);
-      }}
-      onMouseEnter={() => {
-        if (!refIsPushedDown.current) {
-          refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
-        }
-      }}
-      onMouseLeave={() => {
-        if (!refIsPushedDown.current) {
-          refEndSlider!.current!.style.backgroundImage = '';
-          refEndSlider!.current!.style.boxShadow = '';
+      <div
+        ref={refEndSlider}
+        className="Range__slider Range__rightSlider"
+        onMouseDown={(e) => {
+          refIsPushedDown.current = true;
           window.cancelAnimationFrame(refAnimFrame.current);
-        }
-      }}
-    ></div>
+          refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
+          onSliderDown(e, setIsCanBeMoved, onSliderUp);
+        }}
+        onMouseEnter={() => {
+          if (!refIsPushedDown.current) {
+            refAnimFrame.current = window.requestAnimationFrame(gradientAnimation);
+          }
+        }}
+        onMouseLeave={() => {
+          if (!refIsPushedDown.current) {
+            refEndSlider!.current!.style.backgroundImage = '';
+            refEndSlider!.current!.style.boxShadow = '';
+            window.cancelAnimationFrame(refAnimFrame.current);
+          }
+        }}
+      ></div>
     </div>
   );
 }
