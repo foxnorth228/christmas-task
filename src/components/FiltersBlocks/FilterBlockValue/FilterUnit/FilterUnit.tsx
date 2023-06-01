@@ -1,5 +1,8 @@
 import React from 'react';
 import './toyFilterSize.scss';
+import './toyFilterShape.scss';
+import './toyFilterColor.scss';
+import './toyFilterFav.scss';
 import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
 import clickIcon from '@src/services/icons/clickIcon';
 import useFilter from '@src/hooks/useFilter';
@@ -13,7 +16,7 @@ interface IFilterBlock {
   name: filterSections;
   obj: filterSectionObject;
 }
-function FilterBlock({ name, obj, i }: IFilterBlock) {
+function FilterElement({ name, obj, i }: IFilterBlock) {
   const nameCap = name.charAt(0).toUpperCase() + name.slice(1);
   const [, filterReducer] = useFilter();
   const sectorNames = ['Форма', 'Цвет', 'Размер', 'Любимая'];
@@ -38,4 +41,4 @@ function FilterBlock({ name, obj, i }: IFilterBlock) {
   );
 }
 
-export default FilterBlock;
+export default FilterElement;

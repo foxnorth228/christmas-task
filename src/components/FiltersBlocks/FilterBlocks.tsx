@@ -1,9 +1,8 @@
 import React from 'react';
 import './FilterBlocks.scss';
-import FilterBlockValue from './toyFilterValue/FilterBlockValue';
-import ToyFilterRange from './toyFilterRange/ToyFilterRange';
-import ToyFilterSort from './toyFIlterOther/toyFilterSort';
-import { IChangeToyFilter } from '../../pages/toyPage/toyPage';
+import FilterBlockValue from './FilterBlockValue/FilterBlockValue';
+import ToyFilterRange from './FilterBlockRange/ToyFilterRange';
+import ToyFilterSort from './FIlterBlockOther/toyFilterSort';
 import useFilter from '@src/hooks/useFilter';
 
 function FilterBlocks() {

@@ -3,7 +3,7 @@ import './toyPage.css';
 import '../page.scss';
 import { CardList } from '@components/cardList/CardList';
 import { IFilter } from '@components/cardList/filterTypes';
-import FilterBlocks from '../../components/Filters/FilterBlocks';
+import FilterBlocks from '../../components/FiltersBlocks/FilterBlocks';
 import { updatedReducer } from '@layouts/main/Main';
 import useFilter from '@src/hooks/useFilter';
 
