@@ -1,22 +1,35 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: './src/index.tsx',
-  mode: 'production',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   module: {
     rules: [
       {
         test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+        }
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.s[ac]ss$/,
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -34,9 +47,29 @@ module.exports = {
       "@services":   path.resolve( __dirname, "src/services"),
     },
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './src/assets', to: '' },
+      ],
+    }),
+    new Dotenv({
+      systemvars: true
+    }),
+    new MiniCssExtractPlugin(),
+  ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+    ],
   },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, './dist')
+    }
+  }
 };

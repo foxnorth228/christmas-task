@@ -47,7 +47,7 @@
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off"
     },
-    "ignorePatterns": ["webpack.config.cjs", "src/assets"],
+    "ignorePatterns": ["webpack.config.cjs", "node_modules/**/*","src/assets"],
     "settings": {
 		"react": {
 			"pragma": "React",
