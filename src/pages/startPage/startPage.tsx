@@ -7,7 +7,7 @@ function StartPage({ changePage }: ChangePageFunc) {
   return (
     <div className="page startPage">
       <div className="startPage__elems">
-        <img src="./src/assets/ball/1.png" className="startPage__firstToy"></img>
+        <img src="./ball/1.png" className="startPage__firstToy"></img>
         <span className="startPage__text">{'Новогодняя игра "Наряди ёлку"'}</span>
         <button
           className="startPage__button"
@@ -17,7 +17,7 @@ function StartPage({ changePage }: ChangePageFunc) {
         >
           Начать
         </button>
-        <img src="./src/assets/ball/2.png" className="startPage__secondToy"></img>
+        <img src="./ball/2.png" className="startPage__secondToy"></img>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ function Card({ elem }: { elem: toy }) {
     <div key={elem.num} className="card">
       <p className="card_name">{elem.name}</p>
       <div style={{ display: 'flex' }}>
-        <img className="card_image" src={`./src/assets/toys/${elem.num}.png`}></img>
+        <img className="card_image" src={`./toys/${elem.num}.png`}></img>
         <div className="card_descriptionBlock">
           <span className="card_property">Количество: {elem.count}</span>
           <span className="card_property">Год: {elem.year}</span>
