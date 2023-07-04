@@ -1,6 +1,6 @@
 import React from 'react';
 import './nav.scss';
-import { ChangePageFunc } from '../..';
+import { ChangePageFunc } from '@pages/app/app';
 
 function Nav({ changePage }: ChangePageFunc) {
   return (

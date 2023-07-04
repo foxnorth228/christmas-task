@@ -1,6 +1,6 @@
 import React from 'react';
-import { toy } from '@src/index';
-import { convertDataShape, convertDataColor, convertDataSize } from '@src/getData';
+import { toy } from '@interfaces/toy';
+import { convertDataShape, convertDataColor, convertDataSize } from '@services/getData';
 import './Card.scss';
 
 function Card({ elem }: { elem: toy }) {

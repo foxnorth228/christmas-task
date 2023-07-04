@@ -3,14 +3,9 @@ import './toyFilterSize.scss';
 import './toyFilterShape.scss';
 import './toyFilterColor.scss';
 import './toyFilterFav.scss';
-import { IChangeToyFilter } from '../../../../pages/toyPage/toyPage';
 import clickIcon from '@src/services/icons/clickIcon';
 import useFilter from '@src/hooks/useFilter';
-import {
-  filterPositions,
-  filterSectionObject,
-  filterSections,
-} from '@src/components/cardList/filterTypes';
+import { filterPositions, filterSectionObject, filterSections } from '@services/filterTypes';
 interface IFilterBlock {
   i: number;
   name: filterSections;
@@ -32,7 +27,7 @@ function FilterElement({ name, obj, i }: IFilterBlock) {
               className={`FilterSector${nameCap}__elem FilterSector${nameCap}__elem_${el}`}
               onClick={(e) => {
                 clickIcon(e.currentTarget);
-                filterReducer(name, el as filterPositions);
+                filterReducer({ section: name, position: el as filterPositions });
               }}
             ></div>
           ))}

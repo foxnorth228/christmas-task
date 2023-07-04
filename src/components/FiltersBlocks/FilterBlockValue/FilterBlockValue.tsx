@@ -1,9 +1,8 @@
 import React from 'react';
 import './FilterBlockValue.scss';
-import { IChangeToyFilter } from '../../../pages/toyPage/toyPage';
 import useFilter from '@src/hooks/useFilter';
 import FilterElement from './FilterUnit/FilterUnit';
-import { filterSections } from '@src/components/cardList/filterTypes';
+import { filterSections } from '@services/filterTypes';
 
 function FilterBlockValue() {
   const [filter] = useFilter();

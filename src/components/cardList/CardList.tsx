@@ -1,8 +1,8 @@
 import React from 'react';
-import { toy } from '@src/index';
+import { toy } from '@interfaces/toy';
 import './cardList.css';
-import { IFilter } from './filterTypes';
-import { data } from '@src/index';
+import { IFilter } from '../../services/filterTypes';
+import { data } from '@pages/app/app';
 import Card from '../card/Card';
 
 function filterCards(filter: IFilter) {
