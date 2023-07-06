@@ -9,9 +9,18 @@ interface ILeftSlider {
   params: RangeParameter;
   step: React.MutableRefObject<number>;
   setPos: Dispatch<SetStateAction<number>>;
+  refBaseWidth: React.RefObject<number>;
 }
 
-function LeftSlider({ refer: ref, pos, secondPos, params, step, setPos }: ILeftSlider) {
+function LeftSlider({
+  refer: ref,
+  pos,
+  secondPos,
+  params,
+  step,
+  setPos,
+  refBaseWidth,
+}: ILeftSlider) {
   const refAnimFrame = useRef(0);
   const refIsPushedDown = useRef(false);
   const [shift, setShift] = useState(pos);
@@ -38,7 +47,11 @@ function LeftSlider({ refer: ref, pos, secondPos, params, step, setPos }: ILeftS
   }
 
   useEffect(() => {
-    setShift(((pos - params.leftPos) / (params.rightPos - params.leftPos)) * 100);
+    if (!refBaseWidth.current) {
+      return;
+    }
+    const translate = ((pos - params.leftPos) / (params.rightPos - params.leftPos)) * 100;
+    setShift((refBaseWidth.current * translate - 20 * translate) / refBaseWidth.current);
   }, [params.leftPos, params.rightPos, pos, step]);
 
   useEffect(() => {

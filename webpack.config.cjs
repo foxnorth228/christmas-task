@@ -11,6 +11,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -68,9 +69,10 @@ module.exports = {
       new CssMinimizerPlugin(),
     ],
   },
-  devServer: {
+  devServer: {      
+    historyApiFallback: true,
     static: {
-      directory: path.resolve(__dirname, './dist')
+      directory: path.resolve(__dirname, './dist'),
     }
   }
 };

@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, useReducer } from 'react';
+import React, { Dispatch, useReducer } from 'react';
 import Header from '@layouts/header/Header';
 import Main from '@layouts/main/Main';
 import Footer from '@layouts/footer/Footer';
@@ -15,11 +15,10 @@ export interface ChangePageFunc {
 
 function App() {
   const [filter, setFilter] = useReducer(filterReducer, FilterCreation());
-  const [page, setPage] = useState(0);
   return (
     <FilterContext.Provider value={{ filter, filterReducer: setFilter }}>
-      <Header changePage={setPage} />
-      <Main page={page} changePage={setPage} />
+      <Header />
+      <Main />
       <Footer />
     </FilterContext.Provider>
   );

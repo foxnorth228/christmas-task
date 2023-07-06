@@ -1,38 +1,23 @@
 import React from 'react';
 import './nav.scss';
-import { ChangePageFunc } from '@pages/app/app';
+import { Link } from 'react-router-dom';
 
-function Nav({ changePage }: ChangePageFunc) {
+function Nav() {
   return (
     <>
       <nav className="pageNav">
         <div className="pageSelector pageSelector__icon">
-          <div
-            className="treeIcon startPageSwitch"
-            onClick={() => {
-              changePage(0);
-            }}
-          ></div>
+          <Link to="/start" replace={true} className="treeIcon startPageSwitch"></Link>
         </div>
         <div className="pageSelector">
-          <span
-            className="textSwitch toyPageSwitch"
-            onClick={() => {
-              changePage(1);
-            }}
-          >
+          <Link to="/toys" replace={true} className="textSwitch toyPageSwitch">
             Игрушки
-          </span>
+          </Link>
         </div>
         <div className="pageSelector">
-          <span
-            className="textSwitch"
-            onClick={() => {
-              changePage(2);
-            }}
-          >
+          <Link to="/tree" replace={true} className="textSwitch">
             Ёлочка
-          </span>
+          </Link>
         </div>
       </nav>
     </>

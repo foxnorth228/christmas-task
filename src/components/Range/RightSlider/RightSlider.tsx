@@ -8,9 +8,10 @@ interface IRightSlider {
   params: RangeParameter;
   step: React.MutableRefObject<number>;
   setPos: Dispatch<SetStateAction<number>>;
+  refBaseWidth: React.RefObject<number>;
 }
 
-function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
+function RightSlider({ pos, params, secondPos, step, setPos, refBaseWidth }: IRightSlider) {
   const refEndSlider = useRef<HTMLDivElement>(null);
   const refAnimFrame = useRef(0);
   const refIsPushedDown = useRef(false);
@@ -38,8 +39,11 @@ function RightSlider({ pos, params, secondPos, step, setPos }: IRightSlider) {
   }
 
   useEffect(() => {
-    setShift(((params.rightPos - pos) / (params.rightPos - params.leftPos)) * 100);
-    console.log('shift', shift, step.current, pos);
+    if (!refBaseWidth.current) {
+      return;
+    }
+    const translate = ((params.rightPos - pos) / (params.rightPos - params.leftPos)) * 100;
+    setShift((refBaseWidth.current * translate - 20 * translate) / refBaseWidth.current);
   }, [params.leftPos, params.rightPos, pos, shift, step]);
 
   useEffect(() => {
