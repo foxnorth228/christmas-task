@@ -1,0 +1,117 @@
+@mixin startPage__block {
+    border: 3px solid #278D9F;
+    background: radial-gradient(618.39% 159.94% at 0.00% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0.00) 100%);
+    backdrop-filter: blur(15.5px);
+}
+
+.startPage {
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.startPage__contentBlock {
+    position: relative;
+}
+
+.startPage__titleBlock {
+    width: 593px;
+    height: 249px;
+    border-radius: 30px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include startPage__block();
+}
+
+.startPage__title {
+    width: 423px;
+    font-size: 53px;
+    font-family: "Neucha", "Papyrus", fantasy;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.startPage__startButton {
+    width: 320px;
+    height: 54px;
+    color: white;
+    border-radius: 30px;
+    margin-top: 113px;
+    font-size: 24px;
+    font-family: "Steppe", Arial, Helvetica, sans-serif;
+    text-align: center;
+    @include startPage__block();
+}
+
+.startPage__toy {
+    position: absolute;
+    height: auto;
+    z-index: 1;
+}
+
+.startPage__toy_first{
+    width: 366px;
+    top: -30px;
+    left: -248px;
+}
+
+.startPage__toy_second {
+    width: 256px;
+    top: -58px;
+    right: -160px;
+}
+
+@mixin startPage__imageBlock() {
+    content: '';
+    height: 300px;
+    position: absolute;
+    z-index: -1;
+}
+
+@mixin startPage__imageBlock_before() {
+    width: 3px;
+    background-color: rgb(124, 124, 124);
+}
+
+@mixin startPage__imageBlock_after() {
+    width: 2px;
+    background-color: rgba(153, 153, 153, 0.86);
+}
+
+.startPage__imageBlock_first {
+    $left: -65px;
+    $bottom: 271px;
+    &::before {
+        left: $left;
+        bottom: $bottom;
+        @include startPage__imageBlock();
+        @include startPage__imageBlock_before();
+    }
+    &::after {
+        left: $left + 2;
+        bottom: $bottom;
+        @include startPage__imageBlock();
+        @include startPage__imageBlock_after();
+    }
+}
+
+.startPage__imageBlock_second {
+    $left: 622px;
+    $bottom: 301px;
+    &::before {
+        left: $left;
+        bottom: $bottom;
+        @include startPage__imageBlock();
+        @include startPage__imageBlock_before();
+    }
+    &::after {
+        left: $left + 2;
+        bottom: $bottom;
+        @include startPage__imageBlock();
+        @include startPage__imageBlock_after();
+    }
+}

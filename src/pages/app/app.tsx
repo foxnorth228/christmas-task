@@ -7,6 +7,7 @@ import { toy } from '@interfaces/toy';
 import { FilterCreation } from '@services/filterTypes';
 import filterReducer from '@services/filter-reducer';
 import FilterContext from '@contexts/FilterContext';
+import './app.scss';
 
 export const data: toy[] = getData();
 export interface ChangePageFunc {
