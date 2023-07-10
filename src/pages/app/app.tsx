@@ -18,7 +18,6 @@ function App() {
   const [filter, setFilter] = useReducer(filterReducer, FilterCreation());
   return (
     <FilterContext.Provider value={{ filter, filterReducer: setFilter }}>
-      <Header />
       <Main />
       <Footer />
     </FilterContext.Provider>

@@ -4,6 +4,7 @@ import './cardList.css';
 import { IFilter } from '../../services/filterTypes';
 import { data } from '@pages/app/app';
 import Card from '../card/Card';
+import useFilter from '@src/hooks/useFilter';
 
 function filterCards(filter: IFilter) {
   const isAllFilterShapesOff = Object.values(filter.shapes).some((el) => el);
@@ -37,7 +38,8 @@ function filterCards(filter: IFilter) {
   return data.filter((el) => checkFilter(el));
 }
 
-export function CardList({ filter }: { filter: IFilter }) {
+export function CardList() {
+  const [filter] = useFilter();
   return (
     <div className="cardList">
       {filterCards(filter).map((el) => (
