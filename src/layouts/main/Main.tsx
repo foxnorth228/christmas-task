@@ -1,6 +1,5 @@
 import React from 'react';
 import './main.scss';
-import { filterSections, filterPositions } from '@services/filterTypes';
 import { Outlet } from 'react-router';
 
 function Main() {
@@ -11,5 +10,4 @@ function Main() {
   );
 }
 
-export type updatedReducer = (section: filterSections, position: filterPositions) => void;
 export default Main;
