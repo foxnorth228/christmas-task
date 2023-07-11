@@ -1,0 +1,16 @@
+.filterUnit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.filterUnit__title {
+    font-family: "Steppe", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0 24px 0;
+}

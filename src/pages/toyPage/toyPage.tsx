@@ -1,12 +1,12 @@
 import React from 'react';
 import './toyPage.css';
 import { CardList } from '@components/cardList/CardList';
-import FilterBlocks from '../../components/FiltersBlocks/FilterBlocks';
+import FilterBlock from '../../components/filter-block/filter-block';
 
 function ToyPage() {
   return (
     <div className="page toyPage">
-      <FilterBlocks />
+      <FilterBlock />
       {/* <CardList /> */}
     </div>
   );

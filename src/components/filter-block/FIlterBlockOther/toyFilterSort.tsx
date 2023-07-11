@@ -1,8 +1,7 @@
 import React from 'react';
 import './toyFilterSort.scss';
-import { IChangeToyFilter } from '../../../pages/toyPage/toyPage';
 
-function ToyFilterSort({ filter, changeToyFilter }: IChangeToyFilter) {
+function ToyFilterSort() {
   return (
     <>
       <div className="toyFilterUnit toyFilterSort">

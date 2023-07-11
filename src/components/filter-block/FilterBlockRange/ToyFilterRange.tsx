@@ -1,9 +1,8 @@
 import React from 'react';
 import './ToyFilterRange.scss';
-import { IChangeToyFilter } from '../../../pages/toyPage/toyPage';
 import Range from '../../Range/Range';
 
-function ToyFilterRange({ filter, changeToyFilter }: IChangeToyFilter) {
+function ToyFilterRange() {
   const numberParams = {
     leftPos: 1,
     rightPos: 12,
@@ -17,7 +16,6 @@ function ToyFilterRange({ filter, changeToyFilter }: IChangeToyFilter) {
   return (
     <>
       <div className="toyFilterUnit toyFilterUnitRange">
-        <span className="toyFilterUnitRange__name">Фильтры по диапазону</span>
         <div className="toyFilterRSector toyFilterRangeNumber">
           <span className="toyFilterRangeNumber__name">Количество</span>
           <div className="toyFilterRangeNumber__range">

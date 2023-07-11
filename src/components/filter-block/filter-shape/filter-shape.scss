@@ -1,0 +1,34 @@
+@use '@services/icons/icon.scss' as ic;
+
+.filterShape {
+    max-width: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.filterShape__elem {
+    width: 42px;
+    height: 42px;
+}
+
+.filterShape__elem_ball {
+    @include ic.iconSvg(var(--ball-svg));
+}
+
+.filterShape__elem_bell {
+    @include ic.iconSvg(var(--bell-svg));
+}
+
+.filterShape__elem_cone {
+    @include ic.iconSvg(var(--cone-svg));
+}
+
+.filterShape__elem_snow {
+    @include ic.iconSvg(var(--snowflake-svg));
+}
+
+.filterShape__elem_toy {
+    @include ic.iconSvg(var(--toy-svg));
+}
