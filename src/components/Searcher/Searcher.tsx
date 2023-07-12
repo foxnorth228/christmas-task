@@ -1,8 +1,0 @@
-import React from 'react';
-import './Searcher.scss';
-
-function ToySearcher() {
-  return <div className="toySearcher"></div>;
-}
-
-export default ToySearcher;

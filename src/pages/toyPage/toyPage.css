@@ -1,5 +1,17 @@
 .toyPage {
     width: 100%;
     height: 100%;
+    padding: 50px 100px 0 100px;
     background: linear-gradient(180deg, #0393db 0%, #003674 100%);
+}
+
+.toyPage__menu {
+    width: 566px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.toyPage__tools_row {
+    display: flex;
 }

@@ -1,5 +1,4 @@
 import React, { Dispatch, useReducer } from 'react';
-import Header from '@layouts/header/Header';
 import Main from '@layouts/main/Main';
 import Footer from '@layouts/footer/Footer';
 import { getData } from '@services/getData';

@@ -1,0 +1,17 @@
+@use '@services/icons/icon.scss' as ic;
+
+.filterInteraction {
+  display: flex;
+}
+
+.filterInteraction__music {
+  width: 36px;
+  height: 36px;
+  @include ic.iconSvg(url("@assets/svg/audio.svg"));
+}
+
+.filterInteraction__snow {
+  width: 36px;
+  height: 36px;
+  @include ic.iconSvg(url("@assets/svg/snow.svg"));
+}

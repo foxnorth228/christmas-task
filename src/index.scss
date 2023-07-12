@@ -22,6 +22,14 @@
     --bg-jpg: url('./assets/bg.jpg');
 }
 
+html {
+    font-family: "Steppe", Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -35,6 +43,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     scrollbar-gutter: stable;
+
 }
 
 body::-webkit-scrollbar {

@@ -1,10 +1,11 @@
 import React from 'react';
 import './filter-block.scss';
-import ToyFilterRange from './FilterBlockRange/ToyFilterRange';
-import ToyFilterSort from './FIlterBlockOther/toyFilterSort';
 import FilterShape from './filter-shape/filter-shape';
 import FilterColor from './filter-color/filter-color';
 import FilterSize from './filter-size/filter-size';
+import FilterRangeCount from '@components/filter-block/filter-range-count/filter-range-count';
+import FilterRangeYear from '@components/filter-block/filter-range-year/filter-range-year';
+import FilterFav from '@components/filter-block/filter-fav/filter-fav';
 
 function FilterBlock() {
   return (
@@ -12,8 +13,9 @@ function FilterBlock() {
       <FilterShape />
       <FilterColor />
       <FilterSize />
-      {/*<ToyFilterRange />*/}
-      {/*<ToyFilterSort />*/}
+      <FilterRangeCount />
+      <FilterRangeYear />
+      <FilterFav />
     </div>
   );
 }

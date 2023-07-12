@@ -1,3 +1,5 @@
+@use '@services/icons/icon.scss' as ic;
+
 .footer {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -6,4 +8,49 @@
     min-height: 7vh;
     height: 1px;
     background-color: #001631;
+}
+
+.githubBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.githubBlock__icon {
+    @include ic.iconSvg(url("@assets/icons/github2.svg"));
+    width: 100%;
+    height: 80%;
+    min-height: 50px;
+    min-width: 50px;
+}
+
+.yearBlock {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.yearBlock__text {
+    font-size: 1em;
+    color: white;
+}
+
+.rsschoolBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+}
+
+.rsschoolBlock__icon {
+    @include ic.iconSvg(url('@assets/icons/rss.svg'));
+    width: 100%;
+    height: 80%;
+    min-height: 50px;
+    min-width: 50px;
 }
