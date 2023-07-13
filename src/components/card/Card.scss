@@ -2,29 +2,44 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(70px + 11vw);
-    min-width: 220px;
-    min-height: 180px;
-    margin: 10px;
-    background-color: white;
+    width: 222px;
+    margin: 0 10px 10px 0;
+    border-radius: 10px;
+    background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
+    backdrop-filter: blur(2px);
 }
 
 .card_name {
     text-align: center;
-    font-size: calc(0.9rem + 0.2vw);
+    margin: 22px 0;
+    font-family: Neucha;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .card_image {
-    width: calc(70px + 1.8vw);
-    height: calc(70px + 1.8vw);
+    width: 100px;
+    height: 100px;
+    margin-bottom: 22px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card_descriptionBlock {
     display: inline-flex;
     flex-direction: column;
     min-height: 120px;
+    margin-left: 16px;
 }
 
 .card_property {
-    font-size: calc(0.65rem + 0.2vw);
+    color: var(--white, #FFF);
+    font-family: Steppe;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

@@ -21,7 +21,7 @@ function ToyPage() {
         <FilterBlock />
         <FilterResetBlock />
       </div>
-      {/* <CardList /> */}
+      <CardList />
     </div>
   );
 }

@@ -42,9 +42,12 @@ export function CardList() {
   const [filter] = useFilter();
   return (
     <div className="cardList">
+      <h1 className="cardList__title">Игрушки</h1>
+    <div className="cardList__body">
       {filterCards(filter).map((el) => (
         <Card key={el.num} elem={el} />
       ))}
+    </div>
     </div>
   );
 }
