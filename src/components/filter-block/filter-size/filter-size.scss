@@ -9,6 +9,7 @@
 }
 
 .filterSize__elem {
+    margin-right: 37px;
     @include ic.iconSvg(url("@assets/svg/ball.svg"));
 }
 

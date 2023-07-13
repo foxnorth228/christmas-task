@@ -6,7 +6,7 @@
 }
 
 .toyPage__menu {
-    width: 566px;
+    width: 466px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -14,4 +14,7 @@
 
 .toyPage__tools_row {
     display: flex;
+    width: calc(100% - 56px);
+    justify-content: space-between;
+    margin-bottom: 29px;
 }

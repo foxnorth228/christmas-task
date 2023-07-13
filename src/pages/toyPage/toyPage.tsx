@@ -5,6 +5,7 @@ import FilterBlock from '@components/filter-block/filter-block';
 import FilterResetBlock from '@components/filter-reset-block/filter-reset-block';
 import Searcher from '@components/searcher/searcher';
 import FilterPageInteractions from '@components/filter-page-interactions/filter-page-interactions';
+import CustomSelect from '@components/custom-select/custom-select';
 
 function ToyPage() {
   return (
@@ -15,15 +16,7 @@ function ToyPage() {
             <FilterPageInteractions />
             <Searcher />
           </div>
-          <div className="toyPage__tools_row">
-            <span>Сортировка</span>
-            <select>
-              <option>По названию от А до Я</option>
-              <option>По названию от Я до А</option>
-              <option>По количеству по возрастанию</option>
-              <option>По количеству по убыванию</option>
-            </select>
-          </div>
+          <CustomSelect />
         </div>
         <FilterBlock />
         <FilterResetBlock />
