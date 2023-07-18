@@ -38,16 +38,19 @@ function filterCards(filter: IFilter) {
   return data.filter((el) => checkFilter(el));
 }
 
-export function CardList() {
+export function CardList({ headerLink }: { headerLink: JSX.Element }) {
   const [filter] = useFilter();
   return (
     <div className="cardList">
-      <h1 className="cardList__title">Игрушки</h1>
-    <div className="cardList__body">
-      {filterCards(filter).map((el) => (
-        <Card key={el.num} elem={el} />
-      ))}
-    </div>
+      <div className="cardList__header">
+        <h1 className="cardList__title">Игрушки</h1>
+        {headerLink}
+      </div>
+      <div className="cardList__body">
+        {filterCards(filter).map((el) => (
+          <Card key={el.num} elem={el} />
+        ))}
+      </div>
     </div>
   );
 }

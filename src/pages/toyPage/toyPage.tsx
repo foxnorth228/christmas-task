@@ -6,6 +6,7 @@ import FilterResetBlock from '@components/filter-reset-block/filter-reset-block'
 import Searcher from '@components/searcher/searcher';
 import FilterPageInteractions from '@components/filter-page-interactions/filter-page-interactions';
 import CustomSelect from '@components/custom-select/custom-select';
+import LinkTreePage from '@components/linkTreePage/linkTreePage';
 
 function ToyPage() {
   return (
@@ -21,7 +22,7 @@ function ToyPage() {
         <FilterBlock />
         <FilterResetBlock />
       </div>
-      <CardList />
+      <CardList headerLink={<LinkTreePage />} />
     </div>
   );
 }
