@@ -1,10 +1,10 @@
 import React from 'react';
 import { toy } from '@interfaces/toy';
 import './cardList.css';
-import { IFilter } from '../../services/filterTypes';
+import { IFilter } from '@services/filterTypes';
 import { data } from '@pages/app/app';
-import Card from '../card/Card';
-import useFilter from '@src/hooks/useFilter';
+import Card from '@components/card/Card';
+import useFilter from '@hooks/useFilter';
 
 function filterCards(filter: IFilter) {
   const isAllFilterShapesOff = Object.values(filter.shapes).some((el) => el);
@@ -38,7 +38,7 @@ function filterCards(filter: IFilter) {
   return data.filter((el) => checkFilter(el));
 }
 
-export function CardList({ headerLink }: { headerLink: JSX.Element }) {
+function CardList({ headerLink }: { headerLink: JSX.Element }) {
   const [filter] = useFilter();
   return (
     <div className="cardList">
@@ -54,3 +54,5 @@ export function CardList({ headerLink }: { headerLink: JSX.Element }) {
     </div>
   );
 }
+
+export default CardList;
