@@ -1,0 +1,34 @@
+.selectorToys {
+  width: fit-content;
+  height: fit-content;
+}
+
+.selectorToys__title {
+
+}
+
+.selectorToys__elements {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  grid-template-rows: repeat(5, max-content);
+  gap: 8px;
+}
+
+.selectorToys__element {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectorToys__example {
+  --scale: 0.15;
+  width: 80%;
+  height: 80%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
