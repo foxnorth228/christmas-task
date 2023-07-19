@@ -9,9 +9,9 @@ import {
   createRoutesFromElements,
   Navigate,
 } from 'react-router-dom';
-import StartPage from '@pages/startPage/startPage';
-import ToyPage from '@pages/toyPage/toyPage';
-import TreePage from '@pages/treePage/treePage';
+import StartPage from '@pages/start-page/start-page';
+import ToyPage from '@pages/toy-page/toy-page';
+import TreePage from '@pages/tree-page/tree-page';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

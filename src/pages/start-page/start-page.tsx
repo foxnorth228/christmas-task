@@ -1,5 +1,5 @@
 import React from 'react';
-import './startPage.scss';
+import './start-page.scss';
 import { useNavigate } from 'react-router';
 
 function StartPage() {

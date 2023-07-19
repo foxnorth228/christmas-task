@@ -1,8 +1,8 @@
 import React from 'react';
-import './toyPage.css';
-import CardList from '@layouts/cardList/CardList';
+import './toy-page.css';
+import CardList from '@layouts/card-list/card-list';
 import MenuToyPage from '@layouts/menu-toy-page/menu-toy-page';
-import LinkTreePage from '@components/linkTreePage/linkTreePage';
+import LinkTreePage from '@components/link-tree-page/link-tree-page';
 
 function ToyPage() {
   return (

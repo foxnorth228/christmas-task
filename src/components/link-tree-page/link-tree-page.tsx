@@ -1,5 +1,5 @@
 import React from 'react';
-import './linkTreePage.scss';
+import './link-tree-page.scss';
 import { useNavigate } from 'react-router';
 
 const LinkTreePage = () => {

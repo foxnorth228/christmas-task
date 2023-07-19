@@ -1,6 +1,6 @@
 import React from 'react';
 import { toy } from '@interfaces/toy';
-import './cardList.css';
+import './card-list.css';
 import { IFilter } from '@services/filterTypes';
 import { data } from '@pages/app/app';
 import Card from '@components/card/Card';
