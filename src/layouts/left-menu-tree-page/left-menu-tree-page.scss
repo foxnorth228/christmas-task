@@ -9,6 +9,6 @@
 .leftMenuTreePage__interacts {
   display: grid;
   gap: 60px;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: repeat(3, max-content);
   grid-template-rows: max-content;
 }
