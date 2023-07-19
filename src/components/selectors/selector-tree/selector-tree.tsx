@@ -7,14 +7,14 @@ const SelectorTree = () => {
     <div className="selectorTree">
       <h2 className="selectorTree__title">Выберите ёлочку</h2>
       <div className="selectorTree__elements">
-      {fileNames.map((el, i) => (
-        <div key={i} className="selectorTree__element">
-          <div
-            style={{ backgroundImage: `url("./tree/${el}.png")` }}
-            className="selectorTree__example"
-          ></div>
-        </div>
-      ))}
+        {fileNames.map((el, i) => (
+          <div key={i} className="selectorTree__element">
+            <div
+              style={{ backgroundImage: `url("./tree/${el}.png")` }}
+              className="selectorTree__example"
+            ></div>
+          </div>
+        ))}
       </div>
     </div>
   );

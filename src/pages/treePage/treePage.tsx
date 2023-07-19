@@ -1,8 +1,8 @@
 import React from 'react';
 import './treePage.css';
-import LeftMenuTreePage from "@layouts/left-menu-tree-page/left-menu-tree-page";
-import Tree from "@layouts/tree/tree";
-import RightMenuTreePage from "@layouts/right-menu-tree-page/right-menu-tree-page";
+import LeftMenuTreePage from '@layouts/left-menu-tree-page/left-menu-tree-page';
+import Tree from '@layouts/tree/tree';
+import RightMenuTreePage from '@layouts/right-menu-tree-page/right-menu-tree-page';
 
 function TreePage() {
   return (

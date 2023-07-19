@@ -6,7 +6,7 @@ import { FilterCreation } from '@services/filterTypes';
 import filterReducer from '@services/filter-reducer';
 import FilterContext from '@contexts/FilterContext';
 import './app.scss';
-import {Outlet} from "react-router";
+import { Outlet } from 'react-router';
 
 export const data: toy[] = getData();
 export interface ChangePageFunc {
