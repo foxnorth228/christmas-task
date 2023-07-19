@@ -12,7 +12,10 @@ const SelectorToys = () => {
       <div className="selectorToys__elements">
         {fileNames.map((el) => (
           <div key={el} className="selectorToys__element">
-            <div style={{ backgroundImage: `url('./toys/${el}.png')` }} className="selectorToys__example"></div>
+            <div
+              style={{ backgroundImage: `url('./toys/${el}.png')` }}
+              className="selectorToys__example"
+            ></div>
           </div>
         ))}
       </div>

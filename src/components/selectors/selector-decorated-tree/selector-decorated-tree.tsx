@@ -2,7 +2,7 @@ import React from 'react';
 import './selector-decorated-tree.scss';
 
 const SelectorDecoratedTree = () => {
-  const fileNames = ['1', '2', '3', '4',]
+  const fileNames = ['1', '2', '3', '4'];
   return (
     <div className="selectorDecTree">
       <h2 className="selectorDecTree__title">Вы нарядили</h2>
