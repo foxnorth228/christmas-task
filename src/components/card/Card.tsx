@@ -5,7 +5,13 @@ import './Card.scss';
 
 function Card({ elem }: { elem: toy }) {
   return (
-    <div key={elem.num} className="card">
+    <div
+      key={elem.num}
+      onClick={(e) => {
+        e.currentTarget.classList.toggle('card_clicked');
+      }}
+      className="card"
+    >
       <p className="card_name">{elem.name}</p>
       <img className="card_image" src={`./toys/${elem.num}.png`}></img>
       <div className="card_descriptionBlock">

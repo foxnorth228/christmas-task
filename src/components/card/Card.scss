@@ -9,6 +9,18 @@
     backdrop-filter: blur(2px);
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
+.card * {
+    pointer-events: none;
+}
+
+.card.card_clicked {
+    background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(194, 208, 255, 0.7) 0%, rgba(70, 134, 255, 0.7) 100%);
+}
+
 .card_name {
     text-align: center;
     margin: 22px 0;
