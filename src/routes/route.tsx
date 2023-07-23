@@ -1,5 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from 'react-router-dom';
-import App from '@pages/app/app';
+import App from '@src/app';
 import StartPage from '@pages/start-page/start-page';
 import ToyPage from '@pages/toy-page/toy-page';
 import TreePage from '@pages/tree-page/tree-page';
