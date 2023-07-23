@@ -1,4 +1,5 @@
 import React from 'react';
+import { ITreeReducerValue } from '@services/tree-reducer';
 
 export interface ITree {
   tree: number;
@@ -10,9 +11,11 @@ export interface ITree {
     type: number;
   }>;
 }
+
+export type ITreeSections = 'tree' | 'bg' | 'garland' | 'toys';
 export interface ITreeContext {
   tree: ITree;
-  toggle: () => void;
+  treeReducer: ({ type, payload }: ITreeReducerValue) => void;
 }
 
 const TreeContext = React.createContext<ITreeContext>({
@@ -22,7 +25,7 @@ const TreeContext = React.createContext<ITreeContext>({
     garland: 0,
     toys: [],
   },
-  toggle() {
+  treeReducer() {
     return;
   },
 });

@@ -8,7 +8,7 @@ const SelectorGarland = () => {
       <h2 className="selectorGarland__title">Гирлянда</h2>
       <div className="selectorGarland__elements">
         {garlands.map((el, i) => (
-          <div className={`selectorGarland__element selectorGarland__element_${el}`}></div>
+          <div key={i} className={`selectorGarland__element selectorGarland__element_${el}`}></div>
         ))}
       </div>
     </div>
