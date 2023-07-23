@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import TreeContext from '@contexts/TreeContext';
+import TreeContext, { ITree, ITreeReducer } from '@contexts/TreeContext';
 
-const useTree = () => {
+const useTree = (): [ITree, ITreeReducer] => {
   const { tree, treeReducer } = useContext(TreeContext);
   return [tree, treeReducer];
 };

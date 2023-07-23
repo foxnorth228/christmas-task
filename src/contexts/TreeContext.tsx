@@ -13,9 +13,10 @@ export interface ITree {
 }
 
 export type ITreeSections = 'tree' | 'bg' | 'garland' | 'toys';
+export type ITreeReducer = ({ type, payload }: ITreeReducerValue) => void;
 export interface ITreeContext {
   tree: ITree;
-  treeReducer: ({ type, payload }: ITreeReducerValue) => void;
+  treeReducer: ITreeReducer;
 }
 
 const TreeContext = React.createContext<ITreeContext>({

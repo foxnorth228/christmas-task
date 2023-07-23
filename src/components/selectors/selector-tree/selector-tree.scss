@@ -22,6 +22,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  overflow: hidden;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .selectorTree__example {

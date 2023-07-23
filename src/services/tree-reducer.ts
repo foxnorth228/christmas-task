@@ -17,11 +17,9 @@ const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
         ...tree,
         [value.payload.section]: value.payload.value,
       };
-    case 'ADD_TOY':
+    case 'CHANGE_LIST_TOY':
       break;
-    case 'CHANGE_TOY':
-      break;
-    case 'DELETE_TOY':
+    case 'CHANGE_TREE_TOY':
       break;
     default:
       return tree;

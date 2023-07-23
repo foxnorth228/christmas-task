@@ -17,8 +17,13 @@
 .selectorBg__element {
   width: 65px;
   height: 65px;
+  border: 2px solid white;
+  color: #ff4141;
   border-radius: 10px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  &:hover {
+    cursor: pointer;
+  }
 }
