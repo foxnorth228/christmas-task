@@ -1,48 +1,38 @@
 export interface IChangeFilter {
-  section: filterSections;
+  section: 'shapes' | 'colors' | 'sizes' | 'fav';
   position: filterPositions;
-}
-
-export type filterSections = 'shapes' | 'colors' | 'sizes' | 'fav';
-export type filterPositions = IShapesElems | IColorsElems | ISizesElems | iFavElems;
-
-export interface IFilter {
-  shapes: IShapes;
-  colors: IColors;
-  sizes: ISizes;
-  fav: IFav;
-}
-
-interface IShapes {
-  ball: boolean;
-  bell: boolean;
-  cone: boolean;
-  snow: boolean;
-  toy: boolean;
-}
-
-interface IColors {
-  white: boolean;
-  yellow: boolean;
-  red: boolean;
-  blue: boolean;
-  green: boolean;
-}
-
-interface ISizes {
-  small: boolean;
-  medium: boolean;
-  big: boolean;
-}
-
-interface IFav {
-  favorite: boolean;
 }
 
 type IShapesElems = 'ball' | 'bell' | 'cone' | 'snow' | 'toy';
 type IColorsElems = 'white' | 'yellow' | 'red' | 'blue' | 'green';
 type ISizesElems = 'small' | 'medium' | 'big';
 type iFavElems = 'favorite';
+export type filterPositions = IShapesElems | IColorsElems | ISizesElems | iFavElems;
+
+export interface IFilter {
+  shapes: {
+    ball: boolean;
+    bell: boolean;
+    cone: boolean;
+    snow: boolean;
+    toy: boolean;
+  };
+  colors: {
+    white: boolean;
+    yellow: boolean;
+    red: boolean;
+    blue: boolean;
+    green: boolean;
+  };
+  sizes: {
+    small: boolean;
+    medium: boolean;
+    big: boolean;
+  };
+  fav: {
+    favorite: boolean;
+  };
+}
 
 export type filterPosOrUndefined = [string, boolean] | undefined;
 
