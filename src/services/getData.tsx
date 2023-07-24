@@ -1,17 +1,6 @@
-import dataToys from './data.json';
+import dataToys from '@data/data.json';
 
-export type toy = {
-  num: number;
-  name: string;
-  count: number;
-  year: number;
-  shape: string;
-  color: string;
-  size: string;
-  favorite: boolean;
-};
-
-export function getData() {
+function getData() {
   return dataToys.map((elem) => {
     const shapeEngValue = shape.find((el) => el[1] === elem.shape);
     const colorEngValue = color.find((el) => el[1] === elem.color);
@@ -27,6 +16,8 @@ export function getData() {
     };
   });
 }
+
+export default getData;
 
 export function convertDataShape(type: string) {
   const newType = shape.find((el) => el[0] === type);

@@ -1,9 +1,9 @@
 import React from 'react';
 import './filter-shape.scss';
 import FilterUnit from '@src/components/filter-block/filter-unit/filter-unit';
-import useFilter from '@src/hooks/useFilter';
-import clickIcon from '@src/services/icons/clickIcon';
-import { filterPositions } from '@src/services/filterTypes';
+import useFilter from '@hooks/use-filter';
+import clickIcon from '@src/utils/icons/clickIcon';
+import { filterPositions } from '@utils/filterTypes';
 
 const FilterShape = () => {
   const [filter, setFilter] = useFilter();

@@ -1,8 +1,8 @@
 import React from 'react';
 import './filter-color.scss';
 import FilterUnit from '../filter-unit/filter-unit';
-import useFilter from '@src/hooks/useFilter';
-import { filterPositions } from '@src/services/filterTypes';
+import useFilter from '@hooks/use-filter';
+import { filterPositions } from '@utils/filterTypes';
 
 const FilterColor = () => {
   const [filter, setFilter] = useFilter();

@@ -1,6 +1,6 @@
 import React from 'react';
 import './selector-bg.scss';
-import useTree from "@hooks/useTree";
+import useTree from '@hooks/use-tree';
 
 const SelectorBg = () => {
   const [tree, treeReducer] = useTree();
@@ -22,8 +22,8 @@ const SelectorBg = () => {
                 payload: {
                   section: 'bg',
                   value: Number(el),
-                }
-              })
+                },
+              });
             }}
             className="selectorBg__element"
           ></div>

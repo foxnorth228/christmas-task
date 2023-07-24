@@ -1,6 +1,6 @@
 import React from 'react';
 import './selector-garland.scss';
-import useTree from "@hooks/useTree";
+import useTree from '@hooks/use-tree';
 
 const SelectorGarland = () => {
   const [tree, treeReducer] = useTree();
@@ -22,7 +22,8 @@ const SelectorGarland = () => {
               });
             }}
             key={i}
-            className={`selectorGarland__element selectorGarland__element_${el}`}></div>
+            className={`selectorGarland__element selectorGarland__element_${el}`}
+          ></div>
         ))}
       </div>
     </div>

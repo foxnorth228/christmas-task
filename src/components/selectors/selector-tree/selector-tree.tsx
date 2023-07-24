@@ -1,6 +1,6 @@
 import React from 'react';
 import './selector-tree.scss';
-import useTree from '@hooks/useTree';
+import useTree from '@hooks/use-tree';
 
 const SelectorTree = () => {
   const [tree, treeReducer] = useTree();
