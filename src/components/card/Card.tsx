@@ -16,7 +16,7 @@ function Card({ elem }: { elem: toy }) {
           payload: elem.num,
         });
       }}
-      className="card"
+      className={`card ${elem.selected ? 'card_clicked' : ''}`}
     >
       <p className="card_name">{elem.name}</p>
       <img className="card_image" src={`./toys/${elem.num}.png`}></img>

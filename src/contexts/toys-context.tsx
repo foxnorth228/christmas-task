@@ -30,7 +30,7 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
         break;
       }
       console.log('select', toyIndex);
-      toys[toyIndex] = { ...toys[toyIndex], selected: !toys[toyIndex].selected};
+      toys[toyIndex] = { ...toys[toyIndex], selected: !toys[toyIndex].selected };
       console.log(toys[toyIndex].selected);
       return toys;
     default:
