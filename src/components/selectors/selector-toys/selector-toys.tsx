@@ -1,22 +1,23 @@
 import React from 'react';
 import './selector-toys.scss';
-import useTree from '@hooks/use-tree';
+import useToys from '@hooks/use-toys';
 
 const SelectorToys = () => {
-  const fileNames: number[] = [];
+  const fileNames = [];
   for (let i = 0; i < 20; ++i) {
-    fileNames.push(i + 1);
+    fileNames.push({ num: i + 1 });
   }
-  const [tree] = useTree();
-  const array = tree.toys.length === 0 ? fileNames : tree.toys;
+  const [toys] = useToys();
+  const selectedToys = toys.filter((el) => el.selected);
+  const array = selectedToys.length === 0 ? fileNames : selectedToys;
   return (
     <div className="selectorToys">
       <h2 className="selectorToys__title">Игрушки</h2>
       <div className="selectorToys__elements">
         {array.map((el) => (
-          <div key={typeof el === 'number' ? el : el.type} className="selectorToys__element">
+          <div key={el.num} className="selectorToys__element">
             <div
-              style={{ backgroundImage: `url('./toys/${el}.png')` }}
+              style={{ backgroundImage: `url('./toys/${el.num}.png')` }}
               className="selectorToys__example"
             ></div>
           </div>

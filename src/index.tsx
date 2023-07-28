@@ -6,11 +6,7 @@ import router from '@routes/route';
 
 const rootNode = document.getElementById('root');
 if (rootNode) {
-  createRoot(rootNode).render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
+  createRoot(rootNode).render(<RouterProvider router={router} />);
 } else {
   throw new Error("Element with id root doesn't exist");
 }
