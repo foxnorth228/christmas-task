@@ -2,13 +2,22 @@ import React from 'react';
 import { toy } from '@interfaces/toy';
 import { convertDataShape, convertDataColor, convertDataSize } from '@services/getData';
 import './Card.scss';
+import useTree from '@hooks/use-tree';
 
 function Card({ elem }: { elem: toy }) {
+  const [, treeReducer] = useTree();
   return (
     <div
       key={elem.num}
       onClick={(e) => {
         e.currentTarget.classList.toggle('card_clicked');
+        treeReducer({
+          type: 'CHANGE_LIST_TOY',
+          payload: {
+            section: 'toys',
+            value: elem.num,
+          },
+        });
       }}
       className="card"
     >

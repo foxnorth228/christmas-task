@@ -49,8 +49,6 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
         ...tree,
         [value.payload.section]: value.payload.value,
       };
-    case 'CHANGE_LIST_TOY':
-      break;
     case 'CHANGE_TREE_TOY':
       break;
     default:

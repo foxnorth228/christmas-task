@@ -7,4 +7,5 @@ export type toy = {
   color: string;
   size: string;
   favorite: boolean;
+  selected: boolean;
 };

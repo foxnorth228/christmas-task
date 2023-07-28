@@ -39,7 +39,7 @@ function filterCards(filter: IFilter, data: toy[]) {
 }
 
 function CardList({ headerLink }: { headerLink: JSX.Element }) {
-  const data = useToys();
+  const [toys] = useToys();
   const [filter] = useFilter();
   return (
     <div className="cardList">
@@ -48,7 +48,7 @@ function CardList({ headerLink }: { headerLink: JSX.Element }) {
         {headerLink}
       </div>
       <div className="cardList__body">
-        {filterCards(filter, data).map((el) => (
+        {filterCards(filter, toys).map((el) => (
           <Card key={el.num} elem={el} />
         ))}
       </div>

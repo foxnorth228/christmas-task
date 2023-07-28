@@ -13,6 +13,7 @@ function getData() {
       num: Number.parseInt(elem.num),
       count: Number.parseInt(elem.count),
       year: Number.parseInt(elem.year),
+      selected: false,
     };
   });
 }

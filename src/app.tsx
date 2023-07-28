@@ -6,7 +6,7 @@ import { Outlet } from 'react-router';
 import FilterContext, { filterReducer } from '@contexts/filter-context';
 import FilterCreation from '@services/getFilter';
 import TreeContext, { TreeReducer } from '@contexts/tree-context';
-import ToysContext from '@contexts/toys-context';
+import ToysContext, { ToysReducer } from '@contexts/toys-context';
 import getData from '@services/getData';
 
 function App() {
@@ -17,8 +17,9 @@ function App() {
     garland: 0,
     toys: [],
   });
+  const [toys, setToys] = useReducer(ToysReducer, getData());
   return (
-    <ToysContext.Provider value={getData()}>
+    <ToysContext.Provider value={{ toys, toysReducer: setToys }}>
       <TreeContext.Provider value={{ tree, treeReducer: setTree }}>
         <FilterContext.Provider value={{ filter, filterReducer: setFilter }}>
           <main className="main">{<Outlet />}</main>
