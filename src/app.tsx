@@ -3,14 +3,14 @@ import Footer from '@layouts/footer/Footer';
 import './app.scss';
 import { Outlet } from 'react-router';
 
-import FilterContext, { filterReducer } from '@contexts/filter-context';
+import FilterContext, { FilterReducer } from '@contexts/filter-context';
 import FilterCreation from '@services/getFilter';
 import TreeContext, { TreeReducer } from '@contexts/tree-context';
 import ToysContext, { ToysReducer } from '@contexts/toys-context';
 import getData from '@services/getData';
 
 function App() {
-  const [filter, setFilter] = useReducer(filterReducer, FilterCreation());
+  const [filter, setFilter] = useReducer(FilterReducer, FilterCreation());
   const [tree, setTree] = useReducer(TreeReducer, {
     tree: 1,
     bg: 1,

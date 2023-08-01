@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './custom-select.scss';
+import useFilter from '@hooks/use-filter';
 
 const CustomSelect = () => {
   const [firstElem, setFirstElem] = useState(0);
@@ -11,6 +12,7 @@ const CustomSelect = () => {
   ];
   const refList = useRef<HTMLUListElement>(null);
   const refArrow = useRef<HTMLDivElement>(null);
+  const [, setFilter] = useFilter();
   return (
     <div className="customSelect">
       <span className="customSelect__title">Сортировать</span>
@@ -29,7 +31,10 @@ const CustomSelect = () => {
                 order: firstElem === i ? -1 : 0,
                 background: firstElem === i ? 'transparent' : '',
               }}
-              onClick={() => setFirstElem(i)}
+              onClick={() => {
+                setFilter({ type: 'CHANGE_VALUE', payload: { section: 'sort', value: i } });
+                setFirstElem(i);
+              }}
               className="customSelect__item"
             >
               {el}

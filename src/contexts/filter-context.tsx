@@ -1,30 +1,143 @@
-import { IChangeFilter, IFilter } from '@utils/filterTypes';
 import React from 'react';
 import FilterCreation from '@services/getFilter';
 
-export type updatedReducer = ({ section, position }: IChangeFilter) => void;
+export type IFilterReducer = ({
+  type,
+  payload: { section, position, value },
+}: IFilterReducerValues) => void;
 
-const FilterContext = React.createContext({
+interface IFilterContext {
+  filter: IFilter;
+  filterReducer: IFilterReducer;
+}
+
+const FilterContext = React.createContext<IFilterContext>({
   filter: FilterCreation(),
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  filterReducer: ({ section, position }: IChangeFilter) => {},
+  filterReducer: () => {},
 });
 
-export function filterReducer(filter: IFilter, { section, position }: IChangeFilter) {
-  let filterSection = filter[section];
-  const posCurrentValue: [string, boolean] | undefined = Object.entries(filterSection).find(
-    (el) => el[0] === position
-  );
-  if (posCurrentValue !== undefined) {
-    filterSection = {
-      ...filterSection,
-      [position]: !posCurrentValue[1],
-    };
+export function FilterReducer(
+  filter: IFilter,
+  { type, payload: { section, position, value } }: IFilterReducerValues
+): IFilter {
+  let filterSection;
+  let posCurrentValue: [string, boolean | number] | undefined = undefined;
+  switch (type) {
+    case 'CHANGE_BOOL_SECTION':
+      filterSection = filter[section];
+      if (typeof filterSection !== 'object') {
+        break;
+      }
+      posCurrentValue = Object.entries(filterSection).find((el) => el[0] === position);
+      if (posCurrentValue !== undefined && typeof position !== 'undefined') {
+        filterSection = {
+          ...filterSection,
+          [position]: !posCurrentValue[1],
+        };
+      }
+      return {
+        ...filter,
+        [section]: filterSection,
+      };
+    case 'CHANGE_RANGE_SECTION':
+      filterSection = filter[section];
+      if (typeof filterSection !== 'object') {
+        break;
+      }
+      posCurrentValue = Object.entries(filterSection).find((el) => el[0] === position);
+      if (
+        posCurrentValue !== undefined &&
+        typeof position !== 'undefined' &&
+        typeof posCurrentValue[1] === 'number' &&
+        'step' in filterSection
+      ) {
+        let value = position === 'left' ? +filterSection.step : 0;
+        value = position === 'right' ? -filterSection.step : value;
+        filterSection = {
+          ...filterSection,
+          [position]: posCurrentValue[1] + value,
+        };
+      }
+      return {
+        ...filter,
+        [section]: filterSection,
+      };
+    case 'CHANGE_VALUE':
+      if (!['sort', 'music', 'snow', 'sampleSample'].includes(section)) {
+        break;
+      }
+      return {
+        ...filter,
+        [section]: value,
+      };
+    default:
+      break;
   }
-  return {
-    ...filter,
-    [section]: filterSection,
-  };
+  return filter;
 }
 
 export default FilterContext;
+
+export interface IFilterReducerValues {
+  type: string;
+  payload: {
+    section:
+      | 'shapes'
+      | 'colors'
+      | 'sizes'
+      | 'fav'
+      | 'rangeNum'
+      | 'rangeYear'
+      | 'sort'
+      | 'music'
+      | 'snow'
+      | 'searchSample';
+    position?: filterPositions | 'left' | 'right' | 'step';
+    value?: number | string | boolean;
+  };
+}
+
+type IShapesElems = 'ball' | 'bell' | 'cone' | 'snow' | 'toy';
+type IColorsElems = 'white' | 'yellow' | 'red' | 'blue' | 'green';
+type ISizesElems = 'small' | 'medium' | 'big';
+type iFavElems = 'favorite';
+export type filterPositions = IShapesElems | IColorsElems | ISizesElems | iFavElems;
+
+export interface IFilter {
+  shapes: {
+    ball: boolean;
+    bell: boolean;
+    cone: boolean;
+    snow: boolean;
+    toy: boolean;
+  };
+  colors: {
+    white: boolean;
+    yellow: boolean;
+    red: boolean;
+    blue: boolean;
+    green: boolean;
+  };
+  sizes: {
+    small: boolean;
+    medium: boolean;
+    big: boolean;
+  };
+  fav: {
+    favorite: boolean;
+  };
+  rangeNum: {
+    left: number;
+    right: number;
+    readonly step: number;
+  };
+  rangeYear: {
+    left: number;
+    right: number;
+    readonly step: number;
+  };
+  sort: number;
+  music: boolean;
+  snow: boolean;
+  searchSample: string;
+}

@@ -1,4 +1,4 @@
-import { IFilter } from '@utils/filterTypes';
+import { IFilter } from '@contexts/filter-context';
 
 export function FilterCreation(): IFilter {
   return {
@@ -24,6 +24,20 @@ export function FilterCreation(): IFilter {
     fav: {
       favorite: false,
     },
+    rangeNum: {
+      left: 1,
+      right: 12,
+      step: 1,
+    },
+    rangeYear: {
+      left: 1940,
+      right: 2020,
+      step: 10,
+    },
+    sort: 0,
+    music: false,
+    snow: false,
+    searchSample: '',
   };
 }
 

@@ -3,7 +3,7 @@ import './filter-shape.scss';
 import FilterUnit from '@src/components/filter-block/filter-unit/filter-unit';
 import useFilter from '@hooks/use-filter';
 import clickIcon from '@src/utils/icons/clickIcon';
-import { filterPositions } from '@utils/filterTypes';
+import { filterPositions } from '@contexts/filter-context';
 
 const FilterShape = () => {
   const [filter, setFilter] = useFilter();
@@ -11,15 +11,20 @@ const FilterShape = () => {
   return (
     <FilterUnit title="Форма">
       <div className="filterShape">
-        {Object.keys(shapes)
+        {Object.entries(shapes)
           .sort()
           .map((el, i) => (
             <div
               key={i}
-              className={`filterShape__elem filterShape__elem_${el}`}
+              className={`filterShape__elem filterShape__elem_${el[0]} ${
+                el[1] ? 'iconSvg_clicked' : ''
+              }`}
               onClick={(e) => {
                 clickIcon(e.currentTarget);
-                setFilter({ section: 'shapes', position: el as filterPositions });
+                setFilter({
+                  type: 'CHANGE_BOOL_SECTION',
+                  payload: { section: 'shapes', position: el[0] as filterPositions },
+                });
               }}
             ></div>
           ))}

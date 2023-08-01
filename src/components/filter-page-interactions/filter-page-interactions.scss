@@ -6,6 +6,10 @@
   @include ic.iconSvg(url("@assets/svg/audio.svg"));
 }
 
+.filterInteraction__music_muted {
+  @include ic.iconSvg(url("@assets/svg/mute.svg"));
+}
+
 .filterInteraction__snow {
   width: 36px;
   height: 36px;
