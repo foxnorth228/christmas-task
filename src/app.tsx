@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import Footer from '@layouts/footer/Footer';
+import CustomAudio from '@components/custom-audio/custom-audio';
 import './app.scss';
 import { Outlet } from 'react-router';
 
@@ -24,6 +25,7 @@ function App() {
         <FilterContext.Provider value={{ filter, filterReducer: setFilter }}>
           <main className="main">{<Outlet />}</main>
           <Footer />
+          <CustomAudio />
         </FilterContext.Provider>
       </TreeContext.Provider>
     </ToysContext.Provider>

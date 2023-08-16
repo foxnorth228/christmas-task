@@ -3,17 +3,19 @@ import './searcher.scss';
 import useFilter from '@hooks/use-filter';
 
 function Searcher() {
-  const [, setFilter] = useFilter();
+  const [filter, setFilter] = useFilter();
   return (
     <div className="searcher">
       <input
+        value={filter.searchSample}
         type="text"
         placeholder="Поиск..."
         className="searcher__input"
         onChange={(e) => {
+          console.log(filter.searchSample, e.target.value);
           setFilter({
             type: 'CHANGE_VALUE',
-            payload: { section: 'searchSample', value: e.currentTarget.value },
+            payload: { section: 'searchSample', value: e.target.value },
           });
         }}
       />

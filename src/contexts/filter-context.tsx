@@ -63,7 +63,7 @@ export function FilterReducer(
         [section]: filterSection,
       };
     case 'CHANGE_VALUE':
-      if (!['sort', 'music', 'snow', 'sampleSample'].includes(section)) {
+      if (!['sort', 'music', 'snow', 'searchSample'].includes(section)) {
         break;
       }
       return {

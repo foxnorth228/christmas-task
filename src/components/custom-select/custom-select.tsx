@@ -3,7 +3,8 @@ import './custom-select.scss';
 import useFilter from '@hooks/use-filter';
 
 const CustomSelect = () => {
-  const [firstElem, setFirstElem] = useState(0);
+  const [filter, setFilter] = useFilter();
+  const [firstElem, setFirstElem] = useState(filter.sort);
   const listItems = [
     'По названию от А до Я',
     'По названию от Я до А',
@@ -12,7 +13,6 @@ const CustomSelect = () => {
   ];
   const refList = useRef<HTMLUListElement>(null);
   const refArrow = useRef<HTMLDivElement>(null);
-  const [, setFilter] = useFilter();
   return (
     <div className="customSelect">
       <span className="customSelect__title">Сортировать</span>

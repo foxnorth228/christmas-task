@@ -1,36 +1,25 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import './filter-page-interactions.scss';
 import useFilter from '@hooks/use-filter';
+import clickIcon from '@utils/icons/clickIcon';
 
 const FilterPageInteractions = () => {
   const [filter, setFilter] = useFilter();
-  const audio = useRef<HTMLAudioElement>(null);
-  const [isAudioPlayed, setIsAudioPlayed] = useState(false);
   return (
     <>
       <div
         className={`filterInteraction__music ${
-          !isAudioPlayed ? 'filterInteraction__music_muted' : ''
+          !filter.music ? 'filterInteraction__music_muted' : ''
         }`}
         onClick={() => {
-          setFilter({ type: 'CHANGE_VALUE', payload: { section: 'snow', value: !filter.snow } });
-          audio!.current!.volume = 0.1;
-          if (!isAudioPlayed) {
-            audio!.current!.play();
-            setIsAudioPlayed(true);
-          } else {
-            audio!.current!.pause();
-            setIsAudioPlayed(false);
-          }
-          return;
+          setFilter({ type: 'CHANGE_VALUE', payload: { section: 'music', value: !filter.music } });
         }}
-      >
-        <audio ref={audio} src="./audio/audio.mp3"></audio>
-      </div>
+      ></div>
       <div
         className="filterInteraction__snow"
-        onClick={() => {
-          setFilter({ type: 'CHANGE_VALUE', payload: { section: 'music', value: !filter.music } });
+        onClick={(e) => {
+          clickIcon(e.currentTarget);
+          setFilter({ type: 'CHANGE_VALUE', payload: { section: 'snow', value: !filter.snow } });
         }}
       ></div>
     </>
