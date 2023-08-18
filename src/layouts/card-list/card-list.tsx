@@ -6,6 +6,17 @@ import Card from '@components/card/Card';
 import useFilter from '@hooks/use-filter';
 import useToys from '@hooks/use-toys';
 
+function sortCards(filter: IFilter, data: toy[]) {
+  const collator = Intl.Collator('ru');
+  const functions = [
+    (a: toy, b: toy) => collator.compare(a.name, b.name),
+    (a: toy, b: toy) => collator.compare(b.name, a.name),
+    (a: toy, b: toy) => a.count - b.count,
+    (a: toy, b: toy) => b.count - a.count,
+  ];
+  return data.sort(functions[filter.sort]);
+}
+
 function filterCards(filter: IFilter, data: toy[]) {
   const isAllFilterShapesOff = Object.values(filter.shapes).some((el) => el);
   const isAllFilterColorsOff = Object.values(filter.colors).some((el) => el);
@@ -18,6 +29,10 @@ function filterCards(filter: IFilter, data: toy[]) {
 
   function checkFilter(elem: toy) {
     let answer = false;
+    const matchWord = filter.searchSample;
+    if (matchWord !== '' && !elem.name.match(new RegExp(matchWord, 'i'))) {
+      return answer;
+    }
     const isShapeOn = shapes.find((el) => el[0] === elem.shape);
     const isColorOn = colors.find((el) => el[0] === elem.color);
     const isSizeOn = sizes.find((el) => el[0] === elem.size);
@@ -48,7 +63,7 @@ function CardList({ headerLink }: { headerLink: JSX.Element }) {
         {headerLink}
       </div>
       <div className="cardList__body">
-        {filterCards(filter, toys).map((el) => (
+        {sortCards(filter, filterCards(filter, toys)).map((el) => (
           <Card key={el.num} elem={el} />
         ))}
       </div>
