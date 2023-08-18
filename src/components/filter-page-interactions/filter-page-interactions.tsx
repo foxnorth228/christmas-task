@@ -16,7 +16,7 @@ const FilterPageInteractions = () => {
         }}
       ></div>
       <div
-        className="filterInteraction__snow"
+        className={`filterInteraction__snow ${filter.snow ? 'iconSvg_clicked' : ''}`}
         onClick={(e) => {
           clickIcon(e.currentTarget);
           setFilter({ type: 'CHANGE_VALUE', payload: { section: 'snow', value: !filter.snow } });
