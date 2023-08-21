@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { RangeParameter } from './Range';
 
 export function onSliderDown(
-  event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   setMoved: Dispatch<SetStateAction<boolean>>,
   sliderUp: (event: MouseEvent) => void
 ) {
@@ -36,12 +35,31 @@ export function sliderMove(
 }
 
 export function sliderUp(
-  pos: number,
+  refSlider: React.RefObject<HTMLDivElement>,
+  refAnimFrame: React.MutableRefObject<number>,
+  refIsPushedDown: React.MutableRefObject<boolean>,
   changeMoving: Dispatch<SetStateAction<boolean>>,
   sliderMove: (event: MouseEvent) => void,
   sliderUp: () => void
 ) {
+  refSlider!.current!.style.backgroundImage = '';
+  refSlider!.current!.style.boxShadow = '';
+  window.cancelAnimationFrame(refAnimFrame.current);
+  refIsPushedDown.current = false;
   changeMoving(false);
   document.body.removeEventListener('mousemove', sliderMove);
   document.body.removeEventListener('mouseup', sliderUp);
+}
+
+export function gradientAnimation(
+  refSlider: React.RefObject<HTMLDivElement>,
+  refAnimFrame: React.MutableRefObject<number>
+) {
+  const animation = () => {
+    refSlider!.current!.style.backgroundImage =
+      'radial-gradient(circle at center, white 0%, rgb(215,215,215) 55%, rgb(55, 55, 55) 95%)';
+    refSlider!.current!.style.boxShadow = '0px 0px 7px -1px rgb(20,20,20)';
+    refAnimFrame.current = window.requestAnimationFrame(animation);
+  };
+  refAnimFrame.current = window.requestAnimationFrame(animation);
 }
