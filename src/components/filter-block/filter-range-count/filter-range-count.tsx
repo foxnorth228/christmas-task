@@ -1,7 +1,7 @@
 import React from 'react';
 import './filter-range-count.scss';
 import FilterUnit from '@components/filter-block/filter-unit/filter-unit';
-import Range from '@components/Range/Range';
+import Range from '@components/range/range';
 
 const FilterRangeCount = () => {
   const params = {

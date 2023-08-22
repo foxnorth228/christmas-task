@@ -1,0 +1,32 @@
+.range {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.range__body {
+    position: relative;
+    width: 100%;
+    height: 7px;
+    background-color: #cbcbcb;
+}
+
+.range__baseLine {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.range__baseLine_wrapper {
+    @extend .range__baseLine;
+    display: flex;
+    align-items: center;
+}
+
+.range__scopeLine {
+    @extend .range__baseLine;
+    background-color: #5784ca;
+}
