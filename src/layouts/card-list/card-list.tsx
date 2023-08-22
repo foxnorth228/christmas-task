@@ -37,7 +37,6 @@ function filterCards(filter: IFilter, data: toy[]) {
     const isColorOn = colors.find((el) => el[0] === elem.color);
     const isSizeOn = sizes.find((el) => el[0] === elem.size);
     //const isFavOn = filter.fav.favorite;
-  console.log(filter.rangeNum, filter.rangeYear, elem.count, elem.year, filter.rangeNum.left <= elem.count && elem.count <= filter.rangeNum.right)
     if (isShapeOn && isColorOn && isSizeOn) {
       if (
         (isShapeOn[1] || !isAllFilterShapesOff) &&

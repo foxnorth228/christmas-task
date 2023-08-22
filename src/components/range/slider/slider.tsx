@@ -88,7 +88,7 @@ function sliderMove(
   event: MouseEvent,
   ref: React.MutableRefObject<HTMLDivElement | null>,
   { pos, secondPos, params, step, setPos }: SliderParameter,
-  isLeftMoving: boolean,
+  isLeftMoving: boolean
 ) {
   const rect = ref?.current?.getBoundingClientRect();
   if (rect?.left && rect.left - event.pageX > step.current / 2) {

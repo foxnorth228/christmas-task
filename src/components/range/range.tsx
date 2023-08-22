@@ -1,4 +1,4 @@
-import React, {useState, useRef, useReducer, useEffect} from 'react';
+import React, { useRef, useReducer } from 'react';
 import './range.scss';
 import RightSlider from '@components/range/right-slider/right-slider';
 import LeftSlider from '@components/range/left-slider/left-slider';
@@ -16,45 +16,53 @@ export interface SliderParameter {
   pos: number;
   secondPos: number;
   step: React.MutableRefObject<number>;
-  setPos: React.Dispatch<React.SetStateAction<number>>;
+  setPos: (x: number) => void;
 }
 
 function Range({ name, params }: { name: 'rangeNum' | 'rangeYear'; params: RangeParameter }) {
   const [filter, setFilter] = useFilter();
-  const [startPos, setStartPos] = useState(filter[name].left);
-  const [endPos, setEndPos] = useState(filter[name].right);
   const step = useRef(10);
-
-  useEffect(() => {
+  function setFilterLeft(left: number) {
     setFilter({
       type: 'CHANGE_RANGE_SECTION',
       payload: {
         section: name,
-        value: [startPos, endPos],
+        value: [left, filter[name].right],
       },
     });
-  }, [endPos, name, setFilter, startPos]);
+  }
+
+  function setFilterRight(right: number) {
+    setFilter({
+      type: 'CHANGE_RANGE_SECTION',
+      payload: {
+        section: name,
+        value: [filter[name].left, right],
+      },
+    });
+  }
 
   const [, forceUpdate] = useReducer((x) => x + 1.0, 0);
   const refSlider = useRef<HTMLDivElement>(null);
   const refBaseLine = useRef<HTMLDivElement>(null);
   useWindowSize(refBaseLine, refSlider, step, params, forceUpdate);
 
-  const scale = (endPos - startPos) / (params.rightPos - params.leftPos);
-  const translate = ((startPos - params.leftPos) / (params.rightPos - params.leftPos)) * 100;
+  const scale = (filter[name].right - filter[name].left) / (params.rightPos - params.leftPos);
+  const translate =
+    ((filter[name].left - params.leftPos) / (params.rightPos - params.leftPos)) * 100;
   return (
     <div className="range">
-      <span style={{ order: 1 }}>{startPos}</span>
+      <span style={{ order: 1 }}>{filter[name].left}</span>
       <div style={{ order: 3 }} className="range__body">
         <div ref={refBaseLine} className="range__baseLine"></div>
         <LeftSlider
           refer={refSlider}
           sliderParams={{
             params,
-            pos: startPos,
-            secondPos: endPos,
+            pos: filter[name].left,
+            secondPos: filter[name].right,
             step,
-            setPos: setStartPos,
+            setPos: setFilterLeft,
           }}
         />
         <div
@@ -67,14 +75,14 @@ function Range({ name, params }: { name: 'rangeNum' | 'rangeYear'; params: Range
         <RightSlider
           sliderParams={{
             params,
-            pos: endPos,
-            secondPos: startPos,
+            pos: filter[name].right,
+            secondPos: filter[name].left,
             step,
-            setPos: setEndPos,
+            setPos: setFilterRight,
           }}
         />
       </div>
-      <span style={{ order: 2 }}>{endPos}</span>
+      <span style={{ order: 2 }}>{filter[name].right}</span>
     </div>
   );
 }
