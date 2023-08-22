@@ -1,8 +1,9 @@
-import React, { useState, useRef, useReducer } from 'react';
+import React, {useState, useRef, useReducer, useEffect} from 'react';
 import './range.scss';
 import RightSlider from '@components/range/right-slider/right-slider';
 import LeftSlider from '@components/range/left-slider/left-slider';
 import useWindowSize from '@src/hooks/useWindowResize';
+import useFilter from '@hooks/use-filter';
 
 export interface RangeParameter {
   leftPos: number;
@@ -18,11 +19,21 @@ export interface SliderParameter {
   setPos: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Range({ params }: { params: RangeParameter }) {
-  const [startPos, setStartPos] = useState(params.leftPos);
-  const [endPos, setEndPos] = useState(params.rightPos);
-
+function Range({ name, params }: { name: 'rangeNum' | 'rangeYear'; params: RangeParameter }) {
+  const [filter, setFilter] = useFilter();
+  const [startPos, setStartPos] = useState(filter[name].left);
+  const [endPos, setEndPos] = useState(filter[name].right);
   const step = useRef(10);
+
+  useEffect(() => {
+    setFilter({
+      type: 'CHANGE_RANGE_SECTION',
+      payload: {
+        section: name,
+        value: [startPos, endPos],
+      },
+    });
+  }, [endPos, name, setFilter, startPos]);
 
   const [, forceUpdate] = useReducer((x) => x + 1.0, 0);
   const refSlider = useRef<HTMLDivElement>(null);

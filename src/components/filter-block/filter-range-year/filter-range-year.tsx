@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './filter-range-year.scss';
 import FilterUnit from '@components/filter-block/filter-unit/filter-unit';
 import Range from '@components/range/range';
+import useFilter from '@hooks/use-filter';
 
 const FilterRangeYear = () => {
-  const params = {
+  const [filter] = useFilter();
+  const params = useRef({
     leftPos: 1940,
     rightPos: 2020,
-    step: 10,
-  };
+    step: filter.rangeYear.step,
+  });
   return (
     <FilterUnit title="Год приобретения">
-      <Range params={params} />
+      <Range name={'rangeYear'} params={params.current} />
     </FilterUnit>
   );
 };

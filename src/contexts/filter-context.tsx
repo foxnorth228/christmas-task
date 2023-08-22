@@ -44,18 +44,11 @@ export function FilterReducer(
       if (typeof filterSection !== 'object') {
         break;
       }
-      posCurrentValue = Object.entries(filterSection).find((el) => el[0] === position);
-      if (
-        posCurrentValue !== undefined &&
-        typeof position !== 'undefined' &&
-        typeof posCurrentValue[1] === 'number' &&
-        'step' in filterSection
-      ) {
-        let value = position === 'left' ? +filterSection.step : 0;
-        value = position === 'right' ? -filterSection.step : value;
+      if ((section === 'rangeNum' || section === 'rangeYear') && typeof value === 'object') {
         filterSection = {
           ...filterSection,
-          [position]: posCurrentValue[1] + value,
+          left: value[0],
+          right: value[1],
         };
       }
       return {
@@ -93,7 +86,7 @@ export interface IFilterReducerValues {
       | 'snow'
       | 'searchSample';
     position?: filterPositions | 'left' | 'right' | 'step';
-    value?: number | string | boolean;
+    value?: number | string | boolean | [number, number];
   };
 }
 
