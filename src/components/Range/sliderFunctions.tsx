@@ -28,7 +28,6 @@ export function sliderMove(
   }
   if (rect?.right && event.pageX - rect.right > step.current / 2) {
     if (pos < rangeParams.rightPos && (pos < secondPos || !isLeftMoving)) {
-      console.log(pos, secondPos, rangeParams.rightPos);
       setPos(pos + rangeParams.step);
     }
   }

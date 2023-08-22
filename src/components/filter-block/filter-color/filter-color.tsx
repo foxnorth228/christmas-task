@@ -20,7 +20,7 @@ const FilterColor = () => {
               e.currentTarget.classList.toggle('filterColor_clicked');
               setFilter({
                 type: 'CHANGE_BOOL_SECTION',
-                payload: { section: 'colors', position: el[0] as filterPositions }
+                payload: { section: 'colors', position: el[0] as filterPositions },
               });
             }}
           ></div>

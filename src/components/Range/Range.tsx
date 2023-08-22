@@ -24,10 +24,10 @@ function Range({ params }: { params: RangeParameter }) {
     if (!(refBaseLine.current && refSlider.current)) {
       return;
     }
-    const refBaseWidth = getHtmlElemWidth(refBaseLine.current);
+    const baseWidth = getHtmlElemWidth(refBaseLine.current);
     const sliderWidth = getHtmlElemWidth(refSlider.current);
-    step.current = (refBaseWidth - sliderWidth) / (params.rightPos - params.leftPos);
-  }, [resize, params.leftPos, params.rightPos]);
+    step.current = (baseWidth - sliderWidth) / ((params.rightPos - params.leftPos) / params.step);
+  }, [resize, params]);
 
   const scale = (endPos - startPos) / (params.rightPos - params.leftPos);
   const translate = ((startPos - params.leftPos) / (params.rightPos - params.leftPos)) * 100;
