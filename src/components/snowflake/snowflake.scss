@@ -1,0 +1,12 @@
+.snowflake {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}

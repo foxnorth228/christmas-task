@@ -9,6 +9,7 @@ import FilterCreation from '@services/getFilter';
 import TreeContext, { TreeReducer } from '@contexts/tree-context';
 import ToysContext, { ToysReducer } from '@contexts/toys-context';
 import getData from '@services/getData';
+import Snowfall from '@layouts/snowfall/snowfall';
 
 function App() {
   const [filter, setFilter] = useReducer(FilterReducer, FilterCreation());
@@ -23,7 +24,14 @@ function App() {
     <ToysContext.Provider value={{ toys, toysReducer: setToys }}>
       <TreeContext.Provider value={{ tree, treeReducer: setTree }}>
         <FilterContext.Provider value={{ filter, filterReducer: setFilter }}>
-          <main className="main">{<Outlet />}</main>
+          <main className="main">
+            {
+              <>
+                <Snowfall />
+                <Outlet />
+              </>
+            }
+          </main>
           <Footer />
           <CustomAudio />
         </FilterContext.Provider>
