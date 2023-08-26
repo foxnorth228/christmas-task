@@ -1,7 +1,7 @@
 .snowflake {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   background-color: white;
   mask-position: center;
   mask-size: contain;
@@ -9,4 +9,47 @@
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
+  animation: snowfallRotate 5s linear infinite;
+}
+
+.snowflake__container_y {
+  display: inline-flex;
+  animation: snowfall 20s ease-in infinite;
+  position: fixed;
+}
+
+.snowflake__container_x {
+  --transtale-x: 100%;
+  display: inline-flex;
+  animation: snowfallX 5s ease-in-out infinite;
+}
+
+@keyframes snowfall {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(93vh);
+  }
+}
+
+@keyframes snowfallX {
+  0% {
+    transform: translateX(calc(-1 * var(--transtale-x)));
+  }
+  50% {
+    transform: translateX(var(--transtale-x));
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--transtale-x)));
+  }
+}
+
+@keyframes snowfallRotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
