@@ -53,7 +53,9 @@ function filterCards(filter: IFilter, data: toy[]) {
     return answer;
   }
 
-  return data.filter((el) => checkFilter(el));
+  return data.map((el) => {
+    return [el, checkFilter(el)] as [toy, boolean];
+  });
 }
 
 function CardList({ headerLink }: { headerLink: JSX.Element }) {
@@ -66,8 +68,8 @@ function CardList({ headerLink }: { headerLink: JSX.Element }) {
         {headerLink}
       </div>
       <div className="cardList__body">
-        {sortCards(filter, filterCards(filter, toys)).map((el) => (
-          <Card key={el.num} elem={el} />
+        {filterCards(filter, sortCards(filter, toys)).map((el) => (
+          <Card key={el[0].num} elem={el[0]} isRender={el[1]} />
         ))}
       </div>
     </div>

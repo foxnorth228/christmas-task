@@ -4,7 +4,7 @@ import { convertDataShape, convertDataColor, convertDataSize } from '@services/g
 import './Card.scss';
 import useToys from '@hooks/use-toys';
 
-function Card({ elem }: { elem: toy }) {
+function Card({ elem, isRender }: { elem: toy; isRender: boolean }) {
   const [, toysReducer] = useToys();
   return (
     <div
@@ -16,6 +16,7 @@ function Card({ elem }: { elem: toy }) {
           payload: elem.num,
         });
       }}
+      style={{ display: isRender ? 'flex' : 'none' }}
       className={`card ${elem.selected ? 'card_clicked' : ''}`}
     >
       <p className="card_name">{elem.name}</p>

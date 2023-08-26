@@ -27,7 +27,7 @@ function App() {
           <main className="main">
             {
               <>
-                {/*<Snowfall />*/}
+                <Snowfall />
                 <Outlet />
               </>
             }

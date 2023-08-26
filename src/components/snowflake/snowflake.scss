@@ -16,6 +16,7 @@
   display: inline-flex;
   animation: snowfall 20s ease-in infinite;
   position: fixed;
+  top: -50px;
 }
 
 .snowflake__container_x {
@@ -47,9 +48,9 @@
 
 @keyframes snowfallRotate {
   0% {
-    transform: rotateZ(0deg);
+    transform: rotateY(0deg) rotateZ(0deg);
   }
   100% {
-    transform: rotateZ(360deg);
+    transform: rotateY(360deg) rotateZ(360deg);
   }
 }
