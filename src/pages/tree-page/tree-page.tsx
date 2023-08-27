@@ -16,8 +16,17 @@ function TreePage() {
           if (refToy.current === null) {
             return;
           }
-          refToy.current.style.left = e.pageX - 15 + 'px';
-          refToy.current.style.top = e.pageY - 15 + 'px';
+          refToy.current.style.left = e.pageX - 25 + 'px';
+          refToy.current.style.top = e.pageY - 25 + 'px';
+        }}
+        onMouseUp={(e) => {
+          if (refToy.current === null) {
+            return;
+          }
+          refToy.current.style.pointerEvents = 'none';
+          const a = document.elementFromPoint(e.pageX, e.pageY);
+          console.log(a, a?.classList.contains('tree__toysArea_path'));
+          setActiveToy(-1);
         }}
       >
         <LeftMenuTreePage />
@@ -25,13 +34,6 @@ function TreePage() {
         <RightMenuTreePage />
         {activeToy !== -1 ? (
           <div
-            onMouseUp={(e) => {
-              (e.target as HTMLDivElement).style.pointerEvents = 'none';
-              const a = document.elementFromPoint(e.pageX, e.pageY);
-              (e.target as HTMLDivElement).style.pointerEvents = '';
-              console.log(a, a?.classList.contains('tree__toysArea_path'));
-              setActiveToy(-1);
-            }}
             ref={refToy}
             className="activeToy__toy"
             style={{ backgroundImage: `url('./toys/${activeToy}.png')` }}
