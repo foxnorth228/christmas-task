@@ -19,16 +19,27 @@
   height: 80px;
   border-radius: 10px;
   background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
   align-items: center;
 }
 
 .selectorToys__example {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
   --scale: 0.15;
   width: 80%;
   height: 80%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.selectorToys__counter {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  justify-self: flex-end;
+  align-self: flex-end;
 }
