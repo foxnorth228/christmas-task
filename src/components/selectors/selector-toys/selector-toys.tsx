@@ -8,7 +8,11 @@ const SelectorToys = () => {
   const [, setActiveToy] = useActiveToy();
   const [toys] = useToys();
   for (let i = 0; i < 20; ++i) {
-    fileNames.push({ num: i + 1, count: toys[i + 1].count });
+    fileNames.push({
+      num: i + 1,
+      count: toys[i].count,
+      countFreeToys: toys[i].countFreeToys,
+    });
   }
   const selectedToys = toys.filter((el) => el.selected);
   const array = selectedToys.length === 0 ? fileNames : selectedToys;
@@ -18,7 +22,12 @@ const SelectorToys = () => {
       <div className="selectorToys__elements">
         {array.map((el) => (
           <div
-            onMouseDown={() => setActiveToy(el.num)}
+            onMouseDown={() => {
+              if (el.countFreeToys === 0) {
+                return;
+              }
+              setActiveToy(el.num);
+            }}
             key={el.num}
             className="selectorToys__element"
           >
@@ -26,7 +35,7 @@ const SelectorToys = () => {
               style={{ backgroundImage: `url('./toys/${el.num}.png')` }}
               className="selectorToys__example"
             ></div>
-            <span className="selectorToys__counter">{el.count}</span>
+            <span className="selectorToys__counter">{el.countFreeToys}</span>
           </div>
         ))}
       </div>

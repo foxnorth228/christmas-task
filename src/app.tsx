@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, { useReducer, useState } from 'react';
 import Footer from '@layouts/footer/Footer';
 import CustomAudio from '@components/custom-audio/custom-audio';
 import './app.scss';
@@ -10,7 +10,7 @@ import TreeContext, { TreeReducer } from '@contexts/tree-context';
 import ToysContext, { ToysReducer } from '@contexts/toys-context';
 import getData from '@services/getData';
 import Snowfall from '@layouts/snowfall/snowfall';
-import ActiveToyContext from "@contexts/active-toy-context";
+import ActiveToyContext from '@contexts/active-toy-context';
 
 function App() {
   const [filter, setFilter] = useReducer(FilterReducer, FilterCreation());

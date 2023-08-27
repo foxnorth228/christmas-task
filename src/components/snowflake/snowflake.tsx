@@ -23,7 +23,10 @@ const Snowflake = () => {
         } as React.CSSProperties
       }
     >
-      <div style={{ animationDuration: `${animSpeedX.current}s` }} className="snowflake__container_x">
+      <div
+        style={{ animationDuration: `${animSpeedX.current}s` }}
+        className="snowflake__container_x"
+      >
         <div
           style={{
             maskImage: `url("./snow/snow-${type.current}.svg")`,

@@ -8,4 +8,5 @@ export type toy = {
   size: string;
   favorite: boolean;
   selected: boolean;
+  countFreeToys: number;
 };

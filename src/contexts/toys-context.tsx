@@ -29,9 +29,15 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
       if (typeof toyIndex === 'undefined') {
         break;
       }
-      console.log('select', toyIndex);
       toys[toyIndex] = { ...toys[toyIndex], selected: !toys[toyIndex].selected };
-      console.log(toys[toyIndex].selected);
+      return toys;
+    case 'USED':
+      toyIndex = toys.findIndex((el) => el.num === value.payload);
+      console.log(toyIndex);
+      if (typeof toyIndex === 'undefined' || toys[toyIndex].countFreeToys === 0) {
+        break;
+      }
+      toys[toyIndex] = { ...toys[toyIndex], countFreeToys: --toys[toyIndex].countFreeToys };
       return toys;
     default:
       break;

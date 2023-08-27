@@ -3,9 +3,18 @@ import './tree.scss';
 import useTree from '@hooks/use-tree';
 
 const Tree = () => {
-  const [tree, setTree] = useTree();
+  const [tree] = useTree();
   return (
     <div style={{ backgroundImage: `url('./bg/${tree.bg}.jpg')` }} className="tree__bg">
+      <div className="tree__toys">
+        {tree.toys.map((el) => (
+          <div
+            key={`${el.type}${el.x}${el.y}`}
+            className="tree__toy"
+            style={{ left: el.x, top: el.y, backgroundImage: `url('./toys/${el.type}.png')` }}
+          />
+        ))}
+      </div>
       <img
         width="500px"
         height="714px"

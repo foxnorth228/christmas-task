@@ -14,6 +14,7 @@ function getData() {
       count: Number.parseInt(elem.count),
       year: Number.parseInt(elem.year),
       selected: false,
+      countFreeToys: Number.parseInt(elem.count),
     };
   });
 }
