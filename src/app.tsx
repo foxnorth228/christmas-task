@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, {useReducer, useState} from 'react';
 import Footer from '@layouts/footer/Footer';
 import CustomAudio from '@components/custom-audio/custom-audio';
 import './app.scss';
@@ -10,6 +10,8 @@ import TreeContext, { TreeReducer } from '@contexts/tree-context';
 import ToysContext, { ToysReducer } from '@contexts/toys-context';
 import getData from '@services/getData';
 import Snowfall from '@layouts/snowfall/snowfall';
+import ActiveToy from "@layouts/active-toy/active-toy";
+import ActiveToyContext from "@contexts/active-toy-context";
 
 function App() {
   const [filter, setFilter] = useReducer(FilterReducer, FilterCreation());
@@ -20,20 +22,24 @@ function App() {
     toys: [],
   });
   const [toys, setToys] = useReducer(ToysReducer, getData());
+  const [activeToy, setActiveToy] = useState(-1);
   return (
     <ToysContext.Provider value={{ toys, toysReducer: setToys }}>
       <TreeContext.Provider value={{ tree, treeReducer: setTree }}>
         <FilterContext.Provider value={{ filter, filterReducer: setFilter }}>
-          <main className="main">
-            {
-              <>
-                <Snowfall />
-                <Outlet />
-              </>
-            }
-          </main>
-          <Footer />
-          <CustomAudio />
+          <ActiveToyContext.Provider value={[activeToy, setActiveToy]}>
+            <main className="main">
+              {
+                <>
+                  <Snowfall />
+                  <Outlet />
+                  <ActiveToy />
+                </>
+              }
+            </main>
+            <Footer />
+            <CustomAudio />
+          </ActiveToyContext.Provider>
         </FilterContext.Provider>
       </TreeContext.Provider>
     </ToysContext.Provider>
