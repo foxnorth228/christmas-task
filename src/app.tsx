@@ -10,7 +10,6 @@ import TreeContext, { TreeReducer } from '@contexts/tree-context';
 import ToysContext, { ToysReducer } from '@contexts/toys-context';
 import getData from '@services/getData';
 import Snowfall from '@layouts/snowfall/snowfall';
-import ActiveToy from "@layouts/active-toy/active-toy";
 import ActiveToyContext from "@contexts/active-toy-context";
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
                 <>
                   <Snowfall />
                   <Outlet />
-                  <ActiveToy />
                 </>
               }
             </main>

@@ -5,3 +5,12 @@
     display: flex;
     flex-direction: row;
 }
+
+.activeToy__toy {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

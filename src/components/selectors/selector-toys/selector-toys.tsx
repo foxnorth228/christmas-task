@@ -17,7 +17,11 @@ const SelectorToys = () => {
       <h2 className="selectorToys__title">Игрушки</h2>
       <div className="selectorToys__elements">
         {array.map((el) => (
-          <div onClick={() => { console.log(el.num); setActiveToy(el.num) }} key={el.num} className="selectorToys__element">
+          <div
+            onMouseDown={() => setActiveToy(el.num)}
+            key={el.num}
+            className="selectorToys__element"
+          >
             <div
               style={{ backgroundImage: `url('./toys/${el.num}.png')` }}
               className="selectorToys__example"
