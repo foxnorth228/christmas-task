@@ -1,7 +1,7 @@
 .snowflake {
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: var(--size);
+  height: var(--size);
   background-color: white;
   mask-position: center;
   mask-size: contain;
@@ -13,10 +13,12 @@
 }
 
 .snowflake__container_y {
+  --size: 50px;
   display: inline-flex;
   animation: snowfall 20s ease-in infinite;
   position: fixed;
-  top: -50px;
+  top: calc(-1 * var(--size));
+  z-index: 0;
 }
 
 .snowflake__container_x {
@@ -27,10 +29,10 @@
 
 @keyframes snowfall {
   from {
-    transform: translateY(-100%);
+    transform: translateY(0);
   }
   to {
-    transform: translateY(93vh);
+    transform: translateY(calc(93vh + var(--size)));
   }
 }
 
