@@ -49,7 +49,7 @@ const Tree = () => {
         <path
           className="tree__toysArea_path"
           d="M 250 10, L 20 580 L 65 650 L 200 700 H 380 L 450 665 L 480 580 Z"
-          stroke="#3f5787"
+          stroke="#00000000"
           strokeWidth="5"
           fill="#00000000"
         />
