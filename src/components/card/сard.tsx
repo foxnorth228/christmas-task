@@ -1,7 +1,7 @@
 import React from 'react';
 import { toy } from '@interfaces/toy';
 import { convertDataShape, convertDataColor, convertDataSize } from '@services/getData';
-import './Card.scss';
+import './card.scss';
 import useToys from '@hooks/use-toys';
 
 function Card({ elem, isRender }: { elem: toy; isRender: boolean }) {

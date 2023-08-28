@@ -5,19 +5,19 @@
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     transition-property: background-color;
-    transition-duration: 1.1s;
+    transition-duration: 0.9s;
     mask-image: $svg;
     -webkit-mask-image: $svg;
     &:hover {
         cursor: pointer;
-        background-color: rgb(119, 119, 119);
+        background: rgb(146, 244, 255);
     }
 }
 
 div.iconSvg_clicked {
-    background-color: burlywood;
+    background: rgba(195, 216, 255, 0.7);
 }
 
 div.iconSvg_clicked:hover {
-    background-color: burlywood;
+    background: rgba(195, 216, 255, 0.7);
 }

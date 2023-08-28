@@ -3,10 +3,10 @@ import './snowflake.scss';
 
 const Snowflake = () => {
   const opacity = useRef(Math.random() * (1 - 0.7) + 0.7);
-  const animSpeedY = useRef(Math.random() * (23 - 17) + 17);
+  const animSpeedY = useRef(Math.random() * (8 - 6) + 6);
   const animSpeedX = useRef(Math.random() * (6.5 - 3.5) + 3.5);
   const animSpeedRotate = useRef(Math.random() * (7 - 4.5) + 4.5);
-  const animDelay = useRef(Math.floor(Math.random() * 17000));
+  const animDelay = useRef(Math.floor(Math.random() * 8000));
   const size = useRef(Math.floor(Math.random() * (60 - 40) + 40));
   const posLeft = useRef(Math.random() * 100);
   const type = useRef(Math.ceil(Math.random() * 6));

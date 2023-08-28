@@ -2,7 +2,7 @@ import React from 'react';
 import { toy } from '@interfaces/toy';
 import './card-list.css';
 import { IFilter } from '@contexts/filter-context';
-import Card from '@components/card/Card';
+import Card from '@components/card/сard';
 import useFilter from '@hooks/use-filter';
 import useToys from '@hooks/use-toys';
 
