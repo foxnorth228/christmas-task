@@ -22,11 +22,11 @@ const SelectorToys = () => {
       <div className="selectorToys__elements">
         {array.map((el) => (
           <div
-            onMouseDown={() => {
+            onMouseDown={(e) => {
               if (el.countFreeToys === 0) {
                 return;
               }
-              setActiveToy({ ...activeToy, type: el.num });
+              setActiveToy({ x: e.pageX, y: e.pageY, type: el.num });
             }}
             key={el.num}
             className="selectorToys__element"

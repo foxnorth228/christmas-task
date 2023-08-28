@@ -16,7 +16,7 @@ const Tree = () => {
             key={`${el.type}${el.x}${el.y}`}
             className="tree__toy"
             style={{ left: el.x, top: el.y, backgroundImage: `url('./toys/${el.type}.png')` }}
-            onMouseDown={() => {
+            onMouseDown={(e) => {
               setTree({
                 type: 'CHANGE_TREE_TOY',
                 payload: {
@@ -25,7 +25,7 @@ const Tree = () => {
                 },
               });
               setToys({ type: 'RETURNED', payload: el.type });
-              setActiveToy({ ...activeToy, type: el.type });
+              setActiveToy({ x: e.pageX, y: e.pageY, type: el.type });
             }}
           />
         ))}

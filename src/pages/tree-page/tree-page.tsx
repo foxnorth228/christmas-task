@@ -16,20 +16,13 @@ function TreePage() {
     if (refToy.current === null) {
       return;
     }
-    refToy.current.style.left = e.pageX - 25 + 'px';
-    refToy.current.style.top = e.pageY + 'px';
-  }, []);
+    refToy.current.style.left = activeToy.x - 25 + 'px';
+    refToy.current.style.top = activeToy.y + 'px';
+  }, [activeToy.x, activeToy.y]);
   return (
     <>
       <div
         className="page treePage"
-        onMouseDown={(e) => {
-          if (refToy.current === null) {
-            return;
-          }
-          refToy.current.style.left = e.pageX - 25 + 'px';
-          refToy.current.style.top = e.pageY + 'px';
-        }}
         onMouseMove={(e) => {
           if (refToy.current === null) {
             return;
