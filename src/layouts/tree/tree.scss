@@ -19,7 +19,6 @@
 }
 
 .tree__toysArea {
-  position: relative;
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
   width: calc(500px * var(--scale));
@@ -32,6 +31,7 @@
   grid-row: 1 / span 1;
   width: calc(500px * var(--scale));
   height: calc(714px * var(--scale));
+  pointer-events: none;
 }
 
 .tree__toy {
@@ -39,4 +39,5 @@
   height: 50px;
   background-size: contain;
   position: absolute;
+  pointer-events: auto;
 }

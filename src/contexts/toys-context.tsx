@@ -39,6 +39,17 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
       }
       toys[toyIndex] = { ...toys[toyIndex], countFreeToys: --toys[toyIndex].countFreeToys };
       return toys;
+    case 'RETURNED':
+      toyIndex = toys.findIndex((el) => el.num === value.payload);
+      console.log(toyIndex);
+      if (
+        typeof toyIndex === 'undefined' ||
+        toys[toyIndex].countFreeToys === toys[toyIndex].count
+      ) {
+        break;
+      }
+      toys[toyIndex] = { ...toys[toyIndex], countFreeToys: ++toys[toyIndex].countFreeToys };
+      return toys;
     default:
       break;
   }

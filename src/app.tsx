@@ -21,7 +21,7 @@ function App() {
     toys: [],
   });
   const [toys, setToys] = useReducer(ToysReducer, getData());
-  const [activeToy, setActiveToy] = useState(-1);
+  const [activeToy, setActiveToy] = useState({ type: -1, x: 0, y: 0 });
   return (
     <ToysContext.Provider value={{ toys, toysReducer: setToys }}>
       <TreeContext.Provider value={{ tree, treeReducer: setTree }}>

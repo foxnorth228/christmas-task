@@ -1,9 +1,13 @@
 import React from 'react';
 import './tree.scss';
 import useTree from '@hooks/use-tree';
+import useToys from "@hooks/use-toys";
+import useActiveToy from "@hooks/use-active-toy";
 
 const Tree = () => {
-  const [tree] = useTree();
+  const [activeToy, setActiveToy] = useActiveToy();
+  const [, setToys] = useToys();
+  const [tree, setTree] = useTree();
   return (
     <div style={{ backgroundImage: `url('./bg/${tree.bg}.jpg')` }} className="tree__bg">
       <div className="tree__toys">
@@ -12,6 +16,17 @@ const Tree = () => {
             key={`${el.type}${el.x}${el.y}`}
             className="tree__toy"
             style={{ left: el.x, top: el.y, backgroundImage: `url('./toys/${el.type}.png')` }}
+            onMouseDown={() => {
+              setTree({
+                type: 'CHANGE_TREE_TOY',
+                payload: {
+                  section: 'delete',
+                  value: el,
+                },
+              });
+              setToys({ type: 'RETURNED', payload: el.type });
+              setActiveToy({ ...activeToy, type: el.type });
+            }}
           />
         ))}
       </div>

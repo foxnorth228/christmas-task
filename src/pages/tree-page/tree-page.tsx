@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './tree-page.css';
 import LeftMenuTreePage from '@layouts/left-menu-tree-page/left-menu-tree-page';
 import Tree from '@layouts/tree/tree';
@@ -12,11 +12,24 @@ function TreePage() {
   const [toys, setToy] = useToys();
   const [tree, setTree] = useTree();
   const [activeToy, setActiveToy] = useActiveToy();
-  console.log(tree.toys);
+  useEffect(() => {
+    if (refToy.current === null) {
+      return;
+    }
+    refToy.current.style.left = e.pageX - 25 + 'px';
+    refToy.current.style.top = e.pageY + 'px';
+  }, []);
   return (
     <>
       <div
         className="page treePage"
+        onMouseDown={(e) => {
+          if (refToy.current === null) {
+            return;
+          }
+          refToy.current.style.left = e.pageX - 25 + 'px';
+          refToy.current.style.top = e.pageY + 'px';
+        }}
         onMouseMove={(e) => {
           if (refToy.current === null) {
             return;
@@ -31,36 +44,39 @@ function TreePage() {
           refToy.current.style.pointerEvents = 'none';
           const a = document.elementFromPoint(e.pageX, e.pageY);
           console.log(a);
-          const toy = toys.find((el) => el.num === activeToy);
+          const toy = toys.find((el) => el.num === activeToy.type);
           console.log(activeToy, toy);
           if (a?.classList.contains('tree__toysArea_path') && toy && toy.countFreeToys !== 0) {
-            setToy({ type: 'USED', payload: activeToy });
+            const x =
+              e.clientX -
+              a?.parentElement?.getBoundingClientRect().left -
+              refToy?.current?.getBoundingClientRect()?.width / 2;
+            const y = e.clientY - a?.parentElement?.getBoundingClientRect().top;
+            const type = activeToy.type;
+            setToy({ type: 'USED', payload: activeToy.type });
             setTree({
               type: 'CHANGE_TREE_TOY',
               payload: {
                 section: 'add',
                 value: {
-                  x:
-                    e.clientX -
-                    a?.parentElement?.getBoundingClientRect().left -
-                    refToy?.current?.getBoundingClientRect()?.width / 2,
-                  y: e.clientY - a?.parentElement?.getBoundingClientRect().top,
-                  type: activeToy,
+                  x,
+                  y,
+                  type,
                 },
               },
             });
           }
-          setActiveToy(-1);
+          setActiveToy({ ...activeToy, type: -1 });
         }}
       >
         <LeftMenuTreePage />
         <Tree />
         <RightMenuTreePage />
-        {activeToy !== -1 ? (
+        {activeToy.type !== -1 ? (
           <div
             ref={refToy}
             className="activeToy__toy"
-            style={{ backgroundImage: `url('./toys/${activeToy}.png')` }}
+            style={{ backgroundImage: `url('./toys/${activeToy.type}.png')` }}
           />
         ) : (
           false

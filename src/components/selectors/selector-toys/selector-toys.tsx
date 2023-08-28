@@ -5,7 +5,7 @@ import useActiveToy from '@hooks/use-active-toy';
 
 const SelectorToys = () => {
   const fileNames = [];
-  const [, setActiveToy] = useActiveToy();
+  const [activeToy, setActiveToy] = useActiveToy();
   const [toys] = useToys();
   for (let i = 0; i < 20; ++i) {
     fileNames.push({
@@ -26,7 +26,7 @@ const SelectorToys = () => {
               if (el.countFreeToys === 0) {
                 return;
               }
-              setActiveToy(el.num);
+              setActiveToy({ ...activeToy, type: el.num });
             }}
             key={el.num}
             className="selectorToys__element"
