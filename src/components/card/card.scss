@@ -21,17 +21,17 @@
     background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(194, 208, 255, 0.7) 0%, rgba(70, 134, 255, 0.7) 100%);
 }
 
-.card_name {
+.card__name {
     text-align: center;
     margin: 22px 0;
-    font-family: Neucha;
+    font-family: Neucha, Arial, sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
-.card_image {
+.card__image {
     width: 100px;
     height: 100px;
     margin-bottom: 22px;
@@ -40,16 +40,16 @@
     margin-right: auto;
 }
 
-.card_descriptionBlock {
+.card__descriptionBlock {
     display: inline-flex;
     flex-direction: column;
     min-height: 120px;
     margin-left: 16px;
 }
 
-.card_property {
+.card__property {
     color: var(--white, #FFF);
-    font-family: Steppe;
+    font-family: "Steppe", Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

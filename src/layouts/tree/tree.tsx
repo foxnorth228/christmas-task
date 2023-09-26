@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './tree.scss';
 import useTree from '@hooks/use-tree';
 import useToys from "@hooks/use-toys";
 import useActiveToy from "@hooks/use-active-toy";
+import useGarland from "@hooks/useGarland";
 
 const Tree = () => {
+  const garland = useRef<HTMLDivElement>(null);
+  const elemGarland = useGarland(garland);
+  console.log('g', elemGarland)
   const [activeToy, setActiveToy] = useActiveToy();
   const [, setToys] = useToys();
   const [tree, setTree] = useTree();
@@ -29,6 +33,9 @@ const Tree = () => {
             }}
           />
         ))}
+      </div>
+      <div ref={garland} className="tree__garland">
+        {elemGarland}
       </div>
       <img
         width="500px"

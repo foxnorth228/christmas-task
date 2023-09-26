@@ -1,0 +1,69 @@
+.garland {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  --color-red: 255, 0, 0;
+  --color-blue: 0, 255, 255;
+  --color-yellow: 255, 255, 0;
+  --color-green: 0, 255, 0;
+}
+
+.garland__line {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.garland__light {
+  --color: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform-origin: left top;
+  animation: garland 2s ease-in-out infinite both;
+  --light: rgba(var(--color), 1);
+  --light-shadow: rgba(var(--color), 1);
+  --light-dark: rgba(var(--color), 0.6);
+  --light-shadow-dark: rgba(var(--color), 0.3);
+}
+
+.garland_multi {
+  --color: var(--color-red);
+  &:nth-child(4n + 1) {
+    --color: var(--color-blue);
+  }
+  &:nth-child(4n + 2) {
+    --color: var(--color-yellow);
+  }
+  &:nth-child(4n + 3) {
+    --color: var(--color-green);
+  }
+}
+
+.garland_red {
+  --color: var(--color-red);
+}
+
+.garland_blue {
+  --color: var(--color-blue);
+}
+
+.garland_yellow {
+  --color: var(--color-yellow);
+}
+
+.garland_green {
+  --color: var(--color-green);
+}
+
+@keyframes  garland {
+  0%, 100% {
+    background-color: var(--light);
+    box-shadow: 0 0 14px 3px var(--light-shadow);
+  }
+  50% {
+    background-color: var(--light-dark);
+    box-shadow: 0 0 14px 3px var(--light-shadow-dark);
+  }
+}

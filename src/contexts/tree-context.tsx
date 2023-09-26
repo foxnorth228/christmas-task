@@ -37,7 +37,7 @@ const TreeContext = React.createContext<ITreeContext>({
   tree: {
     tree: 1,
     bg: 1,
-    garland: 0,
+    garland: -1,
     toys: [],
   },
   treeReducer() {

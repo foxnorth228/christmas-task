@@ -4,18 +4,16 @@ import useFilter from '@hooks/use-filter';
 const CustomAudio = () => {
   const [filter] = useFilter();
   const audio = useRef<HTMLAudioElement>(null);
+
   useEffect(() => {
-    if (!(audio && audio.current)) {
+    if (!audio.current) {
       return;
     }
-    if (filter.music) {
-      audio.current.volume = 0.1;
-      audio.current.play().catch((e) => console.log(e));
-    } else {
-      audio.current.pause();
-    }
+    audio.current.volume = 0.1;
+    filter.music ? audio.current.play().catch((e) => console.log(e)) : audio.current.pause();
   }, [filter]);
-  return <audio ref={audio} src="./audio/audio.mp3" loop={true}></audio>;
+
+  return <audio ref={audio} src="./audio/audio.mp3" loop={true} />;
 };
 
 export default CustomAudio;

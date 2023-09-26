@@ -41,3 +41,13 @@
   position: absolute;
   pointer-events: auto;
 }
+
+.tree__garland {
+  position: relative;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  width: calc(500px * var(--scale));
+  height: calc(714px * var(--scale));
+  pointer-events: none;
+  overflow: hidden;
+}
