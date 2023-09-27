@@ -16,6 +16,7 @@ const FilterContext = React.createContext<IFilterContext>({
   filterReducer: () => {},
 });
 
+export const filterKeyWord = 'christmasTaskFilter';
 export function FilterReducer(
   filter: IFilter,
   { type, payload: { section, position, value } }: IFilterReducerValues
@@ -35,6 +36,7 @@ export function FilterReducer(
           [position]: !posCurrentValue[1],
         };
       }
+      localStorage.setItem(filterKeyWord, JSON.stringify({ ...filter, [section]: filterSection }));
       return {
         ...filter,
         [section]: filterSection,
@@ -51,6 +53,7 @@ export function FilterReducer(
           right: value[1],
         };
       }
+      localStorage.setItem(filterKeyWord, JSON.stringify({ ...filter, [section]: filterSection }));
       return {
         ...filter,
         [section]: filterSection,
@@ -59,13 +62,18 @@ export function FilterReducer(
       if (!['sort', 'music', 'snow', 'searchSample'].includes(section)) {
         break;
       }
+      localStorage.setItem(filterKeyWord, JSON.stringify({ ...filter, [section]: value }));
       return {
         ...filter,
         [section]: value,
       };
+    case 'RESET':
+      localStorage.setItem(filterKeyWord, JSON.stringify(FilterCreation()));
+      return FilterCreation();
     default:
       break;
   }
+  localStorage.setItem(filterKeyWord, JSON.stringify({ filter }));
   return filter;
 }
 

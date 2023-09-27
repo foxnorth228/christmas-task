@@ -4,7 +4,6 @@ import useFilter from '@hooks/use-filter';
 
 const CustomSelect = () => {
   const [filter, setFilter] = useFilter();
-  const [firstElem, setFirstElem] = useState(filter.sort);
   const listItems = [
     'По названию от А до Я',
     'По названию от Я до А',
@@ -28,12 +27,11 @@ const CustomSelect = () => {
             <li
               key={i}
               style={{
-                order: firstElem === i ? -1 : 0,
-                background: firstElem === i ? 'transparent' : '',
+                order: filter.sort === i ? -1 : 0,
+                background: filter.sort === i ? 'transparent' : '',
               }}
               onClick={() => {
                 setFilter({ type: 'CHANGE_VALUE', payload: { section: 'sort', value: i } });
-                setFirstElem(i);
               }}
               className="customSelect__item"
             >
