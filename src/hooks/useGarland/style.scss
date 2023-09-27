@@ -21,11 +21,11 @@
   height: 5px;
   border-radius: 50%;
   transform-origin: left top;
-  animation: garland 2s ease-in-out infinite both;
+  animation: 2s ease-in-out infinite both;
   --light: rgba(var(--color), 1);
   --light-shadow: rgba(var(--color), 1);
-  --light-dark: rgba(var(--color), 0.6);
-  --light-shadow-dark: rgba(var(--color), 0.3);
+  --light-dark: rgba(var(--color), 0.2);
+  --light-shadow-dark: rgba(var(--color), 0.1);
 }
 
 .garland_multi {
@@ -65,5 +65,68 @@
   50% {
     background-color: var(--light-dark);
     box-shadow: 0 0 14px 3px var(--light-shadow-dark);
+  }
+}
+
+@keyframes  garland2 {
+  12.5%, 37.5% {
+    background-color: var(--light);
+    box-shadow: 0 0 14px 3px var(--light-shadow);
+  }
+  0%, 25%, 50%, 100% {
+    background-color: var(--light-dark);
+    box-shadow: 0 0 14px 3px var(--light-shadow-dark);
+  }
+}
+
+.garland__mode_1 {
+  & .garland__light {
+    animation-name: garland;
+  }
+}
+
+.garland__mode_2 {
+  & .garland__light {
+    animation-name: garland;
+  }
+  & .garland__light:nth-child(3n + 1) {
+    animation-duration: 1.4s;
+  }
+  & .garland__light:nth-child(3n + 2) {
+    animation-duration: 1.7s;
+  }
+}
+
+.garland__mode_3 {
+  & .garland__light {
+    animation-name: garland;
+  }
+  & .garland__light:nth-child(2n) {
+    animation-delay: 1s;
+  }
+}
+
+.garland__mode_4 {
+  & .garland__light {
+    animation-name: garland;
+  }
+  & .garland__light:nth-child(4n + 1){
+    animation-delay: 0.5s;
+  }
+  & .garland__light:nth-child(4n + 2){
+    animation-delay: 1s;
+  }
+  & .garland__light:nth-child(4n + 3){
+    animation-delay: 1.5s;
+  }
+}
+
+.garland__mode_5 {
+  & .garland__light {
+    animation-name: garland2;
+    animation-duration: 2.6s;
+  }
+  & .garland__light:nth-child(2n) {
+    animation-delay: 1.3s;
   }
 }

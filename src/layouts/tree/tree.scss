@@ -27,6 +27,7 @@
 
 .tree__toys {
   position: relative;
+  z-index: 3;
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
   width: calc(500px * var(--scale));

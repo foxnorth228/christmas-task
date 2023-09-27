@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.scss';
-import useTree from "@hooks/use-tree";
+import useTree from '@hooks/use-tree';
 
 const useGarland = (ref: React.RefObject<HTMLElement>) => {
   const [tree] = useTree();
@@ -23,7 +23,7 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
   const rightBorder = 25;
   return (
     height !== 0 && (
-      <div className="garland garland_red">
+      <div className={`garland garland__mode_${tree.garlandMode}`}>
         {iterator.map((_, i) => (
           <div
             style={{ width: step * (i + 1), height: step * (i + 1) }}

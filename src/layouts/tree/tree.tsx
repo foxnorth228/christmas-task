@@ -1,14 +1,14 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import './tree.scss';
 import useTree from '@hooks/use-tree';
-import useToys from "@hooks/use-toys";
-import useActiveToy from "@hooks/use-active-toy";
-import useGarland from "@hooks/useGarland";
+import useToys from '@hooks/use-toys';
+import useActiveToy from '@hooks/use-active-toy';
+import useGarland from '@hooks/useGarland';
 
 const Tree = () => {
   const garland = useRef<HTMLDivElement>(null);
   const elemGarland = useGarland(garland);
-  console.log('g', elemGarland)
+  console.log('g', elemGarland);
   const [activeToy, setActiveToy] = useActiveToy();
   const [, setToys] = useToys();
   const [tree, setTree] = useTree();

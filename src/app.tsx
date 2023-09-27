@@ -17,7 +17,8 @@ function App() {
   const [tree, setTree] = useReducer(TreeReducer, {
     tree: 1,
     bg: 1,
-    garland: 0,
+    garland: 1,
+    garlandMode: 0,
     toys: [],
   });
   const [toys, setToys] = useReducer(ToysReducer, getData());
