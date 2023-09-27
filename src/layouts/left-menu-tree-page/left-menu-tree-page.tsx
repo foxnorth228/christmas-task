@@ -5,6 +5,7 @@ import SelectorTree from '@components/selectors/selector-tree/selector-tree';
 import SelectorBg from '@components/selectors/selector-bg/selector-bg';
 import SelectorGarland from '@components/selectors/selector-garland/selector-garland';
 import LinkToyPage from '@components/link-toy-page/link-toy-page';
+import TreeResetBlock from "@components/tree-reset-block";
 
 const LeftMenuTreePage = () => {
   return (
@@ -16,6 +17,7 @@ const LeftMenuTreePage = () => {
       <SelectorTree />
       <SelectorBg />
       <SelectorGarland />
+      <TreeResetBlock />
     </div>
   );
 };

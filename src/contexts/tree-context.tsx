@@ -77,6 +77,8 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
         default:
           return tree;
       }
+    case 'RESET':
+      return TreeCreation();
     default:
       return tree;
   }
@@ -84,3 +86,13 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
 };
 
 export default TreeContext;
+
+export function TreeCreation() {
+  return {
+    tree: 1,
+    bg: 1,
+    garland: 1,
+    garlandMode: 0,
+    toys: [],
+  };
+}

@@ -50,6 +50,11 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
       }
       toys[toyIndex] = { ...toys[toyIndex], countFreeToys: ++toys[toyIndex].countFreeToys };
       return toys;
+    case 'RESET':
+      for (let i = 0; i < toys.length; ++i) {
+        toys[i].countFreeToys = toys[i].count;
+      }
+      return toys;
     default:
       break;
   }
