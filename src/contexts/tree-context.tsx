@@ -1,5 +1,11 @@
 import React from 'react';
 
+export interface ITreeToy {
+  x: number;
+  y: number;
+  type: number;
+}
+
 export interface ITree {
   tree: number;
   bg: number;
@@ -18,6 +24,7 @@ export interface ITreeReducerValue {
     section?: ITreeSections;
     value:
       | number
+      | ITree
       | {
           x: number;
           y: number;
@@ -58,7 +65,7 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
         [value.payload.section]: value.payload.value,
       };
     case 'CHANGE_TREE_TOY':
-      if (typeof value.payload.value !== 'object') {
+      if (typeof value.payload.value !== 'object' || 'tree' in value.payload.value) {
         return tree;
       }
       switch (value.payload.section) {
@@ -68,7 +75,6 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
             toys: [...tree.toys, value.payload.value],
           };
         case 'delete':
-          console.log(value.payload.value, tree.toys.indexOf(value.payload.value));
           if (tree.toys.indexOf(value.payload.value) === -1) {
             return tree;
           }
@@ -79,6 +85,11 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
       }
     case 'RESET':
       return TreeCreation();
+    case 'UPDATE':
+      if (typeof value.payload.value !== 'object' || !('tree' in value.payload.value)) {
+        return tree;
+      }
+      return value.payload.value;
     default:
       return tree;
   }

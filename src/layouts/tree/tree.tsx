@@ -9,7 +9,7 @@ const Tree = () => {
   const garland = useRef<HTMLDivElement>(null);
   const elemGarland = useGarland(garland);
   console.log('g', elemGarland);
-  const [activeToy, setActiveToy] = useActiveToy();
+  const [, setActiveToy] = useActiveToy();
   const [, setToys] = useToys();
   const [tree, setTree] = useTree();
   return (

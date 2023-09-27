@@ -1,5 +1,6 @@
 import React from 'react';
 import { toy } from '@interfaces/toy';
+import { ITreeToy } from '@contexts/tree-context';
 
 interface IToysContext {
   toys: toy[];
@@ -17,7 +18,7 @@ export default ToysContext;
 
 interface IToysReducerValue {
   type: string;
-  payload: number;
+  payload: number | ITreeToy[];
 }
 
 export type IToysReducer = ({ type, payload }: IToysReducerValue) => void;
@@ -53,6 +54,18 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
     case 'RESET':
       for (let i = 0; i < toys.length; ++i) {
         toys[i].countFreeToys = toys[i].count;
+      }
+      return toys;
+    case 'UPDATE':
+      if (typeof value.payload === 'number') {
+        return toys;
+      }
+      for (let i = 0; i < toys.length; ++i) {
+        toys[i].countFreeToys = toys[i].count;
+      }
+      for (let i = 0; i < value.payload.length; ++i) {
+        toyIndex = toys.findIndex((el) => el.num === value.payload[i].type);
+        toys[toyIndex].countFreeToys -= 1;
       }
       return toys;
     default:

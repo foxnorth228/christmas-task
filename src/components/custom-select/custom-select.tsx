@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import './custom-select.scss';
 import useFilter from '@hooks/use-filter';
 

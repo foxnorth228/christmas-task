@@ -1,24 +1,40 @@
 import React from 'react';
 import './selector-decorated-tree.scss';
+import useTrees from '@hooks/useTrees';
+import useTree from '@hooks/use-tree';
+import useToys from '@hooks/use-toys';
 
 const SelectorDecoratedTree = () => {
-  const fileNames = ['1', '2', '3', '4'];
+  const [, setToys] = useToys();
+  const [, setTree] = useTree();
+  const [trees, setTrees] = useTrees();
+  console.log(trees);
   return (
     <div className="selectorDecTree">
       <h2 className="selectorDecTree__title">Вы нарядили</h2>
-      <div className="selectorDecTree__slider">
-        <div className="selectorDecTree__elements">
-          {fileNames.map((el, i) => (
-            <div key={i} className="selectorDecTree__element">
-              <div
-                style={{ backgroundImage: `url('./tree/${el}.png')` }}
-                className="selectorDecTree__example"
-              ></div>
-            </div>
-          ))}
-        </div>
-        <div className="selectorDecTree__arrow selectorDecTree__arrow_left"></div>
-        <div className="selectorDecTree__arrow selectorDecTree__arrow_right"></div>
+      <div className="selectorDecTree__elements">
+        {trees.map((el, i) => (
+          <div
+            key={i}
+            className="selectorDecTree__element"
+            onClick={() => {
+              setTree({ type: 'UPDATE', payload: { value: el } });
+              setToys({ type: 'UPDATE', payload: el.toys });
+            }}
+          >
+            <div
+              style={{ backgroundImage: `url('./tree/${el.tree}.png')` }}
+              className="selectorDecTree__example"
+            ></div>
+            <div
+              onClick={() => {
+                console.log('i', i);
+                setTrees({ type: 'DELETE', payload: i });
+              }}
+              className="selectorDecTree__cross"
+            ></div>
+          </div>
+        ))}
       </div>
     </div>
   );

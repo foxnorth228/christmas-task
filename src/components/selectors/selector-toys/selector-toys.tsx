@@ -5,7 +5,7 @@ import useActiveToy from '@hooks/use-active-toy';
 
 const SelectorToys = () => {
   const fileNames = [];
-  const [activeToy, setActiveToy] = useActiveToy();
+  const [, setActiveToy] = useActiveToy();
   const [toys] = useToys();
   for (let i = 0; i < 20; ++i) {
     fileNames.push({

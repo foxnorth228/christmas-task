@@ -1,10 +1,10 @@
 import React from 'react';
 import './filter-reset-block.scss';
-import useFilter from "@hooks/use-filter";
-import {filterKeyWord} from "@contexts/filter-context";
+import useFilter from '@hooks/use-filter';
+import { filterKeyWord } from '@contexts/filter-context';
 
 const FilterResetBlock = () => {
-  const [_, setFilter] = useFilter();
+  const [, setFilter] = useFilter();
   return (
     <div>
       <button

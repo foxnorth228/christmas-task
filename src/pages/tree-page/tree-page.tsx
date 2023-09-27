@@ -10,7 +10,7 @@ import useToys from '@hooks/use-toys';
 function TreePage() {
   const refToy = useRef<HTMLDivElement>(null);
   const [toys, setToy] = useToys();
-  const [tree, setTree] = useTree();
+  const [, setTree] = useTree();
   const [activeToy, setActiveToy] = useActiveToy();
   useEffect(() => {
     if (refToy.current === null) {
