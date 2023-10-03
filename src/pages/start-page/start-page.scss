@@ -1,3 +1,7 @@
+@function pageRems($num) {
+    @return calc($num * var(--page-rems));
+}
+
 @mixin startPage__block {
     border: 3px solid #278D9F;
     background: radial-gradient(618.39% 159.94% at 0.00% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0.00) 100%);
@@ -8,28 +12,48 @@
     justify-content: center;
     align-items: center;
     color: white;
+    --page-rems: 1rem;
+    @media screen and (max-width: 991px) {
+        --page-rems: 0.9rem;
+    }
+    @media screen and (max-width: 767px) {
+        --page-rems: 0.8rem;
+    }
+    @media screen and (max-width: 480px) {
+        --page-rems: 1rem;
+    }
+    @media screen and (max-width: 360px) {
+        --page-rems: 0.85rem;
+    }
 }
 
 .startPage__contentBlock {
-    margin-top: 100px;
+    margin-top: pageRems(5);
     position: relative;
+    @media screen and (max-width: 480px) {
+        width: 100%;
+    }
 }
 
 .startPage__titleBlock {
-    width: 593px;
-    height: 249px;
-    border-radius: 30px;
+    width: pageRems(30);
+    height: pageRems(12.5);
+    border-radius: pageRems(1.5);
     position: relative;
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     @include startPage__block();
+    @media screen and (max-width: 480px) {
+        margin-left: 0.75rem;
+        width: calc(100% - 1.5rem);
+    }
 }
 
 .startPage__title {
-    width: 423px;
-    font-size: 53px;
+    width: pageRems(21);
+    font-size: pageRems(2.75);
     font-family: "Neucha", "Papyrus", fantasy;
     font-weight: 400;
     text-align: center;
@@ -37,12 +61,12 @@
 }
 
 .startPage__startButton {
-    width: 320px;
-    height: 54px;
+    width: pageRems(16);
+    height: pageRems(2.75);
     color: white;
-    border-radius: 30px;
-    margin-top: 113px;
-    font-size: 24px;
+    border-radius: pageRems(1.5);
+    margin-top: pageRems(5.75);
+    font-size: pageRems(1.25);
     font-family: "Steppe", Arial, Helvetica, sans-serif;
     text-align: center;
     @include startPage__block();
@@ -55,20 +79,26 @@
 }
 
 .startPage__toy_first{
-    width: 366px;
-    top: -30px;
-    left: -248px;
+    width: pageRems(18.5);
+    top: pageRems(-1.5);
+    left: pageRems(-12.5);
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 }
 
 .startPage__toy_second {
-    width: 256px;
-    top: -58px;
-    right: -160px;
+    width: pageRems(13);
+    top: pageRems(-3);
+    right: pageRems(-8);
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 }
 
 @mixin startPage__imageBlock() {
     content: '';
-    height: 300px;
+    height: pageRems(100);
     position: absolute;
     z-index: -1;
 }
@@ -76,16 +106,22 @@
 @mixin startPage__imageBlock_before() {
     width: 3px;
     background-color: rgb(124, 124, 124);
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 }
 
 @mixin startPage__imageBlock_after() {
     width: 2px;
     background-color: rgba(153, 153, 153, 0.86);
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 }
 
 .startPage__imageBlock_first {
-    $left: -65px;
-    $bottom: 271px;
+    $left: pageRems(-3.25);
+    $bottom: pageRems(13.5);
     &::before {
         left: $left;
         bottom: $bottom;
@@ -93,7 +129,7 @@
         @include startPage__imageBlock_before();
     }
     &::after {
-        left: $left + 2;
+        left: calc($left + 2px);
         bottom: $bottom;
         @include startPage__imageBlock();
         @include startPage__imageBlock_after();
@@ -101,8 +137,8 @@
 }
 
 .startPage__imageBlock_second {
-    $left: 622px;
-    $bottom: 301px;
+    $left: calc(pageRems(31) + 6px);
+    $bottom: calc(pageRems(15) + 3px);
     &::before {
         left: $left;
         bottom: $bottom;
@@ -110,7 +146,7 @@
         @include startPage__imageBlock_before();
     }
     &::after {
-        left: $left + 2;
+        left: calc($left + 2px);
         bottom: $bottom;
         @include startPage__imageBlock();
         @include startPage__imageBlock_after();
