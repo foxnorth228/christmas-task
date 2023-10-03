@@ -14,7 +14,7 @@ const CustomSelect = () => {
   const refArrow = useRef<HTMLDivElement>(null);
   return (
     <div className="customSelect">
-      <span className="customSelect__title">Сортировать</span>
+      <span className="customSelect__title">Сортировка</span>
       <div
         className="customSelect__select"
         onClick={() => {
@@ -28,7 +28,6 @@ const CustomSelect = () => {
               key={i}
               style={{
                 order: filter.sort === i ? -1 : 0,
-                background: filter.sort === i ? 'transparent' : '',
               }}
               onClick={() => {
                 setFilter({ type: 'CHANGE_VALUE', payload: { section: 'sort', value: i } });

@@ -3,15 +3,15 @@
 .filterShape {
     max-width: max-content;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(5, max-content);
+    grid-column-gap: 2.2rem;
 }
 
 .filterShape__elem {
-    width: 42px;
-    height: 42px;
-    margin-right: 37px;
+    width: 2.2rem;
+    height: 2.2rem;
 }
 
 .filterShape__elem_ball {

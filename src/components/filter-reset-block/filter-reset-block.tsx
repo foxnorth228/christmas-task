@@ -6,7 +6,7 @@ import { filterKeyWord } from '@contexts/filter-context';
 const FilterResetBlock = () => {
   const [, setFilter] = useFilter();
   return (
-    <div>
+    <div className="filterResetBlock">
       <button
         onClick={() => setFilter({ type: 'RESET', payload: { section: 'sizes' } })}
         className="filterResetBlock__reset"

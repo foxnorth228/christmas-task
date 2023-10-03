@@ -9,13 +9,11 @@ import FilterResetBlock from '@components/filter-reset-block/filter-reset-block'
 const MenuToyPage = () => {
   return (
     <div className="menuToyPage">
-      <div className="menuToyPage__tools">
-        <div className="menuToyPage__tools_row">
-          <FilterPageInteractions />
-          <Searcher />
-        </div>
-        <CustomSelect />
+      <div className="menuToyPage__tools_row">
+        <FilterPageInteractions />
+        <Searcher />
       </div>
+      <CustomSelect />
       <FilterBlock />
       <FilterResetBlock />
     </div>

@@ -1,12 +1,12 @@
 .searcher {
-    width: 254px;
-    height: 36px;
+    width: 13rem;
+    height: 2rem;
     border-width: 1px;
     border-style: solid;
     border-color: white;
     border-image: initial;
-    border-radius: 30px;
-    padding: 0 10px;
+    border-radius: 1.5rem;
+    padding: 0 0.5rem;
     background: radial-gradient(618.39% 159.94% at 0.00% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0.00) 100%);
     backdrop-filter: blur(15.5px);
     display: flex;
@@ -22,7 +22,7 @@
     outline: none;
     color: white;
     font-family: "Steppe", Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .searcher__input::placeholder {
@@ -41,8 +41,8 @@
 }
 
 .searcher__icon {
-    width: 24px;
-    height: 24px;
+    width: 1.2rem;
+    height: 1.2rem;
     background-color: white;
     mask-repeat: no-repeat;
     mask-position: center;
