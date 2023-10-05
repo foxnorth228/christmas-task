@@ -11,13 +11,27 @@
   display: grid;
   grid-template-columns: repeat(4, max-content);
   grid-template-rows: repeat(5, max-content);
-  gap: 8px;
+  grid-auto-rows: max-content;
+  max-height: 15em;
+  gap: 0.4em;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(3, max-content);
+  }
+  @media screen and (max-width: 1032px) {
+    grid-template-columns: repeat(3, max-content);
+  }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .selectorToys__element {
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
+  width: 4em;
+  height: 4em;
+  border-radius: 0.5em;
   background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
   display: grid;
   grid-template-columns: 1fr;

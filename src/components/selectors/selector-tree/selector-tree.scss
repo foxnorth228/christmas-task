@@ -11,13 +11,25 @@
   display: grid;
   grid-template-columns: repeat(3, max-content);
   grid-template-rows: repeat(2, max-content);
-  gap: 16px;
+  gap: 0.6em;
+  max-height: 11em;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(2, max-content);
+    grid-auto-rows: max-content;
+    font-size: 0.9rem;
+  }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .selectorTree__element {
-  width: 115px;
-  height: 115px;
-  border-radius: 10px;
+  width: 5.6em;
+  height: 5.6em;
+  border-radius: 0.6em;
   background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
   display: flex;
   justify-content: center;
@@ -30,6 +42,9 @@
 
 .selectorTree__example {
   --scale: 0.15;
+  @media screen and (max-width: 1390px) {
+    --scale: 0.14;
+  }
   width: calc(500px * var(--scale));
   height: calc(714px * var(--scale));
   background-size: cover;

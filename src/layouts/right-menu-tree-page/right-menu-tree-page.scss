@@ -1,7 +1,6 @@
 .rightMenuTreePage {
-  width: 420px;
+  justify-self: start;
   height: 100%;
   display: grid;
   grid-template: min-content 1fr / 1fr;
-  margin-left: 20px;
 }

@@ -7,7 +7,7 @@ const SelectorGarland = () => {
   const garlands = ['multicolor', 'red', 'blue', 'yellow', 'green'];
   return (
     <div className="selectorGarland">
-      <h2 className="selectorGarland__title">Гирлянда</h2>
+      <h2 className="treePage__title selectorGarland__title">Гирлянда</h2>
       <div className="selectorGarland__elements">
         {garlands.map((el, i) => (
           <div

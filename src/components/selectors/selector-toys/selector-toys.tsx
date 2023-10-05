@@ -19,7 +19,7 @@ const SelectorToys = () => {
   const array = selectedToys.length === 0 ? fileNames : selectedToys;
   return (
     <div className="selectorToys">
-      <h2 className="selectorToys__title">Игрушки</h2>
+      <h2 className="treePage__title selectorToys__title">Игрушки</h2>
       <div className="selectorToys__elements">
         {array.map((el) => (
           <div

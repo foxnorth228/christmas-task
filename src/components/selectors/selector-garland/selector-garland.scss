@@ -1,28 +1,40 @@
 @use '@utils/icons/icon.scss' as ic;
 
 .selectorGarland {
-  width: fit-content;
+  min-width: 100%;
+  max-width: 100%;
+  width: 1px;
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, min-content);
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, min-content);
+  }
 }
 
 .selectorGarland__title {
   grid-area: 1 / 1 / span 1 / span 2;
+  @media screen and (max-width: 1280px) {
+    grid-area: 1 / 1 / span 1 / span 1;
+  }
 }
 
 .selectorGarland__elements {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, max-content);
   grid-template-rows: repeat(1, 1fr);
   align-items: center;
-  gap: 17.5px;
+  @media screen and (max-width: 1280px){
+    gap: 0.6em;
+  }
+  gap: 1em;
 }
 
 .selectorGarland__element {
-  width: 28px;
-  height: 28px;
+  width: 1.6rem;
+  height: 1.6rem;
   border-radius: 50%;
   border: 2px solid #a8a8a8;
   &:hover {
@@ -60,7 +72,6 @@
   height: 100%;
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(3, min-content);
-  justify-content: center;
   & input[type=radio] {
     display: none;
   }

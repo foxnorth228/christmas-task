@@ -10,7 +10,7 @@ const TreeResetBlock = () => {
   const [trees, setTrees] = useTrees();
   console.log('tr', trees);
   return (
-    <div>
+    <div className="treeResetBlock">
       <button
         onClick={() => setTrees({ type: 'SAVE', payload: tree })}
         className="treeResetBlock__reset"

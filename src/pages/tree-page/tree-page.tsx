@@ -36,9 +36,7 @@ function TreePage() {
           }
           refToy.current.style.pointerEvents = 'none';
           const a = document.elementFromPoint(e.pageX, e.pageY);
-          console.log(a);
           const toy = toys.find((el) => el.num === activeToy.type);
-          console.log(activeToy, toy);
           if (a?.classList.contains('tree__toysArea_path') && toy && toy.countFreeToys !== 0) {
             const x =
               e.clientX -

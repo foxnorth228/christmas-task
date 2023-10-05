@@ -1,6 +1,12 @@
 .tree__bg {
   --scale: 1.2;
-  width: 995px;
+  @media screen and (max-width: 1390px) {
+    --scale: 1.12;
+  }
+  @media screen and (max-width: 1280px) {
+    --scale: 1;
+  }
+  width: 100%;
   height: 100%;
   background: url("@assets/bg/1.jpg") no-repeat center;
   background-size: cover;

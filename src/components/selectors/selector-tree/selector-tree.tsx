@@ -7,7 +7,7 @@ const SelectorTree = () => {
   const fileNames = ['1', '2', '3', '4', '5', '6'];
   return (
     <div className="selectorTree">
-      <h2 className="selectorTree__title">Выберите ёлочку</h2>
+      <h2 className="treePage__title selectorTree__title">Выберите ёлочку</h2>
       <div className="selectorTree__elements">
         {fileNames.map((el, i) => (
           <div

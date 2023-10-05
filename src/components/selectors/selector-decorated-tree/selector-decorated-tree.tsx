@@ -11,7 +11,7 @@ const SelectorDecoratedTree = () => {
   console.log(trees);
   return (
     <div className="selectorDecTree">
-      <h2 className="selectorDecTree__title">Вы нарядили</h2>
+      <h2 className="treePage__title selectorDecTree__title">Вы нарядили</h2>
       <div className="selectorDecTree__elements">
         {trees.map((el, i) => (
           <div
