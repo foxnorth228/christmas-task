@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 222px;
-    margin: 0 10px 10px 0;
-    border-radius: 10px;
+    width: 11rem;
+    margin: 0 2rem 2rem 0;
+    border-radius: 0.5rem;
     background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
     backdrop-filter: blur(2px);
 }
@@ -23,18 +23,19 @@
 
 .card__name {
     text-align: center;
-    margin: 22px 0;
+    margin: 1.2rem 0;
     font-family: Neucha, Arial, sans-serif;
-    font-size: 22px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1;
+    height: 1.4rem * 2;
 }
 
 .card__image {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 22px;
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 1.2rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -43,14 +44,14 @@
 .card__descriptionBlock {
     display: inline-flex;
     flex-direction: column;
-    min-height: 120px;
-    margin-left: 16px;
+    margin-left: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .card__property {
     color: var(--white, #FFF);
     font-family: "Steppe", Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

@@ -9,7 +9,8 @@
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
     "lint": "npx eslint src/ --ext .ts,.tsx",
-    "lint:fix": "npx eslint src/ --ext .ts,.tsx --fix"
+    "lint:fix": "npx eslint src/ --ext .ts,.tsx --fix",
+    "browser": "doiuse --browsers \"ie >= 9, > 1%, last 2 versions\""
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "doiuse": "^6.0.2",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",

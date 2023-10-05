@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .linkTreePage:hover {
@@ -10,9 +11,9 @@
 }
 
 .linkTreePage__arrow {
-  width: 18px;
-  height: 18px;
-  margin-left: 9px;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
   mask-image: url("@assets/arrow-right.svg");
   -webkit-mask-image: url("@assets/arrow-right.svg");
   background-color: white;

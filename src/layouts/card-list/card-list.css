@@ -1,27 +1,34 @@
 .cardList {
     width: 100%;
-    height: 100%;
+    min-height: max(30rem, 100%);
+    height: 1px;
+    max-height: 100%;
     overflow-y: hidden;
-    margin-left: 20px;
+    padding-left: 1rem;
     display: grid;
     grid-template: min-content 1fr / 1fr;
 }
 
 .cardList__body {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    min-height: 40rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 13rem);
+    grid-auto-rows: 1fr;
     overflow-y: auto;
     &::-webkit-scrollbar {
         display: none;
     }
     -ms-overflow-style: none;
     scrollbar-width: none;
+    @media screen and (max-width: 600px) {
+        justify-content: center;
+    }
 }
 
 .cardList__title {
     font-family: Neucha;
-    font-size: 42px;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -33,7 +40,7 @@
     width: 90%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.67em;
+    margin-bottom: 0.67rem;
 }
 
 .cardList::-webkit-scrollbar {

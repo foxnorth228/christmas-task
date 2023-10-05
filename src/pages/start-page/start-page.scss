@@ -98,7 +98,7 @@
 
 @mixin startPage__imageBlock() {
     content: '';
-    height: pageRems(100);
+    height: pageRems(30);
     position: absolute;
     z-index: -1;
 }
