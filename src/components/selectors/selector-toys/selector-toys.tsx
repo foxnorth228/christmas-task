@@ -7,11 +7,12 @@ const SelectorToys = () => {
   const fileNames = [];
   const [, setActiveToy] = useActiveToy();
   const [toys] = useToys();
+  const sortedToys = toys.sort((a, b) => a.num - b.num);
   for (let i = 0; i < 20; ++i) {
     fileNames.push({
       num: i + 1,
-      count: toys[i].count,
-      countFreeToys: toys[i].countFreeToys,
+      count: sortedToys[i].count,
+      countFreeToys: sortedToys[i].countFreeToys,
     });
   }
   const selectedToys = toys.filter((el) => el.selected);
