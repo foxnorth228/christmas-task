@@ -1,14 +1,19 @@
 .range {
     width: 100%;
+    box-sizing: content-box;
+    padding: 1rem;
+    align-self: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .range__body {
     position: relative;
     width: 100%;
+    margin-top: 0.5rem;
     height: 7px;
     background-color: #cbcbcb;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
+import React, {useState, useEffect, useRef, Dispatch, SetStateAction} from 'react';
 import { RangeParameter, SliderParameter } from '../range';
 import './slider.scss';
 
@@ -26,12 +26,19 @@ const Slider = ({
   useEffect(() => {
     //enable moving every rerender
     if (isCanBeMoved) {
+      document.body.addEventListener('touchmove', onTouchMove);
       document.body.addEventListener('mousemove', onSliderMove);
       return () => {
+        document.body.removeEventListener('touchmove', onTouchMove);
         document.body.removeEventListener('mousemove', onSliderMove);
       };
     }
   }, [isCanBeMoved, onSliderMove]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function onTouchMove(this: HTMLElement, ev: TouchEvent) {
+    touchMove(ev, ref, { pos, secondPos, params, step, setPos }, isLeftPos);
+  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function onSliderMove(event: MouseEvent) {
@@ -51,6 +58,9 @@ const Slider = ({
         ref={ref}
         style={{ zIndex: isLeftPos && pos === params.rightPos ? '2' : '1' }}
         className={`range__slider ${isLeftPos ? 'range__slider_left' : 'range__slider_right'}`}
+        onTouchStart={() => {
+          sliderDown(ref, setIsCanBeMoved, refIsPushedDown, onSliderUp);
+        }}
         onMouseDown={() => {
           sliderDown(ref, setIsCanBeMoved, refIsPushedDown, onSliderUp);
         }}
@@ -75,13 +85,33 @@ function sliderDown(
   refSlider: React.RefObject<HTMLDivElement>,
   setIsCanBeMoved: Dispatch<SetStateAction<boolean>>,
   refIsPushedDown: React.MutableRefObject<boolean>,
-  sliderUp: (event: MouseEvent) => void
+  sliderUp: () => void
 ) {
   refSlider!.current!.classList.add('range__slider_active');
   setIsCanBeMoved(true);
   refIsPushedDown.current = true;
   document.body.addEventListener('mouseup', sliderUp);
+  document.body.addEventListener('touchend', sliderUp);
   return;
+}
+
+function touchMove(
+  event: TouchEvent,
+  ref: React.MutableRefObject<HTMLDivElement | null>,
+  { pos, secondPos, params, step, setPos }: SliderParameter,
+  isLeftMoving: boolean
+) {
+  const rect = ref?.current?.getBoundingClientRect();
+  if (rect?.left && rect.left - event.touches[0].pageX > step.current / 2) {
+    if (pos > params.leftPos && (pos > secondPos || isLeftMoving)) {
+      setPos(pos - params.step);
+    }
+  }
+  if (rect?.right && event.touches[0].pageX - rect.right > step.current / 2) {
+    if (pos < params.rightPos && (pos < secondPos || !isLeftMoving)) {
+      setPos(pos + params.step);
+    }
+  }
 }
 
 function sliderMove(
