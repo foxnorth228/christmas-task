@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, Dispatch, SetStateAction} from 'react';
+import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
 import { RangeParameter, SliderParameter } from '../range';
 import './slider.scss';
 

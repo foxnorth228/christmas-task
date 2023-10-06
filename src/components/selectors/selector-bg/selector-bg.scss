@@ -12,10 +12,10 @@
   grid-template-columns: repeat(5, max-content);
   grid-template-rows: repeat(2, max-content);
   gap: 0.5em;
-  max-height: 10em;
   @media screen and (max-width: 1280px) {
     grid-template-columns: repeat(3, max-content);
     grid-auto-rows: max-content;
+    max-height: 14em;
   }
   overflow-y: auto;
   &::-webkit-scrollbar {

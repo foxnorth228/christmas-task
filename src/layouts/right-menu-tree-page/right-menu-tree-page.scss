@@ -2,5 +2,29 @@
   justify-self: start;
   height: 100%;
   display: grid;
-  grid-template: min-content 1fr / 1fr;
+  grid-template: min-content min-content 1fr  / 1fr;
+  @media screen and (max-width: 767px) {
+    height: 100%;
+    padding: 2em;
+    background-color: #001631;
+    right: 0;
+    position: absolute;
+    transform: translateX(100%);
+    transition: transform 0.7s linear;
+  }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#menu__btn2 {
+  top: 15px;
+  left: calc(100vw - 45px);
+}
+
+#menu__toggle2:checked ~ .rightMenuTreePage {
+  transform: translateX(0);
 }

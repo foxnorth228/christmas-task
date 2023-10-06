@@ -5,6 +5,7 @@
   place-content: center;
   @media screen and (max-width: 1280px) {
     grid-template: 1fr 1fr / 1fr;
+    grid-row-gap: 0.5em;
   }
 }
 

@@ -8,7 +8,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, min-content);
-  @media screen and (max-width: 1280px) {
+  grid-column-gap: 1em;
+  @media screen and (max-width: 1390px) {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(3, min-content);
   }
@@ -16,13 +17,16 @@
 
 .selectorGarland__title {
   grid-area: 1 / 1 / span 1 / span 2;
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1390px) {
     grid-area: 1 / 1 / span 1 / span 1;
   }
 }
 
 .selectorGarland__elements {
+  margin-bottom: 1em;
+  justify-self: center;
   display: grid;
+  width: fit-content;
   grid-template-columns: repeat(5, max-content);
   grid-template-rows: repeat(1, 1fr);
   align-items: center;
@@ -68,7 +72,8 @@
 }
 
 .seletorGarland__modeSwitcher {
-  width: 100%;
+  justify-self: center;
+  width: fit-content;
   height: 100%;
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(3, min-content);

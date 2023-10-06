@@ -58,6 +58,13 @@ body::-webkit-scrollbar {
     min-width: 100%;
     min-height: 100%;
     height: fit-content;
+    overflow: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .textSwitch {

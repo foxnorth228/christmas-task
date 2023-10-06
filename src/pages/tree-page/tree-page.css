@@ -12,6 +12,14 @@
     @media screen and (max-width: 1032px) {
         grid-gap: 1em;
     }
+    @media screen and (max-width: 991px) {
+        padding: 0 1em 0 0;
+        grid-template: 1fr / minmax(min-content, 1fr) min-content;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 0;
+        grid-template: 1fr / 1fr
+    }
     grid-gap: 1.5em;
     justify-items: center;
 }

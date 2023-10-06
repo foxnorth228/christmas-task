@@ -1,3 +1,21 @@
+.leftMenuTreePage__menu {
+  @media screen and (max-width: 991px) {
+    height: 100%;
+    padding: 2em;
+    background-color: #001631;
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.7s linear;
+  }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .leftMenuTreePage {
   display: grid;
   grid-template-columns: 1fr;
@@ -15,10 +33,68 @@
   grid-template-columns: repeat(3, min-content);
   grid-template-rows: 1fr;
   @media screen and (max-width: 1280px) {
-    grid-template-columns: repeat(2, min-content);
+    width: 100%;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     & > *:first-child {
+      justify-self: start;
       grid-area: 1 / 1 / span 1 / span 2;
     }
   }
+}
+
+
+.menu__toggle {
+  display: none;
+}
+
+.menu__toggle:checked ~ .menu__btn > span {
+  background-color: white;
+  transform: rotate(45deg);
+}
+.menu__toggle:checked ~ .menu__btn > span::before {
+  background-color: white;
+  top: 0;
+  transform: rotate(0);
+}
+.menu__toggle:checked ~ .menu__btn > span::after {
+  background-color: white;
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .leftMenuTreePage__menu {
+  transform: translateX(0);
+}
+
+.menu__btn {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 1;
+  transform: translateX(0);
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  transition-duration: .25s;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
 }
