@@ -18,6 +18,7 @@ const SelectorDecoratedTree = () => {
             key={i}
             className="selectorDecTree__element"
             onClick={() => {
+              console.log(el);
               setTree({ type: 'UPDATE', payload: { value: el } });
               setToys({ type: 'UPDATE', payload: el.toys });
             }}
@@ -27,7 +28,8 @@ const SelectorDecoratedTree = () => {
               className="selectorDecTree__example"
             ></div>
             <div
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 console.log('i', i);
                 setTrees({ type: 'DELETE', payload: i });
               }}

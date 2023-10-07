@@ -37,7 +37,7 @@ export const TreesReducer = (trees: ITree[], { type, payload }: ITreesPayload) =
     case 'SAVE':
       if (payload !== null && typeof payload !== 'number') {
         localStorage.setItem(treesKeyWord, JSON.stringify([...trees, payload]));
-        return [...trees, payload];
+        return [...trees, JSON.parse(JSON.stringify(payload))];
       }
       return trees;
     case 'DELETE':
