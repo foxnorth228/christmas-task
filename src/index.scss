@@ -1,5 +1,9 @@
 @import "@assets/fonts/neucha/neucha.css";
 @import "@assets/fonts/steppe/stylesheet.css";
+html,
+body {
+    overscroll-behavior-y: contain;
+}
 :root {
     box-sizing: border-box;
 }
