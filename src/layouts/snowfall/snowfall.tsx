@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './snowfall.scss';
 import Snowflake from '@components/snowflake/snowflake';
 import useFilter from '@hooks/use-filter';

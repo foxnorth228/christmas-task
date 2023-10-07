@@ -13,8 +13,18 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
   ];
   const [height, setHeight] = useState(0);
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setHeight(entry.contentBoxSize[0].blockSize);
+      }
+    });
+    observer.observe(element);
+    return () => observer.unobserve(element);
+  }, []);
+  useEffect(() => {
     const height = ref.current?.getBoundingClientRect().height;
-    console.log(height);
     setHeight(height ?? 0);
   }, [ref]);
   const step = 100;
@@ -27,7 +37,7 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
         {iterator.map((_, i) => (
           <div
             style={{ width: step * (i + 1), height: step * (i + 1) }}
-            key={i}
+            key={height + i}
             className="garland__line"
           >
             {new Array(6 + 4 * i).fill(0).map((_, ind, arr) => (

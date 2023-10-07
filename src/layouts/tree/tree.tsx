@@ -47,12 +47,14 @@ const Tree = () => {
                 setTimeout(
                   () =>
                     setTree({
-                  type: 'CHANGE_TREE_TOY',
-                  payload: {
-                    section: 'delete',
-                    value: el,
-                  },
-                }), 0);
+                      type: 'CHANGE_TREE_TOY',
+                      payload: {
+                        section: 'delete',
+                        value: el,
+                      },
+                    }),
+                  0
+                );
               }}
             />
           ))}
