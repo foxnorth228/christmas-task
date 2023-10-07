@@ -6,9 +6,6 @@
   display: grid;
   grid-template: min-content min-content 1fr  / 1fr;
   @media screen and (max-width: 991px) {
-    padding: 2em 2em 0;
-  }
-  @media screen and (max-width: 767px) {
     height: 100%;
     padding: 2em 2em 0;
     background-color: #001631;

@@ -15,10 +15,6 @@
     @media screen and (max-width: 991px) {
         padding: 0;
         grid-gap: 0;
-        grid-template: 1fr / minmax(min-content, 1fr) min-content;
-    }
-    @media screen and (max-width: 767px) {
-        padding: 0;
         grid-template: 1fr / 1fr
     }
     grid-gap: 1.5em;

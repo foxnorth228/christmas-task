@@ -5,7 +5,7 @@ import SelectorDecoratedTree from '@components/selectors/selector-decorated-tree
 import SelectorGarland from '@components/selectors/selector-garland/selector-garland';
 
 const RightMenuTreePage = () => {
-  const query = 'screen and (max-width: 767px)';
+  const query = 'screen and (max-width: 991px)';
   const [matches, setMatches] = useState(window.matchMedia(query).matches);
 
   useEffect(() => {
