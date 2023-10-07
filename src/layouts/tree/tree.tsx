@@ -36,6 +36,24 @@ const Tree = () => {
                 setToys({ type: 'RETURNED', payload: el.type });
                 setActiveToy({ x: e.pageX, y: e.pageY, type: el.type });
               }}
+              onTouchStart={(e) => {
+                setTree({
+                  type: 'CHANGE_TREE_TOY',
+                  payload: {
+                    section: 'delete',
+                    value: el,
+                  },
+                });
+                setToys({ type: 'RETURNED', payload: el.type });
+                setActiveToy({
+                  x: e.touches[0].pageX,
+                  y: e.touches[0].pageY,
+                  type: el.type,
+                });
+              }}
+              onTouchCancel={(e) => {
+                console.log('cancel')
+              }}
             />
           ))}
         </div>

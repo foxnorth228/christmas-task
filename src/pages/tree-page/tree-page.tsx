@@ -18,7 +18,14 @@ function TreePage() {
     }
     refToy.current.style.left = activeToy.x - 25 + 'px';
     refToy.current.style.top = activeToy.y + 'px';
-  }, [activeToy.x, activeToy.y]);
+  }, [activeToy]);
+  const touchmove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (refToy.current === null) {
+      return;
+    }
+    refToy.current.style.left = e.targetTouches[0].pageX - 25 + 'px';
+    refToy.current.style.top = e.targetTouches[0].pageY + 'px';
+  };
   return (
     <>
       <div
@@ -30,6 +37,9 @@ function TreePage() {
           refToy.current.style.left = e.pageX - 25 + 'px';
           refToy.current.style.top = e.pageY + 'px';
         }}
+        onTouchStart={(e) => console.log('start')}
+        onTouchCancel={(e) => console.log('start')}
+        onTouchMove={touchmove}
         onMouseUp={(e) => {
           if (refToy.current === null) {
             return;
@@ -43,6 +53,37 @@ function TreePage() {
               a?.parentElement?.getBoundingClientRect().left -
               refToy?.current?.getBoundingClientRect()?.width / 2;
             const y = e.clientY - a?.parentElement?.getBoundingClientRect().top;
+            const type = activeToy.type;
+            const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
+            const { width, height } = toysArea?.getBoundingClientRect();
+            setToy({ type: 'USED', payload: activeToy.type });
+            setTree({
+              type: 'CHANGE_TREE_TOY',
+              payload: {
+                section: 'add',
+                value: {
+                  x: (x / width) * 100,
+                  y: (y / height) * 100,
+                  type,
+                },
+              },
+            });
+          }
+          setActiveToy({ ...activeToy, type: -1 });
+        }}
+        onTouchEnd={(e) => {
+          if (refToy.current === null) {
+            return;
+          }
+          refToy.current.style.pointerEvents = 'none';
+          const a = document.elementFromPoint(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+          const toy = toys.find((el) => el.num === activeToy.type);
+          if (a?.classList.contains('tree__toysArea_path') && toy && toy.countFreeToys !== 0) {
+            const x =
+              e.changedTouches[0].clientX -
+              a?.parentElement?.getBoundingClientRect().left -
+              refToy?.current?.getBoundingClientRect()?.width / 2;
+            const y = e.changedTouches[0].clientY - a?.parentElement?.getBoundingClientRect().top;
             const type = activeToy.type;
             const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
             const { width, height } = toysArea?.getBoundingClientRect();

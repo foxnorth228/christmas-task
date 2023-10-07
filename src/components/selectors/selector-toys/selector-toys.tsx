@@ -31,6 +31,12 @@ const SelectorToys = () => {
             }}
             key={el.num}
             className="selectorToys__element"
+            onTouchStart={(e) => {
+              if (el.countFreeToys === 0) {
+                return;
+              }
+              setActiveToy({ x: e.touches[0].pageX, y: e.touches[0].pageY, type: el.num });
+            }}
           >
             <div
               style={{ backgroundImage: `url('./toys/${el.num}.png')` }}
