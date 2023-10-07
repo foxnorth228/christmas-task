@@ -4,7 +4,9 @@
 }
 
 .selectorToys__title {
-
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
 .selectorToys__elements {
@@ -20,6 +22,14 @@
   @media screen and (max-width: 1032px) {
     grid-template-columns: repeat(3, max-content);
     max-height: 22em;
+  }
+  @media screen and (max-width: 991px) {
+    grid-template-columns: repeat(2, max-content);
+    max-height: 17em;
+  }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, max-content);
+    max-height: 35vh;
   }
   overflow-y: auto;
   &::-webkit-scrollbar {

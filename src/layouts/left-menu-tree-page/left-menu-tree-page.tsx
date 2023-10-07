@@ -5,6 +5,8 @@ import SelectorTree from '@components/selectors/selector-tree/selector-tree';
 import SelectorBg from '@components/selectors/selector-bg/selector-bg';
 import LinkToyPage from '@components/link-toy-page/link-toy-page';
 import TreeResetBlock from '@components/tree-reset-block';
+import SelectorGarland from "@components/selectors/selector-garland/selector-garland";
+import SelectorDecoratedTree from "@components/selectors/selector-decorated-tree/selector-decorated-tree";
 
 const LeftMenuTreePage = () => {
   const query = 'screen and (max-width: 991px)';
@@ -39,6 +41,12 @@ const LeftMenuTreePage = () => {
           </div>
           <SelectorTree />
           <SelectorBg />
+          {matches && (
+            <>
+              <SelectorGarland />
+              <SelectorDecoratedTree />
+            </>
+          )}
           <TreeResetBlock />
         </div>
       </div>
