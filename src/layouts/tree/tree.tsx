@@ -37,22 +37,22 @@ const Tree = () => {
                 setActiveToy({ x: e.pageX, y: e.pageY, type: el.type });
               }}
               onTouchStart={(e) => {
-                setTree({
-                  type: 'CHANGE_TREE_TOY',
-                  payload: {
-                    section: 'delete',
-                    value: el,
-                  },
-                });
+                e.currentTarget!.style!.visibility = 'hidden';
                 setToys({ type: 'RETURNED', payload: el.type });
                 setActiveToy({
                   x: e.touches[0].pageX,
                   y: e.touches[0].pageY,
                   type: el.type,
                 });
-              }}
-              onTouchCancel={(e) => {
-                console.log('cancel')
+                setTimeout(
+                  () =>
+                    setTree({
+                  type: 'CHANGE_TREE_TOY',
+                  payload: {
+                    section: 'delete',
+                    value: el,
+                  },
+                }), 0);
               }}
             />
           ))}
