@@ -44,14 +44,16 @@ function TreePage() {
               refToy?.current?.getBoundingClientRect()?.width / 2;
             const y = e.clientY - a?.parentElement?.getBoundingClientRect().top;
             const type = activeToy.type;
+            const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
+            const { width, height } = toysArea?.getBoundingClientRect();
             setToy({ type: 'USED', payload: activeToy.type });
             setTree({
               type: 'CHANGE_TREE_TOY',
               payload: {
                 section: 'add',
                 value: {
-                  x,
-                  y,
+                  x: (x / width) * 100,
+                  y: (y / height) * 100,
                   type,
                 },
               },

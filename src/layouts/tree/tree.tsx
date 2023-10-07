@@ -20,7 +20,11 @@ const Tree = () => {
             <div
               key={`${el.type}${el.x}${el.y}`}
               className="tree__toy"
-              style={{ left: el.x, top: el.y, backgroundImage: `url('./toys/${el.type}.png')` }}
+              style={{
+                left: el.x + '%',
+                top: el.y + '%',
+                backgroundImage: `url('./toys/${el.type}.png')`,
+              }}
               onMouseDown={(e) => {
                 setTree({
                   type: 'CHANGE_TREE_TOY',
