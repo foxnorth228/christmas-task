@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, min-content);
-  grid-column-gap: 1em;
+  grid-column-gap: 0.6em;
   @media screen and (max-width: 1390px) {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(3, min-content);
@@ -30,10 +30,11 @@
   grid-template-columns: repeat(5, max-content);
   grid-template-rows: repeat(1, 1fr);
   align-items: center;
+  padding: 0 0.4em;
   @media screen and (max-width: 1280px){
     gap: 0.6em;
   }
-  gap: 1em;
+  gap: 0.7em;
 }
 
 .selectorGarland__element {

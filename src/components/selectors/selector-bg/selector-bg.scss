@@ -15,7 +15,7 @@
   @media screen and (max-width: 1280px) {
     grid-template-columns: repeat(3, max-content);
     grid-auto-rows: max-content;
-    max-height: 14em;
+    max-height: 15em;
   }
   overflow-y: auto;
   &::-webkit-scrollbar {

@@ -49,16 +49,16 @@
   display: none;
 }
 
-.menu__toggle:checked ~ .menu__btn > span {
+.menu__toggle:checked + .menu__btn > span {
   background-color: white;
   transform: rotate(45deg);
 }
-.menu__toggle:checked ~ .menu__btn > span::before {
+.menu__toggle:checked + .menu__btn > span::before {
   background-color: white;
   top: 0;
   transform: rotate(0);
 }
-.menu__toggle:checked ~ .menu__btn > span::after {
+.menu__toggle:checked + .menu__btn > span::after {
   background-color: white;
   top: 0;
   transform: rotate(90deg);

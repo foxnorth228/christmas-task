@@ -45,6 +45,12 @@
   @media screen and (max-width: 1390px) {
     --scale: 0.14;
   }
+  @media screen and (max-width: 1280px) {
+    --scale: 0.125;
+  }
+  @media screen and (max-width: 991px) {
+    --scale: 0.11;
+  }
   width: calc(500px * var(--scale));
   height: calc(714px * var(--scale));
   background-size: cover;

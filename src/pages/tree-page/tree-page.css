@@ -13,7 +13,8 @@
         grid-gap: 1em;
     }
     @media screen and (max-width: 991px) {
-        padding: 0 1em 0 0;
+        padding: 0;
+        grid-gap: 0;
         grid-template: 1fr / minmax(min-content, 1fr) min-content;
     }
     @media screen and (max-width: 767px) {
