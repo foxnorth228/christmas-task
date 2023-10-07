@@ -19,6 +19,8 @@
     }
     grid-gap: 1.5em;
     justify-items: center;
+    touch-action: none;
+    -ms-touch-action: none;
 }
 
 .activeToy__toy {
