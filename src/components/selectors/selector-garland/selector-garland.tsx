@@ -5,6 +5,7 @@ import useTree from '@hooks/use-tree';
 const SelectorGarland = () => {
   const [tree, treeReducer] = useTree();
   const garlands = ['multicolor', 'red', 'blue', 'yellow', 'green'];
+  console.log(tree.garlandMode);
   return (
     <div className="selectorGarland">
       <h2 className="treePage__title selectorGarland__title">Гирлянда</h2>
@@ -40,6 +41,7 @@ const SelectorGarland = () => {
           <div key={i}>
             <input
               id={`garland-mode-${i}`}
+              name={`garland-mode-${i}`}
               value={i}
               checked={i === tree.garlandMode}
               onChange={(e) => {
@@ -49,7 +51,6 @@ const SelectorGarland = () => {
                 });
               }}
               type="radio"
-              name="garland-mode"
             />
             <label className="selectorGarland__modeSwitcher_element" htmlFor={`garland-mode-${i}`}>
               {i !== 0 && i}

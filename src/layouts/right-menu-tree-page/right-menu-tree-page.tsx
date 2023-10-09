@@ -30,8 +30,12 @@ const RightMenuTreePage = () => {
       )}
       <div className="rightMenuTreePage">
         <SelectorToys />
-        <SelectorGarland />
-        <SelectorDecoratedTree />
+        {!matches && (
+          <>
+            <SelectorGarland />
+            <SelectorDecoratedTree />
+          </>
+        )}
       </div>
     </>
   );
