@@ -59,9 +59,12 @@
 }
 
 .tree__toy {
+  box-sizing: content-box;
+  border: 0.5em solid rgba(0, 0, 0, 0);
   width: 2.5em;
   height: 2.5em;
   background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
   pointer-events: auto;
 }

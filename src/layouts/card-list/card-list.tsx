@@ -1,6 +1,6 @@
 import React from 'react';
 import { toy } from '@interfaces/toy';
-import './card-list.css';
+import './card-list.scss';
 import { IFilter } from '@contexts/filter-context';
 import Card from '@components/card/сard';
 import useFilter from '@hooks/use-filter';

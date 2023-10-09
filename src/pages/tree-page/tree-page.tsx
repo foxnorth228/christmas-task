@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './tree-page.css';
+import './tree-page.scss';
 import LeftMenuTreePage from '@layouts/left-menu-tree-page/left-menu-tree-page';
 import Tree from '@layouts/tree/tree';
 import RightMenuTreePage from '@layouts/right-menu-tree-page/right-menu-tree-page';
