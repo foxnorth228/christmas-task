@@ -10,22 +10,24 @@
 }
 
 .garland__line {
+  --color: 0;
   position: absolute;
   display: flex;
   justify-content: center;
+  & > * {
+    --light: rgba(var(--color), 1);
+    --light-shadow: rgba(var(--color), 1);
+    --light-dark: rgba(var(--color), 0.2);
+    --light-shadow-dark: rgba(var(--color), 0.1);
+    animation: 2s ease-in-out infinite both;
+  }
 }
 
 .garland__light {
-  --color: 0;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   transform-origin: left top;
-  animation: 2s ease-in-out infinite both;
-  --light: rgba(var(--color), 1);
-  --light-shadow: rgba(var(--color), 1);
-  --light-dark: rgba(var(--color), 0.2);
-  --light-shadow-dark: rgba(var(--color), 0.1);
 }
 
 .garland_multi {
