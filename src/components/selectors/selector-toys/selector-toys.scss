@@ -24,12 +24,10 @@
     max-height: 22em;
   }
   @media screen and (max-width: 991px) {
-    padding-left: 1.5em;
     grid-template-columns: repeat(2, max-content);
     max-height: 17em;
   }
   @media screen and (max-width: 600px) {
-    padding-left: 1.5em;
     grid-template-columns: repeat(1, max-content);
     max-height: 35vh;
   }

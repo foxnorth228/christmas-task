@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100%;
   height: fit-content;
-  max-height: 10em;
+  max-height: 20em;
   overflow-y: hidden;
   display: grid;
   grid-template: min-content 1fr / 1fr;
@@ -10,11 +10,15 @@
 
 .selectorDecTree__elements {
   display: grid;
+  justify-content: center;
   grid-gap: 1em;
   width: 100%;
   height: fit-content;
   max-height: 100%;
-  grid-template-columns: repeat(auto-fit, 5.8em);
+  grid-template-columns: repeat(auto-fill, 5.6em);
+  @media screen and (max-width: 991px) {
+    grid-template-columns: repeat(2, 5.6em);
+  }
   grid-auto-rows: min-content;
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -23,11 +27,14 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   overflow-x: hidden;
+  @media screen and (max-width: 1280px) {
+    font-size: 0.9rem;
+  }
 }
 
 .selectorDecTree__element {
-  min-width: 5.8em;
-  height: 5.8em;
+  min-width: 5.6em;
+  height: 5.6em;
   border-radius: 0.5em;
   background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
   display: flex;
@@ -46,6 +53,9 @@
   }
   @media screen and (max-width: 991px) {
     --scale: 0.11;
+  }
+  @media screen and (max-width: 600px) {
+    --scale: 0.0975;
   }
   width: calc(500px * var(--scale));
   height: calc(714px * var(--scale));

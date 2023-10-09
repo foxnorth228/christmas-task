@@ -1,4 +1,16 @@
 .leftMenuTreePage__menu {
+  width: 100%;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-left: 1em;
+  padding-right: 1.5em;
+  @media screen and (max-width: 1032px) {
+    padding-right: 1em;
+  }
   @media screen and (max-width: 991px) {
     height: 100%;
     padding: 2em;
@@ -8,13 +20,8 @@
     transform: translateX(-100%);
     transition: transform 0.7s linear;
     z-index: 5;
+    width: auto;
   }
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .leftMenuTreePage {
@@ -22,6 +29,7 @@
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   margin-top: 2rem;
+  justify-items: center;
   @media screen and (max-width: 1280px) {
     margin-top: 1rem;
   }
