@@ -3,6 +3,20 @@ import './style.scss';
 import useTree from '@hooks/use-tree';
 
 const useGarland = (ref: React.RefObject<HTMLElement>) => {
+  const query = 'screen and (max-width: 991px)';
+  const [matches, setMatches] = useState(window.matchMedia(query).matches);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (matches !== media.matches) {
+      setMatches(media.matches);
+    }
+
+    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [matches, query]);
+
   const [tree] = useTree();
   const colors = [
     'garland_multi',
@@ -27,7 +41,7 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
     const height = ref.current?.getBoundingClientRect().height;
     setHeight(height ?? 0);
   }, [ref]);
-  const step = 120;
+  const step = matches ? 160 : 100;
   const iterator = new Array(Math.floor(height / step)).fill(0);
   const leftBorder = -25;
   const rightBorder = 25;
