@@ -27,7 +27,7 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
     const height = ref.current?.getBoundingClientRect().height;
     setHeight(height ?? 0);
   }, [ref]);
-  const step = 100;
+  const step = 120;
   const iterator = new Array(Math.floor(height / step)).fill(0);
   const leftBorder = -25;
   const rightBorder = 25;
