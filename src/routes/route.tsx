@@ -4,6 +4,7 @@ import StartPage from '@pages/start-page/start-page';
 import ToyPage from '@pages/toy-page/toy-page';
 import TreePage from '@pages/tree-page/tree-page';
 import React from 'react';
+import { Redirect } from 'react-router';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
           <Route path="tree" element={<TreePage />}></Route>
         </Route>
       </Route>
+      <Redirect from="*" to="/"></Redirect>
     </>
   )
 );
