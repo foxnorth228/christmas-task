@@ -20,7 +20,6 @@ function TreePage() {
     refToy.current.style.top = activeToy.y + 'px';
   }, [activeToy]);
   const touchmove = (e: React.TouchEvent<HTMLDivElement>) => {
-    e.stopPropagation();
     if (refToy.current === null) {
       return;
     }
