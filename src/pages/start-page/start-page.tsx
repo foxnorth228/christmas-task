@@ -1,11 +1,13 @@
 import React from 'react';
 import './start-page.scss';
 import { useNavigate } from 'react-router';
+import Firework from '@layouts/Firework';
 
 function StartPage() {
   const navigate = useNavigate();
   return (
     <section className="page startPage">
+      <Firework />
       <div className="startPage__contentBlock">
         <div className="startPage__imageBlock startPage__imageBlock_first">
           <img src="./ball/1.png" className="startPage__toy startPage__toy_first"></img>
