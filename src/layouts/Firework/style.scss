@@ -71,13 +71,14 @@
   &::after {
     --initialSize: 0.5vmin;
     --finalSize: 45vmin;
-    @media (max-width: 600px) {
-      --finalSize: 70vmin;
-    }
     --particleSize: 0.2vmin;
     --initialY: 100vh;
     --y: -30vmin;
     --x: -50%;
+    @media (max-width: 600px) {
+      --finalSize: 70vmin;
+      --particleSize: 100vmin;
+    }
     @include missile1;
     content: "";
     animation: firework__missile 2.4s infinite;
