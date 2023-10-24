@@ -13,8 +13,8 @@
   --color6: mediumseagreen;
   top: 35%;
   left: 50%;
-  @media (max-width: 480px) {
-    top: 25%;
+  @media (max-width: 767px) {
+    top: 20%;
   }
 }
 
@@ -26,10 +26,13 @@
   --color5: plum;
   --color6: lavender;
   --finalSize: 40vmin;
+  @media (max-width: 600px) {
+    --finalSize: 65vmin;
+  }
   left: 30%;
   top: 35%;
-  @media (max-width: 480px) {
-    top: 25%;
+  @media (max-width: 767px) {
+    top: 20%;
   }
   animation-delay: -0.25s;
 }
@@ -42,10 +45,13 @@
   --color5: SkyBlue;
   --color6: lavender;
   --finalSize: 35vmin;
+  @media (max-width: 600px) {
+    --finalSize: 60vmin;
+  }
   left: 80%;
   top: 50%;
-  @media (max-width: 480px) {
-    top: 35%;
+  @media (max-width: 767px) {
+    top: 30%;
   }
   animation-delay: -0.4s;
 }
@@ -65,6 +71,9 @@
   &::after {
     --initialSize: 0.5vmin;
     --finalSize: 45vmin;
+    @media (max-width: 600px) {
+      --finalSize: 70vmin;
+    }
     --particleSize: 0.2vmin;
     --initialY: 100vh;
     --y: -30vmin;
