@@ -66,12 +66,12 @@
     --initialSize: 0.5vmin;
     --finalSize: 45vmin;
     --particleSize: 0.2vmin;
-    --initialY: 60vh;
+    --initialY: 100vh;
     --y: -30vmin;
     --x: -50%;
     @include missile1;
     content: "";
-    animation: firework__missile 2s infinite;
+    animation: firework__missile 2.4s infinite;
     position: absolute;
     transform: translate(-50%, var(--y));
     width: var(--initialSize);
