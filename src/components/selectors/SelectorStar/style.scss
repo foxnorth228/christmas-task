@@ -12,17 +12,7 @@
     grid-template-columns: repeat(3, max-content);
     grid-auto-rows: max-content;
     font-size: 0.9rem;
-    max-height: 15em;
   }
-  @media screen and (max-width: 991px) {
-    max-height: 18em;
-  }
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .selectorStar__element {
