@@ -12,6 +12,7 @@
     padding-left: 1em;
   }
   @media screen and (max-width: 991px) {
+    min-width: 10em;
     width: fit-content;
     min-height: 1px;
     height: fit-content;
@@ -28,7 +29,8 @@
     }
   }
   @media screen and (max-width: 600px) {
-    padding: 1.5em;
+    min-width: 0;
+    padding: calc(1.5em + 30px) 1.5em 1.5em;
   }
   overflow-y: auto;
   &::-webkit-scrollbar {
