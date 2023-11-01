@@ -11,6 +11,7 @@ export interface ITree {
   bg: number;
   garland: number;
   garlandMode: number;
+  star: number;
   toys: Array<{
     x: number;
     y: number;
@@ -33,7 +34,7 @@ export interface ITreeReducerValue {
   };
 }
 
-export type ITreeSections = 'tree' | 'bg' | 'garland' | 'garlandMode' | 'add' | 'delete';
+export type ITreeSections = 'tree' | 'bg' | 'garland' | 'garlandMode' | 'star' | 'add' | 'delete';
 export type ITreeReducer = ({ type, payload }: ITreeReducerValue) => void;
 
 export interface ITreeContext {
@@ -47,6 +48,7 @@ const TreeContext = React.createContext<ITreeContext>({
     bg: 1,
     garland: -1,
     garlandMode: 0,
+    star: 1,
     toys: [],
   },
   treeReducer() {
@@ -104,6 +106,7 @@ export function TreeCreation() {
     bg: 1,
     garland: 1,
     garlandMode: 0,
+    star: 1,
     toys: [],
   };
 }

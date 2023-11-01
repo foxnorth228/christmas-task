@@ -64,6 +64,8 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
         toys[i].countFreeToys = toys[i].count;
       }
       for (let i = 0; i < value.payload.length; ++i) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         toyIndex = toys.findIndex((el) => el.num === value.payload[i].type);
         toys[toyIndex].countFreeToys -= 1;
       }

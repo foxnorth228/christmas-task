@@ -15,6 +15,10 @@ const Tree = () => {
   return (
     <div style={{ backgroundImage: `url('./bg/${tree.bg}.jpg')` }} className="tree__bg">
       <div className="tree_interaction">
+        <div
+          className="tree__star"
+          style={{ backgroundImage: `url("./stars/${tree.star}.png")` }}
+        ></div>
         <div className="tree__toys">
           {tree.toys.map((el) => (
             <div

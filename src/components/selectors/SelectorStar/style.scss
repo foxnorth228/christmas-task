@@ -1,0 +1,52 @@
+.selectorStar {
+  width: fit-content;
+  height: fit-content;
+}
+
+.selectorStar__elements {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  grid-template-rows: repeat(3, max-content);
+  gap: 0.6em;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(3, max-content);
+    grid-auto-rows: max-content;
+    font-size: 0.9rem;
+    max-height: 15em;
+  }
+  @media screen and (max-width: 991px) {
+    max-height: 18em;
+  }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.selectorStar__element {
+  width: 4em;
+  height: 4em;
+  @media screen and (max-width: 1280px) {
+    width: 3.6em;
+    height: 3.6em;
+  }
+  border-radius: 0.6em;
+  background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.selectorStar__example {
+  width: 100%;
+  height: 100%;
+  background-size: 90% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}

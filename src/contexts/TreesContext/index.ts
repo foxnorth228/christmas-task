@@ -22,6 +22,7 @@ const TreesContext = createContext<ITreesContext>({
       bg: 1,
       garland: -1,
       garlandMode: 0,
+      star: 1,
       toys: [],
     },
   ],
