@@ -54,10 +54,9 @@
 .selectorPresents__example {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
-  --scale: 0.15;
   width: 80%;
   height: 80%;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }

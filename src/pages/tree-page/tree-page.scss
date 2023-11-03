@@ -30,6 +30,19 @@
     z-index: 7;
 }
 
+.activePresent {
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    max-width: 7em;
+    max-height: 15em;
+    position: fixed;
+    bottom: 0;
+    pointer-events: none;
+    touch-action: none;
+    z-index: 7;
+}
+
 .treePage__title {
     font-size: 1.2em;
     margin-top: 0.7em;
