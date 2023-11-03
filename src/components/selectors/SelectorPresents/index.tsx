@@ -6,7 +6,7 @@ const SelectorPresents = () => {
   const [, setActivePresent] = useActivePresent();
   return (
     <div className="selectorPresents">
-      <h2 className="treePage__title">Подарки</h2>
+      <h2 className="treePage__title selectorPresents__title">Подарки</h2>
       <div className="selectorPresents__elements">
         {new Array(20).fill(0).map((_, i) => (
           <div

@@ -10,43 +10,59 @@ import useActivePresent from '@hooks/useActivePresent';
 import useActiveCandle from '@hooks/useActiveCandle';
 
 function TreePage() {
-  const refToy = useRef<HTMLDivElement>(null);
+  const refActiveElement = useRef<HTMLDivElement>(null);
   const [toys, setToy] = useToys();
   const [, setTree] = useTree();
   const [activeToy, setActiveToy] = useActiveToy();
   const [activePresent, setActivePresent] = useActivePresent();
   const [activeCandle, setActiveCandle] = useActiveCandle();
+  console.log(activePresent)
   useEffect(() => {
-    if (refToy.current === null) {
+    if (refActiveElement.current === null) {
       return;
     }
-    refToy.current.style.left = activeToy.x + 'px';
-    refToy.current.style.top = activeToy.y + 'px';
-  }, [activeToy]);
+    let activeElement: { type: number; x: number; y: number } = { type: -1, x: 0, y: 0 };
+    switch (true) {
+      case activeToy.type !== -1:
+        activeElement = activeToy;
+        refActiveElement.current.classList.add('activeToy__toy');
+        break;
+      case activePresent.type !== -1:
+        activeElement = activePresent;
+        refActiveElement.current.classList.add('activeToy__toy');
+        break;
+      case activeCandle.type !== -1:
+        activeElement = activeCandle;
+        refActiveElement.current.classList.add('activeToy__toy');
+        break;
+    }
+    refActiveElement.current.style.left = activeElement.x + 'px';
+    refActiveElement.current.style.top = activeElement.y + 'px';
+  }, [activeCandle, activePresent, activeToy]);
   const touchmove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (refToy.current === null) {
+    if (refActiveElement.current === null) {
       return;
     }
-    refToy.current.style.left = e.targetTouches[0].pageX + 'px';
-    refToy.current.style.top = e.targetTouches[0].pageY + 'px';
+    refActiveElement.current.style.left = e.targetTouches[0].pageX + 'px';
+    refActiveElement.current.style.top = e.targetTouches[0].pageY + 'px';
   };
   return (
     <>
       <div
         className="page treePage"
         onMouseMove={(e) => {
-          if (refToy.current === null) {
+          if (refActiveElement.current === null) {
             return;
           }
-          refToy.current.style.left = e.pageX + 'px';
-          refToy.current.style.top = e.pageY + 'px';
+          refActiveElement.current.style.left = e.pageX + 'px';
+          refActiveElement.current.style.top = e.pageY + 'px';
         }}
         onTouchMove={touchmove}
         onMouseUp={(e) => {
-          if (refToy.current === null) {
+          if (refActiveElement.current === null) {
             return;
           }
-          refToy.current.style.pointerEvents = 'none';
+          refActiveElement.current.style.pointerEvents = 'none';
           const a = document.elementFromPoint(e.pageX, e.pageY);
           const toy = toys.find((el) => el.num === activeToy.type);
           if (a?.classList.contains('tree__toysArea_path') && toy && toy.countFreeToys !== 0) {
@@ -58,7 +74,7 @@ function TreePage() {
             const type = activeToy.type;
             const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
             const { width, height } = toysArea?.getBoundingClientRect();
-            console.log(x, y, width, height, refToy.current.getBoundingClientRect())
+            console.log(x, y, width, height, refActiveElement.current.getBoundingClientRect())
             setToy({ type: 'USED', payload: activeToy.type });
             setTree({
               type: 'CHANGE_TREE_TOY',
@@ -75,10 +91,10 @@ function TreePage() {
           setActiveToy({ ...activeToy, type: -1 });
         }}
         onTouchEnd={(e) => {
-          if (refToy.current === null) {
+          if (refActiveElement.current === null) {
             return;
           }
-          refToy.current.style.pointerEvents = 'none';
+          refActiveElement.current.style.pointerEvents = 'none';
           const a = document.elementFromPoint(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
           const toy = toys.find((el) => el.num === activeToy.type);
           if (a?.classList.contains('tree__toysArea_path') && toy && toy.countFreeToys !== 0) {
@@ -115,14 +131,11 @@ function TreePage() {
         <LeftMenuTreePage />
         <Tree />
         <RightMenuTreePage />
-        {activeToy.type !== -1 ? (
+        {activeToy.type !== -1 && (
           <div
-            ref={refToy}
-            className="activeToy__toy"
+            ref={refActiveElement}
             style={{ backgroundImage: `url('./toys/${activeToy.type}.png')` }}
           />
-        ) : (
-          false
         )}
       </div>
     </>
