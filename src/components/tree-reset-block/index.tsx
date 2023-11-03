@@ -8,7 +8,6 @@ const TreeResetBlock = () => {
   const [, setToys] = useToys();
   const [tree, setTree] = useTree();
   const [trees, setTrees] = useTrees();
-  console.log('tr', trees);
   return (
     <div className="treeResetBlock">
       <button

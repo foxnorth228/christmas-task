@@ -8,7 +8,6 @@ const SelectorDecoratedTree = () => {
   const [, setToys] = useToys();
   const [, setTree] = useTree();
   const [trees, setTrees] = useTrees();
-  console.log(trees);
   return (
     <div className="selectorDecTree">
       <h2 className="treePage__title selectorDecTree__title">Вы нарядили</h2>
@@ -18,7 +17,6 @@ const SelectorDecoratedTree = () => {
             key={i}
             className="selectorDecTree__element"
             onClick={() => {
-              console.log(el);
               setTree({ type: 'UPDATE', payload: { value: el } });
               setToys({ type: 'UPDATE', payload: el.toys });
             }}
@@ -30,7 +28,6 @@ const SelectorDecoratedTree = () => {
             <div
               onClick={(e) => {
                 e.stopPropagation();
-                console.log('i', i);
                 setTrees({ type: 'DELETE', payload: i });
               }}
               className="selectorDecTree__cross"

@@ -12,7 +12,6 @@ function Searcher() {
         placeholder="Поиск..."
         className="searcher__input"
         onChange={(e) => {
-          console.log(filter.searchSample, e.target.value);
           setFilter({
             type: 'CHANGE_VALUE',
             payload: { section: 'searchSample', value: e.target.value },

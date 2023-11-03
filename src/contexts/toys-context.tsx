@@ -34,7 +34,6 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
       return toys;
     case 'USED':
       toyIndex = toys.findIndex((el) => el.num === value.payload);
-      console.log(toyIndex);
       if (typeof toyIndex === 'undefined' || toys[toyIndex].countFreeToys === 0) {
         break;
       }
@@ -42,7 +41,6 @@ export const ToysReducer = (toys: toy[], value: IToysReducerValue) => {
       return toys;
     case 'RETURNED':
       toyIndex = toys.findIndex((el) => el.num === value.payload);
-      console.log(toyIndex);
       if (
         typeof toyIndex === 'undefined' ||
         toys[toyIndex].countFreeToys === toys[toyIndex].count

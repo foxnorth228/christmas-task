@@ -5,7 +5,6 @@ import useTree from '@hooks/use-tree';
 const SelectorGarland = () => {
   const [tree, treeReducer] = useTree();
   const garlands = ['multicolor', 'red', 'blue', 'yellow', 'green'];
-  console.log(tree.garlandMode);
   return (
     <div className="selectorGarland">
       <h2 className="treePage__title selectorGarland__title">Гирлянда</h2>

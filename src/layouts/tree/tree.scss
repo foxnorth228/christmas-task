@@ -73,9 +73,11 @@
 
 .tree__toy {
   box-sizing: content-box;
-  border: 0.5em solid rgba(0, 0, 0, 0);
-  width: 2.5em;
-  height: 2.5em;
+  $border: 10px;
+  border: $border solid rgba(0, 0, 0, 0);
+  transform: translate(calc(-#{$border} - 1.5rem), -$border);
+  width: 3rem;
+  height: 3rem;
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
