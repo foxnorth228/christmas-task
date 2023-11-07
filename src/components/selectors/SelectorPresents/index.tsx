@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.scss';
 import useActivePresent from '@hooks/useActivePresent';
+import usePresents from '@hooks/usePresents';
 
 const SelectorPresents = () => {
+  const [presents] = usePresents();
   const [, setActivePresent] = useActivePresent();
   return (
     <div className="selectorPresents">
@@ -11,10 +13,11 @@ const SelectorPresents = () => {
         {new Array(20).fill(0).map((_, i) => (
           <div
             key={i}
+            style={{ filter: presents.find((el) => el.type === i) ? 'grayscale(80%)' : '' }}
             className="selectorPresents__element"
-            onMouseDown={(e) => setActivePresent({ type: i + 1, x: e.pageX, y: e.pageY })}
+            onMouseDown={(e) => setActivePresent({ type: i, x: e.pageX, y: e.pageY })}
             onTouchStart={(e) =>
-              setActivePresent({ type: i + 1, x: e.touches[0].pageX, y: e.touches[0].pageY })
+              setActivePresent({ type: i, x: e.touches[0].pageX, y: e.touches[0].pageY })
             }
           >
             <div

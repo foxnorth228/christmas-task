@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import './tree-page.scss';
 import LeftMenuTreePage from '@layouts/left-menu-tree-page/left-menu-tree-page';
 import Tree from '@layouts/tree/tree';

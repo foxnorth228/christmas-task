@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import useActiveToy from '@hooks/use-active-toy';
-import useToys from "@hooks/use-toys";
-import useTree from "@hooks/use-tree";
+import useToys from '@hooks/use-toys';
+import useTree from '@hooks/use-tree';
 
 interface IActiveToy {
   refActiveElement: React.RefObject<HTMLDivElement>;
