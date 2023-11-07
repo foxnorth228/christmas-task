@@ -4,6 +4,9 @@
 }
 
 .selectorToys__title {
+  @media screen and (max-width: 991px) {
+    padding-left: 1.5em;
+  }
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -22,6 +25,7 @@
   @media screen and (max-width: 991px) {
     grid-template-columns: repeat(2, max-content);
     max-height: 17em;
+    padding: 0 1.5em;
   }
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, max-content);
