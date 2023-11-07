@@ -17,6 +17,7 @@ export interface ITree {
     y: number;
     type: number;
   }>;
+  presents: Array<ITreeToy>;
 }
 
 export interface ITreeReducerValue {
@@ -50,6 +51,7 @@ const TreeContext = React.createContext<ITreeContext>({
     garlandMode: 0,
     star: 1,
     toys: [],
+    presents: [],
   },
   treeReducer() {
     return;
@@ -85,6 +87,25 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
         default:
           return tree;
       }
+    case 'CHANGE_TREE_PRESENT':
+      if (typeof value.payload.value !== 'object' || 'tree' in value.payload.value) {
+        return tree;
+      }
+      switch (value.payload.section) {
+        case 'add':
+          return {
+            ...tree,
+            presents: [...tree.presents, value.payload.value],
+          };
+        case 'delete':
+          if (tree.presents.indexOf(value.payload.value) === -1) {
+            return tree;
+          }
+          tree.presents.splice(tree.presents.indexOf(value.payload.value), 1);
+          return tree;
+        default:
+          return tree;
+      }
     case 'RESET':
       return TreeCreation();
     case 'UPDATE':
@@ -108,5 +129,6 @@ export function TreeCreation() {
     garlandMode: 0,
     star: 1,
     toys: [],
+    presents: [],
   };
 }

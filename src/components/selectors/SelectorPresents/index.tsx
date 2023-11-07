@@ -13,12 +13,20 @@ const SelectorPresents = () => {
         {new Array(20).fill(0).map((_, i) => (
           <div
             key={i}
-            style={{ filter: presents.find((el) => el.type === i) ? 'grayscale(80%)' : '' }}
+            style={{ filter: presents.includes(i) ? 'grayscale(80%)' : '' }}
             className="selectorPresents__element"
-            onMouseDown={(e) => setActivePresent({ type: i, x: e.pageX, y: e.pageY })}
-            onTouchStart={(e) =>
-              setActivePresent({ type: i, x: e.touches[0].pageX, y: e.touches[0].pageY })
-            }
+            onMouseDown={(e) => {
+              if (presents.includes(i) || presents.length >= 5) {
+                return;
+              }
+              setActivePresent({ type: i, x: e.pageX, y: e.pageY });
+            }}
+            onTouchStart={(e) => {
+              if (presents.includes(i) || presents.length >= 5) {
+                return;
+              }
+              setActivePresent({ type: i, x: e.touches[0].pageX, y: e.touches[0].pageY });
+            }}
           >
             <div
               style={{ backgroundImage: `url('./presents/${i + 1}.png')` }}

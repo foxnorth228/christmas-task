@@ -4,13 +4,17 @@ import useTree from '@hooks/use-tree';
 import useToys from '@hooks/use-toys';
 import useActiveToy from '@hooks/use-active-toy';
 import useGarland from '@hooks/useGarland';
+import useActivePresent from "@hooks/useActivePresent";
 
 const Tree = () => {
   const garland = useRef<HTMLDivElement>(null);
   const elemGarland = useGarland(garland);
   const [, setActiveToy] = useActiveToy();
+  const [, setActivePresent] = useActivePresent();
   const [, setToys] = useToys();
   const [tree, setTree] = useTree();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return (
     <div style={{ backgroundImage: `url('./bg/${tree.bg}.jpg')` }} className="tree__bg">
       <div className="tree_interaction">
@@ -58,6 +62,24 @@ const Tree = () => {
                     }),
                   0
                 );
+              }}
+            />
+          ))}
+          {tree.presents.map((el, i) => (
+            <img
+              key={i}
+              style={{ left: el.x + '%', top: el.y + '%' }}
+              className="tree__present"
+              alt="activepresent"
+              draggable={false}
+              src={`./presents/${el.type + 1}.png`}
+              onMouseDown={(e) => {
+                setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'delete', value: el } });
+                setActivePresent({ type: el.type, x: e.pageX, y: e.pageY });
+              }}
+              onTouchStart={(e) => {
+                setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'delete', value: el } });
+                setActivePresent({ type: el.type, x: e.touches[0].pageX, y: e.touches[0].pageY });
               }}
             />
           ))}

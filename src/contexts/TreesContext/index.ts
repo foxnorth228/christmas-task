@@ -24,6 +24,7 @@ const TreesContext = createContext<ITreesContext>({
       garlandMode: 0,
       star: 1,
       toys: [],
+      presents: [],
     },
   ],
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

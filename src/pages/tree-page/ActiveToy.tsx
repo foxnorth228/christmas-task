@@ -14,11 +14,10 @@ interface IActiveToy {
 const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
   const [toys, setToy] = useToys();
   const [, setTree] = useTree();
-  const addToTree = (toy: { type: number; x: number; y: number }) =>
-    setTree({ type: 'CHANGE_TREE_TOY', payload: { section: 'add', value: toy } });
-
   const [activeToy, setActiveToy] = useActiveToy();
   useEffect(() => {
+    const addToTree = (toy: { type: number; x: number; y: number }) =>
+      setTree({ type: 'CHANGE_TREE_TOY', payload: { section: 'add', value: toy } });
     if (activeToy.type !== -1 && e !== null) {
       const a = document.elementFromPoint(e.pageX, e.pageY);
       const toy = toys.find((el) => el.num === activeToy.type);
@@ -33,7 +32,7 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
       setActiveToy({ ...activeToy, type: -1 });
       setE(null);
     }
-  }, [activeToy, activeToy.type, addToTree, e, setActiveToy, setE, setToy, toys]);
+  }, [activeToy, activeToy.type, e, setActiveToy, setE, setToy, setTree, toys]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;

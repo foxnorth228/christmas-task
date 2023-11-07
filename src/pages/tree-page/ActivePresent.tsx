@@ -14,10 +14,10 @@ interface IActivePresent {
 const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
   const [, setPresent] = usePresents();
   const [, setTree] = useTree();
-  const addToTree = (toy: { type: number; x: number; y: number }) =>
-    setTree({ type: 'CHANGE_TREE_TOY', payload: { section: 'add', value: toy } });
   const [activePresent, setActivePresent] = useActivePresent();
   useEffect(() => {
+    const addToTree = (toy: { type: number; x: number; y: number }) =>
+      setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'add', value: toy } });
     if (activePresent.type !== -1 && e !== null) {
       const a = document.elementFromPoint(e.pageX, e.pageY);
       if (a?.classList.contains('tree__toysArea_path')) {
@@ -25,22 +25,33 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
         const y = e.clientY - a!.parentElement!.getBoundingClientRect().top;
         const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
         const { width, height } = toysArea!.getBoundingClientRect();
-        // setToy({ type: 'USED', payload: activePresent.type });
-        // addToTree({ x: (x / width) * 100, y: (y / height) * 100, type: activePresent.type });
+        if ((y / height) * 100 < 80) {
+          setPresent({
+            type: 'DELETE',
+            payload: activePresent.type,
+          });
+          setActivePresent({ ...activePresent, type: -1 });
+          setE(null);
+          return;
+        }
+        const payload = { type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 };
         setPresent({
           type: 'ADD',
-          payload: { type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 },
+          payload: activePresent.type,
         });
+        addToTree(payload);
       } else {
+        const payload = { type: activePresent.type, x: 0, y: 0 };
         setPresent({
           type: 'DELETE',
-          payload: { type: activePresent.type, x: 0, y: 0 },
+          payload: activePresent.type,
         });
+        setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'delete', value: payload } });
       }
       setActivePresent({ ...activePresent, type: -1 });
       setE(null);
     }
-  }, [activePresent, activePresent.type, addToTree, e, setActivePresent, setE, setPresent]);
+  }, [activePresent, activePresent.type, e, setActivePresent, setE, setPresent, setTree]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;

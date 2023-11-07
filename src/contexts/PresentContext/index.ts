@@ -1,37 +1,29 @@
 import React from 'react';
 
-export interface IPresent {
-  type: number;
-  x: number;
-  y: number;
-}
-
 export interface IPresentsReducerValue {
   type: string;
-  payload: IPresent;
+  payload: number;
 }
 
-export const PresentReducer = (presents: IPresent[], value: IPresentsReducerValue) => {
-  let index;
+export const PresentReducer = (presents: number[], value: IPresentsReducerValue) => {
   switch (value.type) {
     case 'ADD':
-      if (presents.find((el) => el.type === value.payload.type)) {
+      if (presents.includes(value.payload)) {
         return presents;
       }
       return [...presents, value.payload];
     case 'DELETE':
-      if (!presents.find((el) => el.type === value.payload.type)) {
+      if (!presents.includes(value.payload)) {
         return presents;
       }
-      index = presents.findIndex((el) => el.type === value.payload.type);
-      presents.splice(index, 1);
+      presents.splice(presents.indexOf(value.payload), 1);
       return presents;
     default:
       return presents;
   }
 };
 
-const PresentContext = React.createContext<[IPresent[], (value: IPresentsReducerValue) => void]>([
+const PresentContext = React.createContext<[number[], (value: IPresentsReducerValue) => void]>([
   [],
   () => {
     return;

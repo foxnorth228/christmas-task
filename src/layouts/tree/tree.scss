@@ -84,6 +84,27 @@
   pointer-events: auto;
 }
 
+.tree__present {
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 6em;
+  max-height: 13.5em;
+  position: absolute;
+  pointer-events: auto;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    max-width: 5em;
+    max-height: 12em;
+  }
+}
+
 .tree__garland {
   position: relative;
   grid-column: 1 / span 1;
