@@ -3,10 +3,12 @@ import './selector-decorated-tree.scss';
 import useTrees from '@hooks/useTrees';
 import useTree from '@hooks/use-tree';
 import useToys from '@hooks/use-toys';
+import usePresents from '@hooks/usePresents';
 
 const SelectorDecoratedTree = () => {
   const [, setToys] = useToys();
   const [, setTree] = useTree();
+  const [, setPresents] = usePresents();
   const [trees, setTrees] = useTrees();
   return (
     <div className="selectorDecTree">
@@ -19,6 +21,7 @@ const SelectorDecoratedTree = () => {
             onClick={() => {
               setTree({ type: 'UPDATE', payload: { value: el } });
               setToys({ type: 'UPDATE', payload: el.toys });
+              setPresents({ type: 'UPDATE', payload: el.presents.map((el) => el.type) });
             }}
           >
             <div
