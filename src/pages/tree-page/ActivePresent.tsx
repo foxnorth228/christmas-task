@@ -26,6 +26,15 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
         const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
         const { width, height } = toysArea!.getBoundingClientRect();
         if ((y / height) * 100 < 80) {
+          if (activePresent.old) {
+            setTree({
+              type: 'CHANGE_TREE_PRESENT',
+              payload: {
+                section: 'delete',
+                value: activePresent.old,
+              },
+            });
+          }
           setPresent({
             type: 'DELETE',
             payload: activePresent.type,
@@ -34,19 +43,32 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
           setE(null);
           return;
         }
-        const payload = { type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 };
-        setPresent({
-          type: 'ADD',
-          payload: activePresent.type,
-        });
-        addToTree(payload);
+        if (activePresent.old) {
+          setTree({
+            type: 'CHANGE_TREE_PRESENT',
+            payload: {
+              section: 'move',
+              value: { old: activePresent.old, newX: (x / width) * 100, newY: (y / height) * 100 },
+            },
+          });
+        } else {
+          addToTree({ type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 });
+          setPresent({
+            type: 'ADD',
+            payload: activePresent.type,
+          });
+        }
       } else {
-        const payload = { type: activePresent.type, x: 0, y: 0 };
-        setPresent({
-          type: 'DELETE',
-          payload: activePresent.type,
-        });
-        setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'delete', value: payload } });
+        if (activePresent.old) {
+          setTree({
+            type: 'CHANGE_TREE_PRESENT',
+            payload: {
+              section: 'delete',
+              value: activePresent.old,
+            },
+          });
+          setPresent({ type: 'DELETE', payload: activePresent.type });
+        }
       }
       setActivePresent({ ...activePresent, type: -1 });
       setE(null);

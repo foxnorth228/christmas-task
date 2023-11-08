@@ -34,12 +34,16 @@
     transform: translate(-50%, -50%);
     width: auto;
     height: auto;
-    max-width: 7em;
-    max-height: 15em;
+    max-width: 6em;
+    max-height: 13.5em;
     position: fixed;
     pointer-events: none;
     touch-action: none;
     z-index: 7;
+    @media screen and (max-width: 600px) {
+        max-width: 5em;
+        max-height: 12em;
+    }
 }
 
 .treePage__title {

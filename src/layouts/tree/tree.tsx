@@ -1,18 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import './tree.scss';
 import useTree from '@hooks/use-tree';
-import useToys from '@hooks/use-toys';
 import useActiveToy from '@hooks/use-active-toy';
 import useGarland from '@hooks/useGarland';
-import useActivePresent from "@hooks/useActivePresent";
+import useActivePresent from '@hooks/useActivePresent';
 
 const Tree = () => {
+  const [toy, setToy] = useState<HTMLDivElement | null>(null);
+  const [present, setPresent] = useState<HTMLDivElement | null>(null);
   const garland = useRef<HTMLDivElement>(null);
   const elemGarland = useGarland(garland);
-  const [, setActiveToy] = useActiveToy();
-  const [, setActivePresent] = useActivePresent();
-  const [, setToys] = useToys();
-  const [tree, setTree] = useTree();
+  const [activeToy, setActiveToy] = useActiveToy();
+  const [activePresent, setActivePresent] = useActivePresent();
+  const [tree] = useTree();
+  useLayoutEffect(() => {
+    if (activeToy.type === -1 && toy !== null) {
+      toy.style.display = '';
+      setToy(null);
+    }
+  }, [activeToy.type, toy]);
+  useLayoutEffect(() => {
+    if (activePresent.type === -1 && present !== null) {
+      present.style.display = '';
+      setPresent(null);
+    }
+  }, [activePresent.type, present]);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return (
@@ -23,9 +35,9 @@ const Tree = () => {
           style={{ backgroundImage: `url("./stars/${tree.star}.png")` }}
         ></div>
         <div className="tree__toys">
-          {tree.toys.map((el) => (
+          {tree.toys.map((el, i) => (
             <div
-              key={`${el.type}${el.x}${el.y}`}
+              key={`${el.type}${el.x}${el.y}${i}`}
               className="tree__toy"
               style={{
                 left: el.x + '%',
@@ -33,53 +45,44 @@ const Tree = () => {
                 backgroundImage: `url('./toys/${el.type}.png')`,
               }}
               onMouseDown={(e) => {
-                setTree({
-                  type: 'CHANGE_TREE_TOY',
-                  payload: {
-                    section: 'delete',
-                    value: el,
-                  },
-                });
-                setToys({ type: 'RETURNED', payload: el.type });
-                setActiveToy({ x: e.pageX, y: e.pageY, type: el.type });
+                e.currentTarget!.style!.display = 'none';
+                setToy(e.currentTarget);
+                setActiveToy({ x: e.pageX, y: e.pageY, type: el.type, old: el });
               }}
               onTouchStart={(e) => {
-                e.currentTarget!.style!.visibility = 'hidden';
-                setToys({ type: 'RETURNED', payload: el.type });
+                e.currentTarget!.style!.display = 'none';
+                setToy(e.currentTarget);
                 setActiveToy({
-                  x: e.touches[0].pageX,
-                  y: e.touches[0].pageY,
+                  x: e.changedTouches[0].pageX,
+                  y: e.changedTouches[0].pageY,
                   type: el.type,
+                  old: el,
                 });
-                setTimeout(
-                  () =>
-                    setTree({
-                      type: 'CHANGE_TREE_TOY',
-                      payload: {
-                        section: 'delete',
-                        value: el,
-                      },
-                    }),
-                  0
-                );
               }}
             />
           ))}
           {tree.presents.map((el, i) => (
             <img
-              key={i}
+              key={el.x + el.y + el.type + i}
               style={{ left: el.x + '%', top: el.y + '%' }}
               className="tree__present"
               alt="activepresent"
               draggable={false}
               src={`./presents/${el.type + 1}.png`}
               onMouseDown={(e) => {
-                setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'delete', value: el } });
-                setActivePresent({ type: el.type, x: e.pageX, y: e.pageY });
+                e.currentTarget!.style!.display = 'none';
+                setPresent(e.currentTarget);
+                setActivePresent({ type: el.type, x: e.pageX, y: e.pageY, old: el });
               }}
               onTouchStart={(e) => {
-                setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'delete', value: el } });
-                setActivePresent({ type: el.type, x: e.touches[0].pageX, y: e.touches[0].pageY });
+                e.currentTarget!.style!.display = 'none';
+                setPresent(e.currentTarget);
+                setActivePresent({
+                  type: el.type,
+                  x: e.touches[0].pageX,
+                  y: e.touches[0].pageY,
+                  old: el,
+                });
               }}
             />
           ))}

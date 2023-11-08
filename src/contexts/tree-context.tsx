@@ -24,18 +24,19 @@ export interface ITreeReducerValue {
   type: string;
   payload: {
     section?: ITreeSections;
-    value:
-      | number
-      | ITree
-      | {
-          x: number;
-          y: number;
-          type: number;
-        };
+    value: number | ITree | ITreeToy | { old: ITreeToy; newX: number; newY: number };
   };
 }
 
-export type ITreeSections = 'tree' | 'bg' | 'garland' | 'garlandMode' | 'star' | 'add' | 'delete';
+export type ITreeSections =
+  | 'tree'
+  | 'bg'
+  | 'garland'
+  | 'garlandMode'
+  | 'star'
+  | 'add'
+  | 'delete'
+  | 'move';
 export type ITreeReducer = ({ type, payload }: ITreeReducerValue) => void;
 
 export interface ITreeContext {
@@ -74,15 +75,29 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
       }
       switch (value.payload.section) {
         case 'add':
+          if ('old' in value.payload.value) {
+            return tree;
+          }
           return {
             ...tree,
             toys: [...tree.toys, value.payload.value],
           };
         case 'delete':
+          if ('old' in value.payload.value) {
+            return tree;
+          }
           if (tree.toys.indexOf(value.payload.value) === -1) {
             return tree;
           }
           tree.toys.splice(tree.toys.indexOf(value.payload.value), 1);
+          return tree;
+        case 'move':
+          if ('old' in value.payload.value) {
+            const treeToyIndex = tree.toys.indexOf(value.payload.value.old);
+            tree.toys[treeToyIndex].x = value.payload.value.newX;
+            tree.toys[treeToyIndex].y = value.payload.value.newY;
+            return tree;
+          }
           return tree;
         default:
           return tree;
@@ -93,15 +108,29 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
       }
       switch (value.payload.section) {
         case 'add':
+          if ('old' in value.payload.value) {
+            return tree;
+          }
           return {
             ...tree,
             presents: [...tree.presents, value.payload.value],
           };
         case 'delete':
+          if ('old' in value.payload.value) {
+            return tree;
+          }
           if (tree.presents.indexOf(value.payload.value) === -1) {
             return tree;
           }
           tree.presents.splice(tree.presents.indexOf(value.payload.value), 1);
+          return tree;
+        case 'move':
+          if ('old' in value.payload.value) {
+            const presentToyIndex = tree.presents.indexOf(value.payload.value.old);
+            tree.presents[presentToyIndex].x = value.payload.value.newX;
+            tree.presents[presentToyIndex].y = value.payload.value.newY;
+            return tree;
+          }
           return tree;
         default:
           return tree;

@@ -13,26 +13,46 @@ interface IActiveToy {
 
 const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
   const [toys, setToy] = useToys();
-  const [, setTree] = useTree();
+  const [tree, setTree] = useTree();
   const [activeToy, setActiveToy] = useActiveToy();
   useEffect(() => {
     const addToTree = (toy: { type: number; x: number; y: number }) =>
       setTree({ type: 'CHANGE_TREE_TOY', payload: { section: 'add', value: toy } });
     if (activeToy.type !== -1 && e !== null) {
       const a = document.elementFromPoint(e.pageX, e.pageY);
-      const toy = toys.find((el) => el.num === activeToy.type);
-      if (a?.classList.contains('tree__toysArea_path') && toy && toy.countFreeToys !== 0) {
+      if (a?.classList.contains('tree__toysArea_path')) {
         const x = e.clientX - a!.parentElement!.getBoundingClientRect().left;
         const y = e.clientY - a!.parentElement!.getBoundingClientRect().top;
         const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
         const { width, height } = toysArea!.getBoundingClientRect();
-        setToy({ type: 'USED', payload: activeToy.type });
-        addToTree({ x: (x / width) * 100, y: (y / height) * 100, type: activeToy.type });
+        if (activeToy.old) {
+          setTree({
+            type: 'CHANGE_TREE_TOY',
+            payload: {
+              section: 'move',
+              value: { old: activeToy.old, newX: (x / width) * 100, newY: (y / height) * 100 },
+            },
+          });
+        } else {
+          addToTree({ x: (x / width) * 100, y: (y / height) * 100, type: activeToy.type });
+          setToy({ type: 'USED', payload: activeToy.type });
+        }
+      } else {
+        if (activeToy.old) {
+          setTree({
+            type: 'CHANGE_TREE_TOY',
+            payload: {
+              section: 'delete',
+              value: activeToy.old,
+            },
+          });
+          setToy({ type: 'RETURNED', payload: activeToy.type });
+        }
       }
-      setActiveToy({ ...activeToy, type: -1 });
+      setActiveToy({ ...activeToy, type: -1, old: null });
       setE(null);
     }
-  }, [activeToy, activeToy.type, e, setActiveToy, setE, setToy, setTree, toys]);
+  }, [activeToy, activeToy.type, e, setActiveToy, setE, setToy, setTree, toys, tree.toys]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;
