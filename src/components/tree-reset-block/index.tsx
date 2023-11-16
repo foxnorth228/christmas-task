@@ -3,7 +3,7 @@ import './style.scss';
 import useTree from '@hooks/use-tree';
 import useToys from '@hooks/use-toys';
 import useTrees from '@hooks/useTrees';
-import usePresents from "@hooks/usePresents";
+import usePresents from '@hooks/usePresents';
 
 const TreeResetBlock = () => {
   const [, setToys] = useToys();

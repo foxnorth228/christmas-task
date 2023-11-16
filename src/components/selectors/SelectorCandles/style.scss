@@ -1,0 +1,64 @@
+.selectorCandles {
+  width: fit-content;
+  height: fit-content;
+}
+
+.selectorCandles__title {
+  @media screen and (max-width: 991px) {
+    padding-left: 1.5em;
+  }
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+.selectorCandles__elements {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  grid-template-rows: repeat(5, max-content);
+  grid-auto-rows: max-content;
+  gap: 0.4em;
+  max-height: 10em;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(3, max-content);
+  }
+  @media screen and (max-width: 991px) {
+    grid-template-columns: repeat(2, max-content);
+    max-height: 17em;
+    padding: 0 1.5em;
+  }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, max-content);
+    max-height: 22vh;
+  }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.selectorCandles__element {
+  width: 4em;
+  height: 4em;
+  border-radius: 0.5em;
+  background: radial-gradient(152.36% 152.36% at -0.00% -2.94%, rgba(255, 255, 255, 0.50) 0%, rgba(179, 246, 255, 0.50) 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
+.selectorCandles__example {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  width: 80%;
+  height: 80%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

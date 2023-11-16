@@ -36,7 +36,7 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
     });
     observer.observe(element);
     return () => observer.unobserve(element);
-  }, []);
+  }, [ref]);
   useEffect(() => {
     const height = ref.current?.getBoundingClientRect().height;
     setHeight(height ?? 0);

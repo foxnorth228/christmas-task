@@ -15,6 +15,7 @@ import TreesContext, { defaultTreesData, TreesReducer } from '@contexts/TreesCon
 import ActivePresentContext from '@contexts/ActivePresentContext';
 import ActiveCandleContext from '@contexts/ActiveCandleContext';
 import PresentContext, { PresentReducer } from '@contexts/PresentContext';
+import CandleContext, { CandleReducer } from '@contexts/CandleContext';
 
 function App() {
   const filterSt = localStorage.getItem(filterKeyWord);
@@ -29,6 +30,7 @@ function App() {
   const [activeCandle, setActiveCandle] = useState({ type: -1, x: 0, y: 0 });
   const [trees, setTrees] = useReducer(TreesReducer, defaultTreesData);
   const [presents, setPresents] = useReducer(PresentReducer, []);
+  const [candles, setCandles] = useReducer(CandleReducer, []);
   return (
     <ToysContext.Provider value={{ toys, toysReducer: setToys }}>
       <TreeContext.Provider value={{ tree, treeReducer: setTree }}>
@@ -38,16 +40,18 @@ function App() {
               <ActiveCandleContext.Provider value={[activeCandle, setActiveCandle]}>
                 <TreesContext.Provider value={{ trees, treesReducer: setTrees }}>
                   <PresentContext.Provider value={[presents, setPresents]}>
-                    <main className="main">
-                      {
-                        <>
-                          <Snowfall />
-                          <Outlet />
-                        </>
-                      }
-                    </main>
-                    <Footer />
-                    <CustomAudio />
+                    <CandleContext.Provider value={[candles, setCandles]}>
+                      <main className="main">
+                        {
+                          <>
+                            <Snowfall />
+                            <Outlet />
+                          </>
+                        }
+                      </main>
+                      <Footer />
+                      <CustomAudio />
+                    </CandleContext.Provider>
                   </PresentContext.Provider>
                 </TreesContext.Provider>
               </ActiveCandleContext.Provider>

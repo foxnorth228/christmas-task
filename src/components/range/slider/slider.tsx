@@ -33,7 +33,7 @@ const Slider = ({
         document.body.removeEventListener('mousemove', onSliderMove);
       };
     }
-  }, [isCanBeMoved, onSliderMove]);
+  }, [isCanBeMoved, onSliderMove, onTouchMove]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function onTouchMove(this: HTMLElement, ev: TouchEvent) {
