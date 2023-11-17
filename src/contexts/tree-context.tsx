@@ -190,5 +190,6 @@ export function TreeCreation() {
     star: 1,
     toys: [],
     presents: [],
+    candles: [],
   };
 }

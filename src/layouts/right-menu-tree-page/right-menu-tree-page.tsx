@@ -4,7 +4,7 @@ import SelectorToys from '@components/selectors/selector-toys/selector-toys';
 import SelectorDecoratedTree from '@components/selectors/selector-decorated-tree/selector-decorated-tree';
 import SelectorGarland from '@components/selectors/selector-garland/selector-garland';
 import SelectorPresents from '@components/selectors/SelectorPresents';
-import SelectorCandles from "@components/selectors/SelectorCandles";
+import SelectorCandles from '@components/selectors/SelectorCandles';
 
 const RightMenuTreePage = () => {
   const query = 'screen and (max-width: 991px)';

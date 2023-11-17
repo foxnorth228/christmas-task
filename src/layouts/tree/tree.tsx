@@ -4,14 +4,17 @@ import useTree from '@hooks/use-tree';
 import useActiveToy from '@hooks/use-active-toy';
 import useGarland from '@hooks/useGarland';
 import useActivePresent from '@hooks/useActivePresent';
+import useActiveCandle from '@hooks/useActiveCandle';
 
 const Tree = () => {
   const [toy, setToy] = useState<HTMLDivElement | null>(null);
   const [present, setPresent] = useState<HTMLDivElement | null>(null);
+  const [candle, setCandle] = useState<HTMLDivElement | null>(null);
   const garland = useRef<HTMLDivElement>(null);
   const elemGarland = useGarland(garland);
   const [activeToy, setActiveToy] = useActiveToy();
   const [activePresent, setActivePresent] = useActivePresent();
+  const [activeCandle, setActiveCandle] = useActiveCandle();
   const [tree] = useTree();
   useLayoutEffect(() => {
     if (activeToy.type === -1 && toy !== null) {
@@ -25,6 +28,12 @@ const Tree = () => {
       setPresent(null);
     }
   }, [activePresent.type, present]);
+  useLayoutEffect(() => {
+    if (activeCandle.type === -1 && candle !== null) {
+      candle.style.display = '';
+      setCandle(null);
+    }
+  }, [activeCandle.type, activePresent.type, candle, present]);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return (
@@ -78,6 +87,39 @@ const Tree = () => {
                 e.currentTarget!.style!.display = 'none';
                 setPresent(e.currentTarget);
                 setActivePresent({
+                  type: el.type,
+                  x: e.touches[0].pageX,
+                  y: e.touches[0].pageY,
+                  old: el,
+                });
+              }}
+            />
+          ))}
+          {tree.candles.map((el, i) => (
+            <img
+              key={el.x + el.y + el.type + i}
+              style={{ left: el.x + '%', top: el.y + '%' }}
+              className="tree__candle"
+              alt="activecandle"
+              draggable={false}
+              src={`./candles/${el.type + 1}.png`}
+              onContextMenu={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('right click');
+              }}
+              onMouseDown={(e) => {
+                if (e.button !== 0) {
+                  return;
+                }
+                e.currentTarget!.style!.display = 'none';
+                setCandle(e.currentTarget);
+                setActiveCandle({ type: el.type, x: e.pageX, y: e.pageY, old: el });
+              }}
+              onTouchStart={(e) => {
+                e.currentTarget!.style!.display = 'none';
+                setCandle(e.currentTarget);
+                setActiveCandle({
                   type: el.type,
                   x: e.touches[0].pageX,
                   y: e.touches[0].pageY,

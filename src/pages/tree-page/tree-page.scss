@@ -46,6 +46,22 @@
     }
 }
 
+.activeCandle {
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    max-width: 5em;
+    max-height: 12em;
+    position: fixed;
+    pointer-events: none;
+    touch-action: none;
+    z-index: 7;
+    @media screen and (max-width: 600px) {
+        max-width: 4em;
+        max-height: 10em;
+    }
+}
+
 .treePage__title {
     font-size: 1.2em;
     margin-top: 0.7em;

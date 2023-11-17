@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.scss';
 import useActiveCandle from '@hooks/useActiveCandle';
-import useCandles from '@hooks/useCandles';
+import useTree from '@hooks/use-tree';
 
 const SelectorCandles = () => {
-  const [candles] = useCandles();
+  const [tree] = useTree();
   const [, setActiveCandle] = useActiveCandle();
   return (
     <div className="selectorCandles">
@@ -15,13 +15,14 @@ const SelectorCandles = () => {
             key={i}
             className="selectorCandles__element"
             onMouseDown={(e) => {
-              if (candles.length >= 10) {
+              console.log(tree.candles);
+              if (tree.candles.length >= 10) {
                 return;
               }
               setActiveCandle({ type: i, x: e.pageX, y: e.pageY });
             }}
             onTouchStart={(e) => {
-              if (candles.length >= 10) {
+              if (tree.candles.length >= 10) {
                 return;
               }
               setActiveCandle({ type: i, x: e.touches[0].pageX, y: e.touches[0].pageY });

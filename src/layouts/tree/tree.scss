@@ -105,6 +105,27 @@
   }
 }
 
+.tree__candle {
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 5em;
+  max-height: 12em;
+  position: absolute;
+  pointer-events: auto;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    max-width: 4em;
+    max-height: 10em;
+  }
+}
+
 .tree__garland {
   position: relative;
   grid-column: 1 / span 1;

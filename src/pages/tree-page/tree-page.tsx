@@ -5,6 +5,7 @@ import Tree from '@layouts/tree/tree';
 import RightMenuTreePage from '@layouts/right-menu-tree-page/right-menu-tree-page';
 import ActiveToy from '@pages/tree-page/ActiveToy';
 import ActivePresent from '@pages/tree-page/ActivePresent';
+import ActiveCandle from '@pages/tree-page/ActiveCandle';
 
 function TreePage() {
   type TEvent = React.MouseEvent<HTMLDivElement, MouseEvent> | React.Touch | null;
@@ -44,6 +45,11 @@ function TreePage() {
         <RightMenuTreePage />
         <ActiveToy refActiveElement={refActiveElement} e={event} setE={setEvent} />
         <ActivePresent
+          refActiveElement={refActiveElement as React.RefObject<HTMLImageElement>}
+          e={event}
+          setE={setEvent}
+        />
+        <ActiveCandle
           refActiveElement={refActiveElement as React.RefObject<HTMLImageElement>}
           e={event}
           setE={setEvent}
