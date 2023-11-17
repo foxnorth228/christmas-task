@@ -13,16 +13,15 @@ const SelectorCandles = () => {
         {new Array(12).fill(0).map((_, i) => (
           <div
             key={i}
-            style={{ filter: candles.includes(i) ? 'grayscale(80%)' : '' }}
             className="selectorCandles__element"
             onMouseDown={(e) => {
-              if (candles.includes(i) || candles.length >= 5) {
+              if (candles.length >= 10) {
                 return;
               }
               setActiveCandle({ type: i, x: e.pageX, y: e.pageY });
             }}
             onTouchStart={(e) => {
-              if (candles.includes(i) || candles.length >= 5) {
+              if (candles.length >= 10) {
                 return;
               }
               setActiveCandle({ type: i, x: e.touches[0].pageX, y: e.touches[0].pageY });

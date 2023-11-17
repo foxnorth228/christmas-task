@@ -12,12 +12,9 @@ export interface ITree {
   garland: number;
   garlandMode: number;
   star: number;
-  toys: Array<{
-    x: number;
-    y: number;
-    type: number;
-  }>;
+  toys: Array<ITreeToy>;
   presents: Array<ITreeToy>;
+  candles: Array<ITreeToy>;
 }
 
 export interface ITreeReducerValue {
@@ -53,6 +50,7 @@ const TreeContext = React.createContext<ITreeContext>({
     star: 1,
     toys: [],
     presents: [],
+    candles: [],
   },
   treeReducer() {
     return;
@@ -129,6 +127,39 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
             const presentToyIndex = tree.presents.indexOf(value.payload.value.old);
             tree.presents[presentToyIndex].x = value.payload.value.newX;
             tree.presents[presentToyIndex].y = value.payload.value.newY;
+            return tree;
+          }
+          return tree;
+        default:
+          return tree;
+      }
+    case 'CHANGE_TREE_CANDLE':
+      if (typeof value.payload.value !== 'object' || 'tree' in value.payload.value) {
+        return tree;
+      }
+      switch (value.payload.section) {
+        case 'add':
+          if ('old' in value.payload.value) {
+            return tree;
+          }
+          return {
+            ...tree,
+            candles: [...tree.candles, value.payload.value],
+          };
+        case 'delete':
+          if ('old' in value.payload.value) {
+            return tree;
+          }
+          if (tree.candles.indexOf(value.payload.value) === -1) {
+            return tree;
+          }
+          tree.candles.splice(tree.candles.indexOf(value.payload.value), 1);
+          return tree;
+        case 'move':
+          if ('old' in value.payload.value) {
+            const candleToyIndex = tree.candles.indexOf(value.payload.value.old);
+            tree.candles[candleToyIndex].x = value.payload.value.newX;
+            tree.candles[candleToyIndex].y = value.payload.value.newY;
             return tree;
           }
           return tree;

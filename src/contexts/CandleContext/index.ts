@@ -11,9 +11,6 @@ export const CandleReducer = (candles: number[], value: ICandlesReducerValue) =>
       if (typeof value.payload !== 'number') {
         return candles;
       }
-      if (candles.includes(value.payload)) {
-        return candles;
-      }
       return [...candles, value.payload];
     case 'DELETE':
       if (typeof value.payload !== 'number') {
