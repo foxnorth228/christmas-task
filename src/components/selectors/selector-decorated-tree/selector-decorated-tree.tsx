@@ -25,7 +25,7 @@ const SelectorDecoratedTree = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./tree/${el.tree}.png')` }}
+              style={{ backgroundImage: `url('./tree/${el.tree}.webp')` }}
               className="selectorDecTree__example"
             ></div>
             <div

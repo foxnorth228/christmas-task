@@ -79,7 +79,9 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
       return;
     }
     refActiveElement.current.classList.add('activePresent');
-    (refActiveElement.current as HTMLImageElement).src = `./presents/${activePresent.type + 1}.png`;
+    (refActiveElement.current as HTMLImageElement).src = `./presents/${
+      activePresent.type + 1
+    }.webp`;
     refActiveElement.current.style.left = activePresent.x + 'px';
     refActiveElement.current.style.top = activePresent.y + 'px';
   }, [activePresent, refActiveElement]);

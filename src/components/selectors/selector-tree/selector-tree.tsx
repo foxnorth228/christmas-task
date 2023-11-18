@@ -25,7 +25,7 @@ const SelectorTree = () => {
           >
             <div
               style={{
-                backgroundImage: `url("./tree/${el}.png")`,
+                backgroundImage: `url("./tree/${el}.webp")`,
                 filter: tree.tree === Number(el) ? 'drop-shadow(0px 0px 20px #FF0)' : '',
               }}
               className="selectorTree__example"

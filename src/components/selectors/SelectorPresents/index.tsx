@@ -29,7 +29,7 @@ const SelectorPresents = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./presents/${i + 1}.png')` }}
+              style={{ backgroundImage: `url('./presents/${i + 1}.webp')` }}
               className="selectorPresents__example"
             ></div>
           </div>

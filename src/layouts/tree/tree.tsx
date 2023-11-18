@@ -37,7 +37,7 @@ const Tree = () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return (
-    <div style={{ backgroundImage: `url('./bg/${tree.bg}.jpg')` }} className="tree__bg">
+    <div style={{ backgroundImage: `url('./bg/${tree.bg}.webp')` }} className="tree__bg">
       <div className="tree_interaction">
         <div
           className="tree__star"
@@ -77,7 +77,7 @@ const Tree = () => {
               className="tree__present"
               alt="activepresent"
               draggable={false}
-              src={`./presents/${el.type + 1}.png`}
+              src={`./presents/${el.type + 1}.webp`}
               onMouseDown={(e) => {
                 e.currentTarget!.style!.display = 'none';
                 setPresent(e.currentTarget);
@@ -132,7 +132,7 @@ const Tree = () => {
         <div ref={garland} className="tree__garland">
           {elemGarland}
         </div>
-        <img src={`./tree/${tree.tree}.png`} className="tree" alt="tree"></img>
+        <img src={`./tree/${tree.tree}.webp`} className="tree" alt="tree"></img>
         <svg
           id="eHKqEiOVgRr1"
           className="tree__toysArea"

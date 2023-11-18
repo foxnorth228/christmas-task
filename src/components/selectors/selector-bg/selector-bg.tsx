@@ -13,7 +13,7 @@ const SelectorBg = () => {
           <div
             key={i}
             style={{
-              backgroundImage: `url('./bg/${el}.jpg')`,
+              backgroundImage: `url('./bg/${el}.webp')`,
               borderColor: tree.bg === Number(el) ? '#ff5454' : '',
             }}
             onClick={() => {
