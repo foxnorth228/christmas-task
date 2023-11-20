@@ -24,7 +24,7 @@ const SelectorStar = () => {
           >
             <div
               style={{
-                backgroundImage: `url("./stars/${i + 1}.png")`,
+                backgroundImage: `url("./stars/${i + 1}.webp")`,
                 filter: tree.star === Number(i + 1) ? 'drop-shadow(0px 0px 10px blue)' : '',
               }}
               className="selectorStar__example"

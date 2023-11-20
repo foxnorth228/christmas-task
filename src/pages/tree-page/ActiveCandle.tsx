@@ -54,7 +54,7 @@ const ActiveCandle = ({ refActiveElement, e, setE }: IActivePresent) => {
       return;
     }
     refActiveElement.current.classList.add('activeCandle');
-    (refActiveElement.current as HTMLImageElement).src = `./candles/${activeCandle.type + 1}.png`;
+    (refActiveElement.current as HTMLImageElement).src = `./candles/${activeCandle.type + 1}.webp`;
     refActiveElement.current.style.left = activeCandle.x + 'px';
     refActiveElement.current.style.top = activeCandle.y + 'px';
   }, [activeCandle, refActiveElement]);

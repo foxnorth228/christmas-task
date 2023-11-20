@@ -41,7 +41,7 @@ const Tree = () => {
       <div className="tree_interaction">
         <div
           className="tree__star"
-          style={{ backgroundImage: `url("./stars/${tree.star}.png")` }}
+          style={{ backgroundImage: `url("./stars/${tree.star}.webp")` }}
         ></div>
         <div className="tree__toys">
           {tree.toys.map((el, i) => (
@@ -102,7 +102,7 @@ const Tree = () => {
               className="tree__candle"
               alt="activecandle"
               draggable={false}
-              src={`./candles/${el.type + 1}.png`}
+              src={`./candles/${el.type + 1}.webp`}
               onContextMenu={(e) => {
                 e.preventDefault();
                 e.stopPropagation();

@@ -29,7 +29,7 @@ const SelectorCandles = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./candles/${i + 1}.png')` }}
+              style={{ backgroundImage: `url('./candles/${i + 1}.webp')` }}
               className="selectorCandles__example"
             ></div>
           </div>

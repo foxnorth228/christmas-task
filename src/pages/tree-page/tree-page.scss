@@ -56,10 +56,6 @@
     pointer-events: none;
     touch-action: none;
     z-index: 7;
-    @media screen and (max-width: 600px) {
-        max-width: 4em;
-        max-height: 10em;
-    }
 }
 
 .treePage__title {

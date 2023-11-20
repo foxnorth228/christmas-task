@@ -120,10 +120,6 @@
   &:hover {
     cursor: pointer;
   }
-  @media screen and (max-width: 600px) {
-    max-width: 4em;
-    max-height: 10em;
-  }
 }
 
 .tree__garland {
