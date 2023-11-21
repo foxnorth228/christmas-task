@@ -1,9 +1,18 @@
 import React from 'react';
+import globalConfig from '@src/config/globalConfig';
 
 export interface ITreeToy {
   x: number;
   y: number;
   type: number;
+}
+
+export interface ICandleTree extends ITreeToy {
+  isFired: boolean;
+  fireplace: Array<{
+    x: number;
+    y: number;
+  }>;
 }
 
 export interface ITree {
@@ -14,14 +23,20 @@ export interface ITree {
   star: number;
   toys: Array<ITreeToy>;
   presents: Array<ITreeToy>;
-  candles: Array<ITreeToy>;
+  candles: Array<ICandleTree>;
 }
 
 export interface ITreeReducerValue {
   type: string;
   payload: {
     section?: ITreeSections;
-    value: number | ITree | ITreeToy | { old: ITreeToy; newX: number; newY: number };
+    value:
+      | number
+      | ITree
+      | ITreeToy
+      | ICandleTree
+      | { old: ITreeToy; newX: number; newY: number }
+      | { old: ICandleTree; newX: number; newY: number };
   };
 }
 
@@ -33,7 +48,8 @@ export type ITreeSections =
   | 'star'
   | 'add'
   | 'delete'
-  | 'move';
+  | 'move'
+  | 'switchLight';
 export type ITreeReducer = ({ type, payload }: ITreeReducerValue) => void;
 
 export interface ITreeContext {
@@ -139,15 +155,22 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
       }
       switch (value.payload.section) {
         case 'add':
-          if ('old' in value.payload.value) {
+          if ('old' in value.payload.value || 'isFired' in value.payload.value) {
             return tree;
           }
           return {
             ...tree,
-            candles: [...tree.candles, value.payload.value],
+            candles: [
+              ...tree.candles,
+              {
+                ...value.payload.value,
+                isFired: false,
+                fireplace: globalConfig.candles[value.payload.value.type],
+              },
+            ],
           };
         case 'delete':
-          if ('old' in value.payload.value) {
+          if ('old' in value.payload.value || !('isFired' in value.payload.value)) {
             return tree;
           }
           if (tree.candles.indexOf(value.payload.value) === -1) {
@@ -156,11 +179,20 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
           tree.candles.splice(tree.candles.indexOf(value.payload.value), 1);
           return tree;
         case 'move':
-          if ('old' in value.payload.value) {
+          if ('old' in value.payload.value && 'isFired' in value.payload.value.old) {
             const candleToyIndex = tree.candles.indexOf(value.payload.value.old);
             tree.candles[candleToyIndex].x = value.payload.value.newX;
             tree.candles[candleToyIndex].y = value.payload.value.newY;
             return tree;
+          }
+          return tree;
+        case 'switchLight':
+          if ('old' in value.payload.value || !('isFired' in value.payload.value)) {
+            return tree;
+          }
+          if (tree.candles.includes(value.payload.value)) {
+            const index = tree.candles.indexOf(value.payload.value);
+            tree.candles[index].isFired = !tree.candles[index].isFired;
           }
           return tree;
         default:

@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, {useLayoutEffect, useReducer, useRef, useState} from 'react';
 import './tree.scss';
+import './candleFlame.scss';
 import useTree from '@hooks/use-tree';
 import useActiveToy from '@hooks/use-active-toy';
 import useGarland from '@hooks/useGarland';
@@ -7,7 +8,9 @@ import useActivePresent from '@hooks/useActivePresent';
 import useActiveCandle from '@hooks/useActiveCandle';
 
 const Tree = () => {
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [toy, setToy] = useState<HTMLDivElement | null>(null);
+  const [, setTree] = useTree();
   const [present, setPresent] = useState<HTMLDivElement | null>(null);
   const [candle, setCandle] = useState<HTMLDivElement | null>(null);
   const garland = useRef<HTMLDivElement>(null);
@@ -96,17 +99,21 @@ const Tree = () => {
             />
           ))}
           {tree.candles.map((el, i) => (
-            <img
-              key={el.x + el.y + el.type + i}
+            <div
               style={{ left: el.x + '%', top: el.y + '%' }}
-              className="tree__candle"
-              alt="activecandle"
-              draggable={false}
-              src={`./candles/${el.type + 1}.webp`}
+              className="tree__candleBody"
+              key={el.x + el.y + el.type + i}
               onContextMenu={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('right click');
+                setTree({
+                  type: 'CHANGE_TREE_CANDLE',
+                  payload: {
+                    section: 'switchLight',
+                    value: el,
+                  },
+                });
+                forceUpdate();
               }}
               onMouseDown={(e) => {
                 if (e.button !== 0) {
@@ -126,7 +133,29 @@ const Tree = () => {
                   old: el,
                 });
               }}
-            />
+            >
+              <img
+                className="tree__candle"
+                alt="activecandle"
+                draggable={false}
+                src={`./candles/${el.type + 1}.webp`}
+              />
+              {el.isFired &&
+                el.fireplace.map((el, i) => (
+                  <div
+                    key={i}
+                    style={{ left: el.x * 100 + '%', top: el.y * 100 + '%' }}
+                    className="candle"
+                  >
+                    <div className="flame">
+                      <div className="shadows"></div>
+                      <div className="top"></div>
+                      <div className="middle"></div>
+                      <div className="bottom"></div>
+                    </div>
+                  </div>
+                ))}
+            </div>
           ))}
         </div>
         <div ref={garland} className="tree__garland">

@@ -106,12 +106,16 @@
 }
 
 .tree__candle {
-  transform: translate(-50%, -50%);
   width: auto;
   height: auto;
   max-width: 5em;
   max-height: 12em;
+}
+
+.tree__candleBody {
+  transform: translate(-50%, -50%);
   position: absolute;
+  display: inline-flex;
   pointer-events: auto;
   user-select: none;
   -moz-user-select: none;
