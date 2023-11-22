@@ -58,7 +58,7 @@ const ActiveCandle = ({ refActiveElement, e, setE }: IActivePresent) => {
     refActiveElement.current.style.left = activeCandle.x + 'px';
     refActiveElement.current.style.top = activeCandle.y + 'px';
   }, [activeCandle, refActiveElement]);
-  return <>{activeCandle.type !== -1 && <img alt="activecandle" ref={refActiveElement} />}</>;
+  return <img alt="activecandle" style={{ display: activeCandle.type !== -1 ? '' : 'none' }} ref={activeCandle.type === -1 ? undefined : refActiveElement} />;
 };
 
 export default ActiveCandle;

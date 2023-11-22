@@ -1,4 +1,11 @@
-import React, { ReactEventHandler, useLayoutEffect, useReducer, useRef, useState } from 'react';
+import React, {
+  ReactEventHandler,
+  useCallback,
+  useLayoutEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import './tree.scss';
 import './candleFlame.scss';
 import useTree from '@hooks/use-tree';
@@ -40,16 +47,20 @@ const Tree = () => {
     }
   }, [activeCandle.type, activePresent.type, candle, present]);
 
-  const onLongCandlePress = (e: React.TouchEvent<HTMLDivElement>, el: ICandleTree) => {
-    e.currentTarget!.style!.display = 'none';
-    setCandle(e.currentTarget);
-    setActiveCandle({
-      type: el.type,
-      x: e.touches[0].pageX,
-      y: e.touches[0].pageY,
-      old: el,
-    });
-  };
+  const onLongCandlePress = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>, el: ICandleTree) => {
+      (e.target as HTMLElement).parentElement!.style!.display = 'none';
+      setCandle(e.target);
+      setActiveCandle({
+        type: el.type,
+        x: e.touches[0].pageX,
+        y: e.touches[0].pageY,
+        old: el,
+      });
+      return false;
+    },
+    [setActiveCandle]
+  );
 
   const onCandleTouch = (e: React.TouchEvent<HTMLDivElement>, el: ICandleTree) => {
     e.preventDefault();
@@ -62,6 +73,7 @@ const Tree = () => {
       },
     });
     forceUpdate();
+    return false;
   };
 
   const longTouchCandle = useLongTouch(onLongCandlePress, onCandleTouch);
@@ -82,7 +94,7 @@ const Tree = () => {
               style={{
                 left: el.x + '%',
                 top: el.y + '%',
-                backgroundImage: `url('./toys/${el.type}.png')`,
+                backgroundImage: `url('./toys/${el.type}.webp')`,
               }}
               onMouseDown={(e) => {
                 e.currentTarget!.style!.display = 'none';
@@ -114,7 +126,16 @@ const Tree = () => {
                 setPresent(e.currentTarget);
                 setActivePresent({ type: el.type, x: e.pageX, y: e.pageY, old: el });
               }}
-              {...longTouchCandle([el])}
+              onTouchStart={(e) => {
+                e.currentTarget!.style!.display = 'none';
+                setPresent(e.currentTarget);
+                setActivePresent({
+                  type: el.type,
+                  x: e.touches[0].pageX,
+                  y: e.touches[0].pageY,
+                  old: el,
+                });
+              }}
             />
           ))}
           {tree.candles.map((el, i) => (
@@ -133,6 +154,7 @@ const Tree = () => {
                   },
                 });
                 forceUpdate();
+                return false;
               }}
               onMouseDown={(e) => {
                 if (e.button !== 0) {
@@ -142,16 +164,7 @@ const Tree = () => {
                 setCandle(e.currentTarget);
                 setActiveCandle({ type: el.type, x: e.pageX, y: e.pageY, old: el });
               }}
-              onTouchStart={(e) => {
-                e.currentTarget!.style!.display = 'none';
-                setCandle(e.currentTarget);
-                setActiveCandle({
-                  type: el.type,
-                  x: e.touches[0].pageX,
-                  y: e.touches[0].pageY,
-                  old: el,
-                });
-              }}
+              {...longTouchCandle([el, this])}
             >
               <img
                 className="tree__candle"

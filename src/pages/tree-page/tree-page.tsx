@@ -10,20 +10,34 @@ import ActiveCandle from '@pages/tree-page/ActiveCandle';
 function TreePage() {
   type TEvent = React.MouseEvent<HTMLDivElement, MouseEvent> | React.Touch | null;
   const [event, setEvent] = useState<TEvent>(null);
-  const refActiveElement = useRef<HTMLDivElement | HTMLImageElement>(null);
+  const refActiveToy = useRef<HTMLDivElement>(null);
+  const refActivePresent = useRef<HTMLImageElement>(null);
+  const refActiveCandle = useRef<HTMLImageElement>(null);
 
   const processMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.Touch) => {
-    if (refActiveElement.current === null) {
+    if (
+      refActiveToy.current === null &&
+      refActivePresent.current === null &&
+      refActiveCandle.current === null
+    ) {
       return;
     }
-    refActiveElement.current.style.left = e.pageX + 'px';
-    refActiveElement.current.style.top = e.pageY + 'px';
+    const refActiveElement =
+      refActiveToy.current || refActivePresent.current || refActiveCandle.current;
+    if (refActiveElement !== null) {
+      refActiveElement.style.left = e.pageX + 'px';
+      refActiveElement.style.top = e.pageY + 'px';
+    }
   };
   const mouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => processMove(e);
   const touchmove = (e: React.TouchEvent<HTMLDivElement>) => processMove(e.changedTouches[0]);
 
   const processEndOfActivity = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.Touch) => {
-    if (refActiveElement.current === null) {
+    if (
+      refActiveToy.current === null &&
+      refActivePresent.current === null &&
+      refActiveCandle.current === null
+    ) {
       return;
     }
     setEvent(e);
@@ -43,17 +57,9 @@ function TreePage() {
         <LeftMenuTreePage />
         <Tree />
         <RightMenuTreePage />
-        <ActiveToy refActiveElement={refActiveElement} e={event} setE={setEvent} />
-        <ActivePresent
-          refActiveElement={refActiveElement as React.RefObject<HTMLImageElement>}
-          e={event}
-          setE={setEvent}
-        />
-        <ActiveCandle
-          refActiveElement={refActiveElement as React.RefObject<HTMLImageElement>}
-          e={event}
-          setE={setEvent}
-        />
+        <ActiveToy refActiveElement={refActiveToy} e={event} setE={setEvent} />
+        <ActivePresent refActiveElement={refActivePresent} e={event} setE={setEvent} />
+        <ActiveCandle refActiveElement={refActiveCandle} e={event} setE={setEvent} />
       </div>
     </>
   );

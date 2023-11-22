@@ -39,7 +39,7 @@ const SelectorToys = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./toys/${el.num}.png')` }}
+              style={{ backgroundImage: `url('./toys/${el.num}.webp')` }}
               className="selectorToys__example"
             ></div>
             <span className="selectorToys__counter">{el.countFreeToys}</span>

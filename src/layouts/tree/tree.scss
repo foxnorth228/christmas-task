@@ -110,17 +110,18 @@
   height: auto;
   max-width: 5em;
   max-height: 12em;
+  pointer-events: auto;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
 }
 
 .tree__candleBody {
   transform: translate(-50%, -50%);
   position: absolute;
   display: inline-flex;
-  pointer-events: auto;
-  user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
+  z-index: 5;
   &:hover {
     cursor: pointer;
   }

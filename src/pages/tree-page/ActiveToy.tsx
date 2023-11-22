@@ -49,7 +49,7 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
           setToy({ type: 'RETURNED', payload: activeToy.type });
         }
       }
-      setActiveToy({ ...activeToy, type: -1, old: null });
+      setActiveToy({ ...activeToy, type: -1 });
       setE(null);
     }
   }, [activeToy, activeToy.type, e, setActiveToy, setE, setToy, setTree, toys, tree.toys]);
@@ -58,11 +58,16 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
       return;
     }
     refActiveElement.current.classList.add('activeToy__toy');
-    refActiveElement.current.style.backgroundImage = `url('./toys/${activeToy.type}.png')`;
+    refActiveElement.current.style.backgroundImage = `url('./toys/${activeToy.type}.webp')`;
     refActiveElement.current.style.left = activeToy.x + 'px';
     refActiveElement.current.style.top = activeToy.y + 'px';
   }, [activeToy, refActiveElement]);
-  return <>{activeToy.type !== -1 && <div ref={refActiveElement} />}</>;
+  return (
+    <div
+      style={{ display: activeToy.type !== -1 ? '' : 'none' }}
+      ref={activeToy.type === -1 ? undefined : refActiveElement}
+    />
+  );
 };
 
 export default ActiveToy;

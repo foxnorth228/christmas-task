@@ -3,7 +3,7 @@ import { TouchEvent, useCallback, useRef, useState } from 'react';
 const useLongTouch = (
   onLongTouch: () => void,
   onClick: () => void,
-  { shouldPreventDefault = true, delay = 300 } = {}
+  { shouldPreventDefault = true, delay = 250 } = {}
 ) => {
   const [longPressTriggered, setLongPressTriggered] = useState(false);
   const timeout = useRef<NodeJS.Timeout | null>(null);
@@ -12,13 +12,13 @@ const useLongTouch = (
   const start = useCallback(
     (event: Event, params: unknown[]) => {
       if (shouldPreventDefault && event.target) {
-        event.target.addEventListener('touchend', preventDefault, {
-          passive: false,
-        });
+        // event.target.addEventListener('touchend', preventDefault, {
+        //   passive: false,
+        // });
         target.current = event.target;
       }
       timeout.current = setTimeout(() => {
-        onLongTouch(...params);
+        onLongTouch(event, ...params);
         setLongPressTriggered(true);
       }, delay);
     },
@@ -26,9 +26,9 @@ const useLongTouch = (
   );
 
   const clear = useCallback(
-    (params: unknown[]) => {
+    (event: Event, params: unknown[]) => {
       timeout.current && clearTimeout(timeout.current);
-      !longPressTriggered && onClick(...params);
+      !longPressTriggered && onClick(event, ...params);
       setLongPressTriggered(false);
       if (shouldPreventDefault && target.current) {
         target.current.removeEventListener('touchend', preventDefault);
@@ -38,8 +38,8 @@ const useLongTouch = (
   );
 
   return (params: unknown[]) => ({
-    onTouchStart: (e: Event) => start(e, params),
-    onTouchEnd: () => clear(params),
+    onTouchStart: (e) => start(e, params),
+    onTouchEnd: (e: Event) => clear(e, params),
   });
 };
 
