@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useReducer, useRef, useState} from 'react';
+import React, { ReactEventHandler, useLayoutEffect, useReducer, useRef, useState } from 'react';
 import './tree.scss';
 import './candleFlame.scss';
 import useTree from '@hooks/use-tree';
@@ -6,6 +6,8 @@ import useActiveToy from '@hooks/use-active-toy';
 import useGarland from '@hooks/useGarland';
 import useActivePresent from '@hooks/useActivePresent';
 import useActiveCandle from '@hooks/useActiveCandle';
+import { ICandleTree } from '@contexts/tree-context';
+import useLongTouch from '@hooks/useLongTouch';
 
 const Tree = () => {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -37,6 +39,32 @@ const Tree = () => {
       setCandle(null);
     }
   }, [activeCandle.type, activePresent.type, candle, present]);
+
+  const onLongCandlePress = (e: React.TouchEvent<HTMLDivElement>, el: ICandleTree) => {
+    e.currentTarget!.style!.display = 'none';
+    setCandle(e.currentTarget);
+    setActiveCandle({
+      type: el.type,
+      x: e.touches[0].pageX,
+      y: e.touches[0].pageY,
+      old: el,
+    });
+  };
+
+  const onCandleTouch = (e: React.TouchEvent<HTMLDivElement>, el: ICandleTree) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setTree({
+      type: 'CHANGE_TREE_CANDLE',
+      payload: {
+        section: 'switchLight',
+        value: el,
+      },
+    });
+    forceUpdate();
+  };
+
+  const longTouchCandle = useLongTouch(onLongCandlePress, onCandleTouch);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return (
@@ -86,16 +114,7 @@ const Tree = () => {
                 setPresent(e.currentTarget);
                 setActivePresent({ type: el.type, x: e.pageX, y: e.pageY, old: el });
               }}
-              onTouchStart={(e) => {
-                e.currentTarget!.style!.display = 'none';
-                setPresent(e.currentTarget);
-                setActivePresent({
-                  type: el.type,
-                  x: e.touches[0].pageX,
-                  y: e.touches[0].pageY,
-                  old: el,
-                });
-              }}
+              {...longTouchCandle([el])}
             />
           ))}
           {tree.candles.map((el, i) => (
