@@ -5,3 +5,4 @@ dist/*
 .env
 old_assets/*
 src/assets/flame/*
+*/**/old-webp/*
