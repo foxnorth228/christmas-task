@@ -53,7 +53,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './public/index.html'
     }),
     new CopyPlugin({
       patterns: [
@@ -63,7 +63,12 @@ module.exports = {
     new Dotenv({
       systemvars: true
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      attributes: {
+        media: "print",
+        onload: "this.media='all'",
+      }
+    }),
   ],
   optimization: {
     minimizer: [
