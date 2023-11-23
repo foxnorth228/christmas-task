@@ -1,13 +1,9 @@
-import React, { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const usePageLoaded = () => {
   const [isPageLoaded, setPageLoaded] = useState(false);
-  useLayoutEffect(() => {
-    const loadPage = () => {
-      setPageLoaded(true);
-    };
-    document.addEventListener('DOMContentLoaded', loadPage);
-    return () => document.removeEventListener('DOMContentLoaded', loadPage);
+  useEffect(() => {
+    setPageLoaded(true);
   }, []);
   return isPageLoaded;
 };
