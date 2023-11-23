@@ -2,8 +2,10 @@ import React from 'react';
 import './selector-toys.scss';
 import useToys from '@hooks/use-toys';
 import useActiveToy from '@hooks/use-active-toy';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorToys = () => {
+  const isPageLoaded = usePageLoaded();
   const fileNames = [];
   const [, setActiveToy] = useActiveToy();
   const [toys] = useToys();
@@ -39,7 +41,10 @@ const SelectorToys = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./toys/${el.num}.webp')` }}
+              style={{
+                display: isPageLoaded ? '' : 'none',
+                backgroundImage: `url('./toys/${el.num}.webp')`,
+              }}
               className="selectorToys__example"
             ></div>
             <span className="selectorToys__counter">{el.countFreeToys}</span>

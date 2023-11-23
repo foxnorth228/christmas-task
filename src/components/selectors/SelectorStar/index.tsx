@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.scss';
 import useTree from '@hooks/use-tree';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorStar = () => {
+  const isPageLoaded = usePageLoaded();
   const [tree, treeReducer] = useTree();
   return (
     <div className="selectorStar">
@@ -24,6 +26,7 @@ const SelectorStar = () => {
           >
             <div
               style={{
+                display: isPageLoaded ? '' : 'none',
                 backgroundImage: `url("./stars/${i + 1}.webp")`,
                 filter: tree.star === Number(i + 1) ? 'drop-shadow(0px 0px 10px blue)' : '',
               }}

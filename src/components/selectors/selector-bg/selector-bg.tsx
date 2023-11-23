@@ -1,9 +1,11 @@
 import React from 'react';
 import './selector-bg.scss';
 import useTree from '@hooks/use-tree';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorBg = () => {
   const [tree, treeReducer] = useTree();
+  const isPageLoaded = usePageLoaded();
   const filenames = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   return (
     <div className="selectorBg">
@@ -13,6 +15,7 @@ const SelectorBg = () => {
           <div
             key={i}
             style={{
+              display: isPageLoaded ? '' : 'none',
               backgroundImage: `url('./bg/${el}.webp')`,
               borderColor: tree.bg === Number(el) ? '#ff5454' : '',
             }}

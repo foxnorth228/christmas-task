@@ -2,8 +2,10 @@ import React from 'react';
 import './style.scss';
 import useActiveCandle from '@hooks/useActiveCandle';
 import useTree from '@hooks/use-tree';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorCandles = () => {
+  const isPageLoaded = usePageLoaded();
   const [tree] = useTree();
   const [, setActiveCandle] = useActiveCandle();
   return (
@@ -29,7 +31,10 @@ const SelectorCandles = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./candles/${i + 1}.webp')` }}
+              style={{
+                display: isPageLoaded ? '' : 'none',
+                backgroundImage: `url('./candles/${i + 1}.webp')`,
+              }}
               className="selectorCandles__example"
             ></div>
           </div>

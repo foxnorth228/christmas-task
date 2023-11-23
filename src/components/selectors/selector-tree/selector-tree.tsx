@@ -1,8 +1,10 @@
 import React from 'react';
 import './selector-tree.scss';
 import useTree from '@hooks/use-tree';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorTree = () => {
+  const isPageLoaded = usePageLoaded();
   const [tree, treeReducer] = useTree();
   const fileNames = ['1', '2', '3', '4', '5', '6'];
   return (
@@ -25,6 +27,7 @@ const SelectorTree = () => {
           >
             <div
               style={{
+                display: isPageLoaded ? '' : 'none',
                 backgroundImage: `url("./tree/${el}.webp")`,
                 filter: tree.tree === Number(el) ? 'drop-shadow(0px 0px 20px #FF0)' : '',
               }}

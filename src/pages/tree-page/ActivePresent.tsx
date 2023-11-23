@@ -85,7 +85,13 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
     refActiveElement.current.style.left = activePresent.x + 'px';
     refActiveElement.current.style.top = activePresent.y + 'px';
   }, [activePresent, refActiveElement]);
-  return <img style={{ display: activePresent.type !== -1 ? '' : 'none' }} alt="activepresent" ref={activePresent.type === -1 ? undefined : refActiveElement} />;
+  return (
+    <img
+      style={{ display: activePresent.type !== -1 ? '' : 'none' }}
+      alt="activepresent"
+      ref={activePresent.type === -1 ? undefined : refActiveElement}
+    />
+  );
 };
 
 export default ActivePresent;

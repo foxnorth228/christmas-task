@@ -22,7 +22,12 @@ function Card({ elem, isRender }: { elem: toy; isRender: boolean }) {
       className={`card ${elem.selected ? 'card_clicked' : ''}`}
     >
       <p className="card__name">{elem.name}</p>
-      <img loading="lazy" className="card__image" src={`./toys/${elem.num}.webp`} alt="card-image"></img>
+      <img
+        loading="lazy"
+        className="card__image"
+        src={`./toys/${elem.num}.webp`}
+        alt="card-image"
+      ></img>
       <div className="card__descriptionBlock">
         <span className="card__property">Количество: {elem.count}</span>
         <span className="card__property">Год: {elem.year}</span>

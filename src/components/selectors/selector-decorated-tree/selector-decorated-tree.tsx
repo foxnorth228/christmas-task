@@ -4,8 +4,10 @@ import useTrees from '@hooks/useTrees';
 import useTree from '@hooks/use-tree';
 import useToys from '@hooks/use-toys';
 import usePresents from '@hooks/usePresents';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorDecoratedTree = () => {
+  const isPageLoaded = usePageLoaded();
   const [, setToys] = useToys();
   const [, setTree] = useTree();
   const [, setPresents] = usePresents();
@@ -25,7 +27,10 @@ const SelectorDecoratedTree = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./tree/${el.tree}.webp')` }}
+              style={{
+                display: isPageLoaded ? '' : 'none',
+                backgroundImage: `url('./tree/${el.tree}.webp')`,
+              }}
               className="selectorDecTree__example"
             ></div>
             <div

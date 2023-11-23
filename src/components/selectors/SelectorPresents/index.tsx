@@ -2,8 +2,10 @@ import React from 'react';
 import './style.scss';
 import useActivePresent from '@hooks/useActivePresent';
 import usePresents from '@hooks/usePresents';
+import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorPresents = () => {
+  const isPageLoaded = usePageLoaded();
   const [presents] = usePresents();
   const [, setActivePresent] = useActivePresent();
   return (
@@ -29,7 +31,10 @@ const SelectorPresents = () => {
             }}
           >
             <div
-              style={{ backgroundImage: `url('./presents/${i + 1}.webp')` }}
+              style={{
+                display: isPageLoaded ? '' : 'none',
+                backgroundImage: `url('./presents/${i + 1}.webp')`,
+              }}
               className="selectorPresents__example"
             ></div>
           </div>
