@@ -3,4 +3,5 @@
     src: local('Neucha'), url('neucha.woff2') format('woff2'), url('neucha.woff') format('woff'), url('neucha.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
