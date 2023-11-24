@@ -3,37 +3,32 @@ import './card.scss';
 
 import { toy } from '@interfaces/toy';
 import { convertDataShape, convertDataColor, convertDataSize } from '@services/getData';
-import useToys from '@hooks/use-toys';
+interface ICard {
+  elem: toy;
+  isRender: boolean;
+  selectToy: (num: number) => unknown;
+}
 
-function Card({ elem, isRender }: { elem: toy; isRender: boolean }) {
-  const [, toysReducer] = useToys();
-  const clickCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.currentTarget.classList.toggle('card_clicked');
-    toysReducer({
-      type: 'SELECTED',
-      payload: elem.num,
-    });
-  };
+function Card({
+  elem: { num, selected, name, count, year, shape, color, size },
+  isRender,
+  selectToy,
+}: ICard) {
   return (
     <div
-      key={elem.num}
-      onClick={clickCard}
+      key={num}
+      onClick={() => selectToy(num)}
       style={{ display: isRender ? 'flex' : 'none' }}
-      className={`card ${elem.selected ? 'card_clicked' : ''}`}
+      className={`card ${selected ? 'card_clicked' : ''}`}
     >
-      <p className="card__name">{elem.name}</p>
-      <img
-        loading="lazy"
-        className="card__image"
-        src={`./toys/${elem.num}.webp`}
-        alt="card-image"
-      ></img>
+      <p className="card__name">{name}</p>
+      <img loading="lazy" className="card__image" src={`./toys/${num}.webp`} alt="card-image" />
       <div className="card__descriptionBlock">
-        <span className="card__property">Количество: {elem.count}</span>
-        <span className="card__property">Год: {elem.year}</span>
-        <span className="card__property">Фигура: {convertDataShape(elem.shape)}</span>
-        <span className="card__property">Цвет: {convertDataColor(elem.color)}</span>
-        <span className="card__property">Размер: {convertDataSize(elem.size)}</span>
+        <span className="card__property">Количество: {count}</span>
+        <span className="card__property">Год: {year}</span>
+        <span className="card__property">Фигура: {convertDataShape(shape)}</span>
+        <span className="card__property">Цвет: {convertDataColor(color)}</span>
+        <span className="card__property">Размер: {convertDataSize(size)}</span>
       </div>
     </div>
   );

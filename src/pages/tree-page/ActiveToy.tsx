@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useActiveToy from '@hooks/use-active-toy';
-import useToys from '@hooks/use-toys';
 import useTree from '@hooks/use-tree';
+import { useToysReturned, useToysUse } from '@src/store/slices/toysSlice/hooks';
 
 interface IActiveToy {
   refActiveElement: React.RefObject<HTMLDivElement>;
@@ -12,7 +12,8 @@ interface IActiveToy {
 }
 
 const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
-  const [toys, setToy] = useToys();
+  const [, usedToy] = useToysUse();
+  const [, returnToy] = useToysReturned();
   const [tree, setTree] = useTree();
   const [activeToy, setActiveToy] = useActiveToy();
   useEffect(() => {
@@ -35,7 +36,7 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
           });
         } else {
           addToTree({ x: (x / width) * 100, y: (y / height) * 100, type: activeToy.type });
-          setToy({ type: 'USED', payload: activeToy.type });
+          usedToy(activeToy.type);
         }
       } else {
         if (activeToy.old) {
@@ -46,13 +47,13 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
               value: activeToy.old,
             },
           });
-          setToy({ type: 'RETURNED', payload: activeToy.type });
+          returnToy(activeToy.type);
         }
       }
       setActiveToy({ ...activeToy, type: -1 });
       setE(null);
     }
-  }, [activeToy, activeToy.type, e, setActiveToy, setE, setToy, setTree, toys, tree.toys]);
+  }, [activeToy, activeToy.type, e, setActiveToy, setE, setTree, tree.toys]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;

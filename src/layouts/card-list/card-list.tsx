@@ -4,7 +4,7 @@ import './card-list.scss';
 import { IFilter } from '@contexts/filter-context';
 import Card from '@components/card/сard';
 import useFilter from '@hooks/use-filter';
-import useToys from '@hooks/use-toys';
+import { useToys, useToysSelect } from '@src/store/slices/toysSlice/hooks';
 
 function sortCards(filter: IFilter, data: toy[]) {
   const collator = Intl.Collator('ru');
@@ -14,7 +14,8 @@ function sortCards(filter: IFilter, data: toy[]) {
     (a: toy, b: toy) => a.count - b.count,
     (a: toy, b: toy) => b.count - a.count,
   ];
-  return data.sort(functions[filter.sort]);
+  const newData = [...data];
+  return newData.sort(functions[filter.sort]);
 }
 
 function filterCards(filter: IFilter, data: toy[]) {
@@ -59,7 +60,7 @@ function filterCards(filter: IFilter, data: toy[]) {
 }
 
 function CardList({ headerLink }: { headerLink: JSX.Element }) {
-  const [toys] = useToys();
+  const [toys, selectToy] = useToysSelect();
   const [filter] = useFilter();
   return (
     <div className="cardList">
@@ -69,7 +70,7 @@ function CardList({ headerLink }: { headerLink: JSX.Element }) {
       </div>
       <div className="cardList__body">
         {filterCards(filter, sortCards(filter, toys)).map((el) => (
-          <Card key={el[0].num} elem={el[0]} isRender={el[1]} />
+          <Card key={el[0].num} elem={el[0]} isRender={el[1]} selectToy={selectToy} />
         ))}
       </div>
     </div>

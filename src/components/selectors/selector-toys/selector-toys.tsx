@@ -1,15 +1,16 @@
 import React from 'react';
 import './selector-toys.scss';
-import useToys from '@hooks/use-toys';
+
 import useActiveToy from '@hooks/use-active-toy';
 import usePageLoaded from '@hooks/usePageLoaded';
+import { useToys } from '@src/store/slices/toysSlice/hooks';
 
 const SelectorToys = () => {
   const isPageLoaded = usePageLoaded();
   const fileNames = [];
   const [, setActiveToy] = useActiveToy();
-  const [toys] = useToys();
-  const sortedToys = toys.sort((a, b) => a.num - b.num);
+  const newToys = [...useToys()];
+  const sortedToys = newToys.sort((a, b) => a.num - b.num);
   for (let i = 0; i < 20; ++i) {
     fileNames.push({
       num: i + 1,
@@ -17,7 +18,7 @@ const SelectorToys = () => {
       countFreeToys: sortedToys[i].countFreeToys,
     });
   }
-  const selectedToys = toys.filter((el) => el.selected);
+  const selectedToys = newToys.filter((el) => el.selected);
   const array = selectedToys.length === 0 ? fileNames : selectedToys;
   return (
     <div className="selectorToys">
