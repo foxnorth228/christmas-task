@@ -213,7 +213,7 @@ export const TreeReducer = (tree: ITree, value: ITreeReducerValue) => {
 
 export default TreeContext;
 
-export function TreeCreation() {
+export function TreeCreation(): ITree {
   return {
     tree: 1,
     bg: 1,
