@@ -13,7 +13,7 @@ const treesSlice = createSlice({
       localStorage.setItem(treesKeyWord, JSON.stringify([...state, action.payload]));
       return [...state, JSON.parse(JSON.stringify(action.payload))];
     },
-    delete: (state: ITree[], action: PayloadAction<number>) => {
+    deleteTree: (state: ITree[], action: PayloadAction<number>) => {
       state.splice(action.payload, 1);
       localStorage.setItem(treesKeyWord, JSON.stringify(state));
       return state;
@@ -21,4 +21,5 @@ const treesSlice = createSlice({
   },
 });
 
+export const { save, deleteTree } = treesSlice.actions;
 export default treesSlice.reducer;

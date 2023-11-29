@@ -1,8 +1,8 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import FilterCreation from "@services/getFilter";
-import {IFilter} from "@contexts/filter-context";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import FilterCreation from '@services/getFilter';
+import { IFilter } from '@contexts/filter-context';
 
-type filterSections = keyof IFilter;
+export type filterSections = keyof IFilter;
 
 export const filterKeyWord = 'christmasTaskFilter';
 const filterSlice = createSlice({
@@ -75,4 +75,5 @@ const filterSlice = createSlice({
   },
 });
 
+export const { changeValue, changeRange, changeBool, reset } = filterSlice.actions;
 export default filterSlice.reducer;

@@ -3,21 +3,21 @@ import { ICandleTree, ITree, ITreeToy, TreeCreation } from '@contexts/tree-conte
 import globalConfig from '@src/config/globalConfig';
 
 type PayloadSection<T, P> = PayloadAction<{ section: T; value: P }>;
-type ITreeKeys = keyof ITree;
-type ITreeValues = ITree[ITreeKeys];
+export type ITreeKeys = keyof ITree;
+export type ITreeValues = ITree[ITreeKeys];
 
-type TreeModifies = 'add' | 'delete' | 'move';
-type TreeToyModifies = TreeModifies;
-type TreePresentModifies = TreeModifies;
-type TreeCandleModifies = TreeModifies | 'switchLight';
+export type TreeModifies = 'add' | 'delete' | 'move';
+export type TreeToyModifies = TreeModifies;
+export type TreePresentModifies = TreeModifies;
+export type TreeCandleModifies = TreeModifies | 'switchLight';
 
-interface ITreeToyMove {
+export interface ITreeToyMove {
   old: ITreeToy;
   newX: number;
   newY: number;
 }
 
-interface ITreeCandleMove {
+export interface ITreeCandleMove {
   old: ICandleTree;
   newX: number;
   newY: number;
@@ -95,7 +95,9 @@ const treeSlice = createSlice({
     },
     changeTreeCandle: (
       state: ITree,
-      { payload: { section, value } }: PayloadSection<TreeCandleModifies, ITreeToy | ICandleTree | ITreeCandleMove>
+      {
+        payload: { section, value },
+      }: PayloadSection<TreeCandleModifies, ITreeToy | ICandleTree | ITreeCandleMove>
     ) => {
       switch (section) {
         case 'add':
@@ -151,3 +153,5 @@ const treeSlice = createSlice({
 });
 
 export default treeSlice.reducer;
+export const { changeValue, changeTreeToy, changeTreePresent, changeTreeCandle, reset, update } =
+  treeSlice.actions;
