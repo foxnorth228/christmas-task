@@ -43,6 +43,7 @@ const treeSlice = createSlice({
       state: ITree,
       { payload: { section, value } }: PayloadSection<TreeToyModifies, ITreeToy | ITreeToyMove>
     ) => {
+      let index;
       switch (section) {
         case 'add':
           if ('old' in value) {
@@ -51,14 +52,21 @@ const treeSlice = createSlice({
           state.toys.push(value);
           break;
         case 'delete':
-          if ('old' in value || state.toys.indexOf(value) === -1) {
+          if ('old' in value) {
             return state;
           }
-          state.toys.splice(state.toys.indexOf(value), 1);
+          index = state.toys.findIndex(
+            (el) => el.type === value.type && el.x === value.x && el.y === value.y
+          );
+          if (index !== -1) {
+            state.toys.splice(index, 1);
+          }
           break;
         case 'move':
           if ('old' in value) {
-            const treeToyIndex = state.toys.indexOf(value.old);
+            const treeToyIndex = state.toys.findIndex(
+              (el) => el.type === value.old.type && el.x === value.old.x && el.y === value.old.y
+            );
             state.toys[treeToyIndex].x = value.newX;
             state.toys[treeToyIndex].y = value.newY;
           }
@@ -70,6 +78,7 @@ const treeSlice = createSlice({
       state: ITree,
       { payload: { section, value } }: PayloadSection<TreePresentModifies, ITreeToy | ITreeToyMove>
     ) => {
+      let index;
       switch (section) {
         case 'add':
           if ('old' in value) {
@@ -78,14 +87,21 @@ const treeSlice = createSlice({
           state.presents.push(value);
           break;
         case 'delete':
-          if ('old' in value || state.presents.indexOf(value) === -1) {
+          if ('old' in value) {
             return state;
           }
-          state.presents.splice(state.presents.indexOf(value), 1);
+          index = state.presents.findIndex(
+            (el) => el.type === value.type && el.x === value.x && el.y === value.y
+          );
+          if (index !== -1) {
+            state.presents.splice(index, 1);
+          }
           break;
         case 'move':
           if ('old' in value) {
-            const presentToyIndex = state.presents.indexOf(value.old);
+            const presentToyIndex = state.presents.findIndex(
+              (el) => el.type === value.old.type && el.x === value.old.x && el.y === value.old.y
+            );
             state.presents[presentToyIndex].x = value.newX;
             state.presents[presentToyIndex].y = value.newY;
             break;
@@ -99,6 +115,7 @@ const treeSlice = createSlice({
         payload: { section, value },
       }: PayloadSection<TreeCandleModifies, ITreeToy | ICandleTree | ITreeCandleMove>
     ) => {
+      let index;
       switch (section) {
         case 'add':
           if ('old' in value || 'isFired' in value) {
@@ -119,14 +136,18 @@ const treeSlice = createSlice({
           if ('old' in value || !('isFired' in value)) {
             return state;
           }
-          if (state.candles.indexOf(value) === -1) {
-            return state;
+          index = state.candles.findIndex(
+            (el) => el.type === value.type && el.x === value.x && el.y === value.y
+          );
+          if (index !== -1) {
+            state.candles.splice(index, 1);
           }
-          state.candles.splice(state.candles.indexOf(value), 1);
           return state;
         case 'move':
           if ('old' in value && 'isFired' in value.old) {
-            const candleToyIndex = state.candles.indexOf(value.old);
+            const candleToyIndex = state.candles.findIndex(
+              (el) => el.type === value.old.type && el.x === value.old.x && el.y === value.old.y
+            );
             state.candles[candleToyIndex].x = value.newX;
             state.candles[candleToyIndex].y = value.newY;
           }
@@ -135,8 +156,10 @@ const treeSlice = createSlice({
           if ('old' in value || !('isFired' in value)) {
             return state;
           }
-          if (state.candles.includes(value)) {
-            const index = state.candles.indexOf(value);
+          index = state.candles.findIndex(
+            (el) => el.type === value.type && el.x === value.x && el.y === value.y
+          );
+          if (index !== -1) {
             state.candles[index].isFired = !state.candles[index].isFired;
           }
           break;

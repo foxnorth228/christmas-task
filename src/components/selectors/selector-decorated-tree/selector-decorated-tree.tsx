@@ -1,15 +1,15 @@
 import React from 'react';
 import './selector-decorated-tree.scss';
 import useTrees from '@hooks/useTrees';
-import useTree from '@hooks/use-tree';
 import usePresents from '@hooks/usePresents';
 import usePageLoaded from '@hooks/usePageLoaded';
 import { useToysUpdate } from '@src/store/slices/toysSlice/hooks';
+import { useTreeUpdate } from '@src/store/slices/treeSlice/hooks';
 
 const SelectorDecoratedTree = () => {
   const isPageLoaded = usePageLoaded();
   const [, updateToys] = useToysUpdate();
-  const [, setTree] = useTree();
+  const [, updateTree] = useTreeUpdate();
   const [, setPresents] = usePresents();
   const [trees, setTrees] = useTrees();
   return (
@@ -21,7 +21,7 @@ const SelectorDecoratedTree = () => {
             key={i}
             className="selectorDecTree__element"
             onClick={() => {
-              setTree({ type: 'UPDATE', payload: { value: el } });
+              updateTree(el);
               updateToys(el.toys);
               setPresents({ type: 'UPDATE', payload: el.presents.map((el) => el.type) });
             }}

@@ -1,9 +1,9 @@
 import React from 'react';
 import './selector-garland.scss';
-import useTree from '@hooks/use-tree';
+import { useTreeChangeValue } from '@src/store/slices/treeSlice/hooks';
 
 const SelectorGarland = () => {
-  const [tree, treeReducer] = useTree();
+  const [tree, changeTree] = useTreeChangeValue();
   const garlands = ['multicolor', 'red', 'blue', 'yellow', 'green'];
   return (
     <div className="selectorGarland">
@@ -13,20 +13,14 @@ const SelectorGarland = () => {
           <div
             style={{ borderColor: tree.garland === i + 1 ? '#7a7a7a' : '' }}
             onClick={() => {
-              treeReducer({
-                type: 'CHANGE_VALUE',
-                payload: {
-                  section: 'garland',
-                  value: i + 1,
-                },
+              changeTree({
+                section: 'garland',
+                value: i + 1,
               });
               if (tree.garlandMode === 0) {
-                treeReducer({
-                  type: 'CHANGE_VALUE',
-                  payload: {
-                    section: 'garlandMode',
-                    value: 1,
-                  },
+                changeTree({
+                  section: 'garlandMode',
+                  value: 1,
                 });
               }
             }}
@@ -44,9 +38,9 @@ const SelectorGarland = () => {
               value={i}
               checked={i === tree.garlandMode}
               onChange={(e) => {
-                treeReducer({
-                  type: 'CHANGE_VALUE',
-                  payload: { section: 'garlandMode', value: Number(e.target.value) },
+                changeTree({
+                  section: 'garlandMode',
+                  value: Number(e.target.value),
                 });
               }}
               type="radio"

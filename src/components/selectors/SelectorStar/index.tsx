@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.scss';
-import useTree from '@hooks/use-tree';
 import usePageLoaded from '@hooks/usePageLoaded';
+import { useTreeChangeValue } from '@src/store/slices/treeSlice/hooks';
 
 const SelectorStar = () => {
   const isPageLoaded = usePageLoaded();
-  const [tree, treeReducer] = useTree();
+  const [tree, changeTree] = useTreeChangeValue();
   return (
     <div className="selectorStar">
       <h2 className="treePage__title ">Выберите звезду</h2>
@@ -15,12 +15,9 @@ const SelectorStar = () => {
             key={i}
             className="selectorStar__element"
             onClick={() => {
-              treeReducer({
-                type: 'CHANGE_VALUE',
-                payload: {
-                  section: 'star',
-                  value: Number(i + 1),
-                },
+              changeTree({
+                section: 'star',
+                value: Number(i + 1),
               });
             }}
           >

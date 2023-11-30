@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import useTree from '@hooks/use-tree';
 import useActiveCandle from '@hooks/useActiveCandle';
+import { useTreeChangeCandle } from '@src/store/slices/treeSlice/hooks';
 
 interface IActivePresent {
   refActiveElement: React.RefObject<HTMLImageElement>;
@@ -11,11 +11,9 @@ interface IActivePresent {
 }
 
 const ActiveCandle = ({ refActiveElement, e, setE }: IActivePresent) => {
-  const [, setTree] = useTree();
+  const [, setTree] = useTreeChangeCandle();
   const [activeCandle, setActiveCandle] = useActiveCandle();
   useEffect(() => {
-    const addToTree = (toy: { type: number; x: number; y: number }) =>
-      setTree({ type: 'CHANGE_TREE_CANDLE', payload: { section: 'add', value: toy } });
     if (activeCandle.type !== -1 && e !== null) {
       const a = document.elementFromPoint(e.pageX, e.pageY);
       if (a?.classList.contains('tree__toysArea_path')) {
@@ -25,30 +23,27 @@ const ActiveCandle = ({ refActiveElement, e, setE }: IActivePresent) => {
         const { width, height } = toysArea!.getBoundingClientRect();
         if (activeCandle.old) {
           setTree({
-            type: 'CHANGE_TREE_CANDLE',
-            payload: {
-              section: 'move',
-              value: { old: activeCandle.old, newX: (x / width) * 100, newY: (y / height) * 100 },
-            },
+            section: 'move',
+            value: { old: activeCandle.old, newX: (x / width) * 100, newY: (y / height) * 100 },
           });
         } else {
-          addToTree({ type: activeCandle.type, x: (x / width) * 100, y: (y / height) * 100 });
+          setTree({
+            section: 'add',
+            value: { type: activeCandle.type, x: (x / width) * 100, y: (y / height) * 100 },
+          });
         }
       } else {
         if (activeCandle.old) {
           setTree({
-            type: 'CHANGE_TREE_CANDLE',
-            payload: {
-              section: 'delete',
-              value: activeCandle.old,
-            },
+            section: 'delete',
+            value: activeCandle.old,
           });
         }
       }
       setActiveCandle({ ...activeCandle, type: -1 });
       setE(null);
     }
-  }, [activeCandle, e, setActiveCandle, setE, setTree]);
+  }, [activeCandle, e, setE]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;

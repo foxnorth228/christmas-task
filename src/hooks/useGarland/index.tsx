@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-import useTree from '@hooks/use-tree';
+import { useTree } from '@src/store/slices/treeSlice/hooks';
 
 const useGarland = (ref: React.RefObject<HTMLElement>) => {
   const query = 'screen and (max-width: 991px)';
@@ -17,7 +17,7 @@ const useGarland = (ref: React.RefObject<HTMLElement>) => {
     return () => media.removeEventListener('change', listener);
   }, [matches, query]);
 
-  const [tree] = useTree();
+  const tree = useTree();
   const colors = [
     'garland_multi',
     'garland_red',

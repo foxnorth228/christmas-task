@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useActiveToy from '@hooks/use-active-toy';
-import useTree from '@hooks/use-tree';
 import { useToysReturned, useToysUse } from '@src/store/slices/toysSlice/hooks';
+import { useTreeChangeToy } from '@src/store/slices/treeSlice/hooks';
 
 interface IActiveToy {
   refActiveElement: React.RefObject<HTMLDivElement>;
@@ -14,11 +14,9 @@ interface IActiveToy {
 const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
   const [, usedToy] = useToysUse();
   const [, returnToy] = useToysReturned();
-  const [tree, setTree] = useTree();
+  const [, setTreeToy] = useTreeChangeToy();
   const [activeToy, setActiveToy] = useActiveToy();
   useEffect(() => {
-    const addToTree = (toy: { type: number; x: number; y: number }) =>
-      setTree({ type: 'CHANGE_TREE_TOY', payload: { section: 'add', value: toy } });
     if (activeToy.type !== -1 && e !== null) {
       const a = document.elementFromPoint(e.pageX, e.pageY);
       if (a?.classList.contains('tree__toysArea_path')) {
@@ -27,25 +25,22 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
         const toysArea = document.querySelector('.tree__toys') ?? new HTMLElement();
         const { width, height } = toysArea!.getBoundingClientRect();
         if (activeToy.old) {
-          setTree({
-            type: 'CHANGE_TREE_TOY',
-            payload: {
-              section: 'move',
-              value: { old: activeToy.old, newX: (x / width) * 100, newY: (y / height) * 100 },
-            },
+          setTreeToy({
+            section: 'move',
+            value: { old: activeToy.old, newX: (x / width) * 100, newY: (y / height) * 100 },
           });
         } else {
-          addToTree({ x: (x / width) * 100, y: (y / height) * 100, type: activeToy.type });
+          setTreeToy({
+            section: 'add',
+            value: { x: (x / width) * 100, y: (y / height) * 100, type: activeToy.type },
+          });
           usedToy(activeToy.type);
         }
       } else {
         if (activeToy.old) {
-          setTree({
-            type: 'CHANGE_TREE_TOY',
-            payload: {
-              section: 'delete',
-              value: activeToy.old,
-            },
+          setTreeToy({
+            section: 'delete',
+            value: activeToy.old,
           });
           returnToy(activeToy.type);
         }
@@ -53,7 +48,7 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
       setActiveToy({ ...activeToy, type: -1 });
       setE(null);
     }
-  }, [activeToy, activeToy.type, e, setActiveToy, setE, setTree, tree.toys]);
+  }, [activeToy, activeToy.type, e, setE]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;

@@ -1,25 +1,18 @@
-import React, {
-  ReactEventHandler,
-  useCallback,
-  useLayoutEffect,
-  useReducer,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useLayoutEffect, useReducer, useRef, useState } from 'react';
 import './tree.scss';
 import './candleFlame.scss';
-import useTree from '@hooks/use-tree';
 import useActiveToy from '@hooks/use-active-toy';
 import useGarland from '@hooks/useGarland';
 import useActivePresent from '@hooks/useActivePresent';
 import useActiveCandle from '@hooks/useActiveCandle';
 import { ICandleTree } from '@contexts/tree-context';
 import useLongTouch from '@hooks/useLongTouch';
+import { useTreeChangeCandle } from '@src/store/slices/treeSlice/hooks';
 
 const Tree = () => {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [toy, setToy] = useState<HTMLDivElement | null>(null);
-  const [, setTree] = useTree();
+  const [tree, setCandleTree] = useTreeChangeCandle();
   const [present, setPresent] = useState<HTMLDivElement | null>(null);
   const [candle, setCandle] = useState<HTMLDivElement | null>(null);
   const garland = useRef<HTMLDivElement>(null);
@@ -27,7 +20,6 @@ const Tree = () => {
   const [activeToy, setActiveToy] = useActiveToy();
   const [activePresent, setActivePresent] = useActivePresent();
   const [activeCandle, setActiveCandle] = useActiveCandle();
-  const [tree] = useTree();
   useLayoutEffect(() => {
     if (activeToy.type === -1 && toy !== null) {
       toy.style.display = '';
@@ -65,12 +57,9 @@ const Tree = () => {
   const onCandleTouch = (e: React.TouchEvent<HTMLDivElement>, el: ICandleTree) => {
     e.preventDefault();
     e.stopPropagation();
-    setTree({
-      type: 'CHANGE_TREE_CANDLE',
-      payload: {
-        section: 'switchLight',
-        value: el,
-      },
+    setCandleTree({
+      section: 'switchLight',
+      value: el,
     });
     forceUpdate();
     return false;
@@ -146,12 +135,9 @@ const Tree = () => {
               onContextMenu={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                setTree({
-                  type: 'CHANGE_TREE_CANDLE',
-                  payload: {
-                    section: 'switchLight',
-                    value: el,
-                  },
+                setCandleTree({
+                  section: 'switchLight',
+                  value: el,
                 });
                 forceUpdate();
                 return false;

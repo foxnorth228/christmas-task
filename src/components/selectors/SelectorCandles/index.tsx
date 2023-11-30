@@ -1,12 +1,12 @@
 import React from 'react';
 import './style.scss';
 import useActiveCandle from '@hooks/useActiveCandle';
-import useTree from '@hooks/use-tree';
+import { useTree } from '@src/store/slices/treeSlice/hooks';
 import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorCandles = () => {
   const isPageLoaded = usePageLoaded();
-  const [tree] = useTree();
+  const tree = useTree();
   const [, setActiveCandle] = useActiveCandle();
   return (
     <div className="selectorCandles">

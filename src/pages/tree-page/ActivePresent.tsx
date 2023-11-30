@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useActivePresent from '@hooks/useActivePresent';
-import useTree from '@hooks/use-tree';
 import usePresents from '@hooks/usePresents';
+import { useTreeChangePresent } from '@src/store/slices/treeSlice/hooks';
 
 interface IActivePresent {
   refActiveElement: React.RefObject<HTMLImageElement>;
@@ -13,11 +13,9 @@ interface IActivePresent {
 
 const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
   const [, setPresent] = usePresents();
-  const [, setTree] = useTree();
+  const [, setTreePresent] = useTreeChangePresent();
   const [activePresent, setActivePresent] = useActivePresent();
   useEffect(() => {
-    const addToTree = (toy: { type: number; x: number; y: number }) =>
-      setTree({ type: 'CHANGE_TREE_PRESENT', payload: { section: 'add', value: toy } });
     if (activePresent.type !== -1 && e !== null) {
       const a = document.elementFromPoint(e.pageX, e.pageY);
       if (a?.classList.contains('tree__toysArea_path')) {
@@ -27,12 +25,9 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
         const { width, height } = toysArea!.getBoundingClientRect();
         if ((y / height) * 100 < 80) {
           if (activePresent.old) {
-            setTree({
-              type: 'CHANGE_TREE_PRESENT',
-              payload: {
-                section: 'delete',
-                value: activePresent.old,
-              },
+            setTreePresent({
+              section: 'delete',
+              value: activePresent.old,
             });
           }
           setPresent({
@@ -44,15 +39,15 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
           return;
         }
         if (activePresent.old) {
-          setTree({
-            type: 'CHANGE_TREE_PRESENT',
-            payload: {
-              section: 'move',
-              value: { old: activePresent.old, newX: (x / width) * 100, newY: (y / height) * 100 },
-            },
+          setTreePresent({
+            section: 'move',
+            value: { old: activePresent.old, newX: (x / width) * 100, newY: (y / height) * 100 },
           });
         } else {
-          addToTree({ type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 });
+          setTreePresent({
+            section: 'add',
+            value: { type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 },
+          });
           setPresent({
             type: 'ADD',
             payload: activePresent.type,
@@ -60,12 +55,9 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
         }
       } else {
         if (activePresent.old) {
-          setTree({
-            type: 'CHANGE_TREE_PRESENT',
-            payload: {
-              section: 'delete',
-              value: activePresent.old,
-            },
+          setTreePresent({
+            section: 'delete',
+            value: activePresent.old,
           });
           setPresent({ type: 'DELETE', payload: activePresent.type });
         }
@@ -73,7 +65,7 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
       setActivePresent({ ...activePresent, type: -1 });
       setE(null);
     }
-  }, [activePresent, activePresent.type, e, setActivePresent, setE, setPresent, setTree]);
+  }, [activePresent, activePresent.type, e, setE]);
   useEffect(() => {
     if (refActiveElement.current === null) {
       return;

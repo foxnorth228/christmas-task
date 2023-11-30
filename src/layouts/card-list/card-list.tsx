@@ -4,7 +4,7 @@ import './card-list.scss';
 import { IFilter } from '@contexts/filter-context';
 import Card from '@components/card/сard';
 import useFilter from '@hooks/use-filter';
-import { useToys, useToysSelect } from '@src/store/slices/toysSlice/hooks';
+import { useToysSelect } from '@src/store/slices/toysSlice/hooks';
 
 function sortCards(filter: IFilter, data: toy[]) {
   const collator = Intl.Collator('ru');

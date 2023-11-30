@@ -1,11 +1,11 @@
 import React from 'react';
 import './selector-tree.scss';
-import useTree from '@hooks/use-tree';
 import usePageLoaded from '@hooks/usePageLoaded';
+import { useTreeChangeValue } from '@src/store/slices/treeSlice/hooks';
 
 const SelectorTree = () => {
   const isPageLoaded = usePageLoaded();
-  const [tree, treeReducer] = useTree();
+  const [tree, changeTree] = useTreeChangeValue();
   const fileNames = ['1', '2', '3', '4', '5', '6'];
   return (
     <div className="selectorTree">
@@ -16,12 +16,9 @@ const SelectorTree = () => {
             key={i}
             className="selectorTree__element"
             onClick={() => {
-              treeReducer({
-                type: 'CHANGE_VALUE',
-                payload: {
-                  section: 'tree',
-                  value: Number(el),
-                },
+              changeTree({
+                section: 'tree',
+                value: Number(el),
               });
             }}
           >
