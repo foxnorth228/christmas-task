@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Footer from '@layouts/footer/Footer';
-import CustomAudio from '@components/custom-audio/custom-audio';
+import CustomAudio from '@components/CustomAudio';
 import './app.scss';
 import { Outlet } from 'react-router';
 

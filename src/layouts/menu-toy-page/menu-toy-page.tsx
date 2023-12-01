@@ -1,8 +1,8 @@
 import React from 'react';
 import './menu-toy-page.scss';
-import FilterPageInteractions from '@components/filter-page-interactions/filter-page-interactions';
+import FilterPageInteractions from '@components/Interactions';
 import Searcher from '@components/searcher/searcher';
-import CustomSelect from '@components/custom-select/custom-select';
+import CustomSelect from '@components/CustomSelect';
 import FilterBlock from '@components/filter-block/filter-block';
 import FilterResetBlock from '@components/filter-reset-block/filter-reset-block';
 

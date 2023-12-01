@@ -1,16 +1,16 @@
 @use '@utils/icons/icon.scss' as ic;
 
-.filterInteraction__music {
+.interaction__music {
   width: 2rem;
   height: 2rem;
   @include ic.iconSvg(url("@assets/svg/audio.svg"));
 }
 
-.filterInteraction__music_muted {
+.interaction__music_muted {
   @include ic.iconSvg(url("@assets/svg/mute.svg"));
 }
 
-.filterInteraction__snow {
+.interaction__snow {
   width: 2rem;
   height: 2rem;
   @include ic.iconSvg(url("@assets/svg/snow.svg"));

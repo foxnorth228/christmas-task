@@ -2,7 +2,7 @@ import React from 'react';
 import { toy } from '@interfaces/toy';
 import './card-list.scss';
 import { IFilter } from '@store/slices/filterSlice/types';
-import Card from '@components/card/сard';
+import Card from '@components/Card';
 import { useFilter } from '@src/store/slices/filterSlice/hooks';
 import { useToysSelect } from '@src/store/slices/toysSlice/hooks';
 
