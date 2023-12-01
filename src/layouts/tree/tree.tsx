@@ -1,11 +1,11 @@
 import React, { useCallback, useLayoutEffect, useReducer, useRef, useState } from 'react';
 import './tree.scss';
 import './candleFlame.scss';
-import useActiveToy from '@hooks/use-active-toy';
+import useActiveToy from '@hooks/useActiveToy';
 import useGarland from '@hooks/useGarland';
 import useActivePresent from '@hooks/useActivePresent';
 import useActiveCandle from '@hooks/useActiveCandle';
-import { ICandleTree } from '@contexts/tree-context';
+import { ICandleTree } from '@store/slices/treeSlice/types';
 import useLongTouch from '@hooks/useLongTouch';
 import { useTreeChangeCandle } from '@src/store/slices/treeSlice/hooks';
 

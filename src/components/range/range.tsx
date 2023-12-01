@@ -1,9 +1,9 @@
-import React, { useRef, useReducer } from 'react';
+import React, { useRef, useReducer, useCallback } from 'react';
 import './range.scss';
 import RightSlider from '@components/range/right-slider/right-slider';
 import LeftSlider from '@components/range/left-slider/left-slider';
 import useWindowSize from '@src/hooks/useWindowResize';
-import useFilter from '@hooks/use-filter';
+import { useFilterChangeRange } from '@src/store/slices/filterSlice/hooks';
 
 export interface RangeParameter {
   leftPos: number;
@@ -20,27 +20,28 @@ export interface SliderParameter {
 }
 
 function Range({ name, params }: { name: 'rangeNum' | 'rangeYear'; params: RangeParameter }) {
-  const [filter, setFilter] = useFilter();
+  const [filter, setFilter] = useFilterChangeRange();
+  console.log('range', filter.rangeNum);
   const step = useRef(10);
-  function setFilterLeft(left: number) {
-    setFilter({
-      type: 'CHANGE_RANGE_SECTION',
-      payload: {
+  const setFilterLeft = useCallback(
+    (left: number) => {
+      setFilter({
         section: name,
         value: [left, filter[name].right],
-      },
-    });
-  }
+      });
+    },
+    [name]
+  );
 
-  function setFilterRight(right: number) {
-    setFilter({
-      type: 'CHANGE_RANGE_SECTION',
-      payload: {
+  const setFilterRight = useCallback(
+    (right: number) => {
+      setFilter({
         section: name,
         value: [filter[name].left, right],
-      },
-    });
-  }
+      });
+    },
+    [name]
+  );
 
   const [, forceUpdate] = useReducer((x) => x + 1.0, 0);
   const refSlider = useRef<HTMLDivElement>(null);

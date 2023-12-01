@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import useActivePresent from '@hooks/useActivePresent';
-import usePresents from '@hooks/usePresents';
 import { useTreeChangePresent } from '@src/store/slices/treeSlice/hooks';
 
 interface IActivePresent {
@@ -12,7 +11,6 @@ interface IActivePresent {
 }
 
 const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
-  const [, setPresent] = usePresents();
   const [, setTreePresent] = useTreeChangePresent();
   const [activePresent, setActivePresent] = useActivePresent();
   useEffect(() => {
@@ -30,10 +28,6 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
               value: activePresent.old,
             });
           }
-          setPresent({
-            type: 'DELETE',
-            payload: activePresent.type,
-          });
           setActivePresent({ ...activePresent, type: -1 });
           setE(null);
           return;
@@ -48,10 +42,6 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
             section: 'add',
             value: { type: activePresent.type, x: (x / width) * 100, y: (y / height) * 100 },
           });
-          setPresent({
-            type: 'ADD',
-            payload: activePresent.type,
-          });
         }
       } else {
         if (activePresent.old) {
@@ -59,7 +49,6 @@ const ActivePresent = ({ refActiveElement, e, setE }: IActivePresent) => {
             section: 'delete',
             value: activePresent.old,
           });
-          setPresent({ type: 'DELETE', payload: activePresent.type });
         }
       }
       setActivePresent({ ...activePresent, type: -1 });

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ActiveToyContext from '@contexts/active-toy-context';
+import ActiveToyContext from '@contexts/ActiveToyContext';
 
 const useActiveToy = () => {
   return useContext(ActiveToyContext);

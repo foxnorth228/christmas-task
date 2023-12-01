@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@src/store';
 import {
   changeTreeCandle,
@@ -14,10 +14,15 @@ import {
   TreeToyModifies,
   update,
 } from '@src/store/slices/treeSlice';
-import { ICandleTree, ITree, ITreeToy } from '@contexts/tree-context';
+import { ICandleTree, ITree, ITreeToy } from '@store/slices/treeSlice/types';
 
 export const useTree = () => {
   return useSelector((state: RootState) => state.tree);
+};
+
+export const usePresents = () => {
+  const tree = useTree();
+  return tree.presents.map((el) => el.type);
 };
 
 const useFuncTreeChangeValue = () => {

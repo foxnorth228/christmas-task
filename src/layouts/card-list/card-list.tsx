@@ -1,9 +1,9 @@
 import React from 'react';
 import { toy } from '@interfaces/toy';
 import './card-list.scss';
-import { IFilter } from '@contexts/filter-context';
+import { IFilter } from '@store/slices/filterSlice/types';
 import Card from '@components/card/сard';
-import useFilter from '@hooks/use-filter';
+import { useFilter } from '@src/store/slices/filterSlice/hooks';
 import { useToysSelect } from '@src/store/slices/toysSlice/hooks';
 
 function sortCards(filter: IFilter, data: toy[]) {
@@ -61,7 +61,7 @@ function filterCards(filter: IFilter, data: toy[]) {
 
 function CardList({ headerLink }: { headerLink: JSX.Element }) {
   const [toys, selectToy] = useToysSelect();
-  const [filter] = useFilter();
+  const filter = useFilter();
   return (
     <div className="cardList">
       <div className="cardList__header">

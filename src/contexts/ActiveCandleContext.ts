@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ICandleTree } from '@contexts/tree-context';
+import { ICandleTree } from '@store/slices/treeSlice/types';
 
 const ActiveCandleContext = createContext<
   [

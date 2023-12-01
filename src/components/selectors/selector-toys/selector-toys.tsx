@@ -1,7 +1,7 @@
 import React from 'react';
 import './selector-toys.scss';
 
-import useActiveToy from '@hooks/use-active-toy';
+import useActiveToy from '@hooks/useActiveToy';
 import usePageLoaded from '@hooks/usePageLoaded';
 import { useToys } from '@src/store/slices/toysSlice/hooks';
 

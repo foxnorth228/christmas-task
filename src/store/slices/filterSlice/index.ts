@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import FilterCreation from '@services/getFilter';
-import { IFilter } from '@contexts/filter-context';
+import { IFilter } from '@store/slices/filterSlice/types';
 
 export type filterSections = keyof IFilter;
 
@@ -57,7 +57,7 @@ const filterSlice = createSlice({
       state,
       {
         payload: { section, value },
-      }: PayloadAction<{ section: filterSections; value: number | boolean }>
+      }: PayloadAction<{ section: filterSections; value: number | boolean | string }>
     ) => {
       if (['sort', 'music', 'snow', 'searchSample'].includes(section)) {
         localStorage.setItem(filterKeyWord, JSON.stringify({ ...state, [section]: value }));

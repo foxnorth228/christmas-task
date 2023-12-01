@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import useFilter from '@hooks/use-filter';
+import { useFilter } from '@src/store/slices/filterSlice/hooks';
 
 const CustomAudio = () => {
-  const [filter] = useFilter();
+  const filter = useFilter();
   const audio = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {

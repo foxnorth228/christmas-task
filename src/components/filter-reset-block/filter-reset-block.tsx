@@ -1,16 +1,13 @@
 import React from 'react';
 import './filter-reset-block.scss';
-import useFilter from '@hooks/use-filter';
-import { filterKeyWord } from '@contexts/filter-context';
+import { filterKeyWord } from '@store/slices/filterSlice';
+import { useFilterReset } from '@store/slices/filterSlice/hooks';
 
 const FilterResetBlock = () => {
-  const [, setFilter] = useFilter();
+  const [, setFilter] = useFilterReset();
   return (
     <div className="filterResetBlock">
-      <button
-        onClick={() => setFilter({ type: 'RESET', payload: { section: 'sizes' } })}
-        className="filterResetBlock__reset"
-      >
+      <button onClick={() => setFilter()} className="filterResetBlock__reset">
         Сбросить фильтры
       </button>
       <button

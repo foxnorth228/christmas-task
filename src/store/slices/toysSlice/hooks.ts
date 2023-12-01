@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { reset, returned, select, update, use } from '../';
+import { reset, returned, select, update, use } from './index';
 import { RootState } from '@src/store';
-import { ITreeToy } from '@contexts/tree-context';
+import { ITreeToy } from '@store/slices/treeSlice/types';
 import { toy } from '@interfaces/toy';
 import { PayloadAction } from '@reduxjs/toolkit';
 

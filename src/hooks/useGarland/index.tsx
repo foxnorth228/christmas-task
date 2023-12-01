@@ -1,21 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { useTree } from '@src/store/slices/treeSlice/hooks';
+import useMatchMedia from '@hooks/useMatchMedia';
 
 const useGarland = (ref: React.RefObject<HTMLElement>) => {
-  const query = 'screen and (max-width: 991px)';
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (matches !== media.matches) {
-      setMatches(media.matches);
-    }
-
-    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [matches, query]);
+  const matches = useMatchMedia('screen and (max-width: 991px)');
 
   const tree = useTree();
   const colors = [

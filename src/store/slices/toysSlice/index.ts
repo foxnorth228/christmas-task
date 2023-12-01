@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import getData from '@services/getData';
-import { ITreeToy } from '@contexts/tree-context';
+import { ITreeToy } from '@store/slices/treeSlice/types';
 
 export const toysSlice = createSlice({
   name: 'toys',

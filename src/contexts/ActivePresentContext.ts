@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ITreeToy } from '@contexts/tree-context';
+import { ITreeToy } from '@store/slices/treeSlice/types';
 
 const ActivePresentContext = createContext<
   [

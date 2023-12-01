@@ -1,4 +1,4 @@
-import { IFilter } from '@contexts/filter-context';
+import { IFilter } from '@store/slices/filterSlice/types';
 
 export function FilterCreation(): IFilter {
   return {

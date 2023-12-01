@@ -16,9 +16,10 @@ export const useWindowSize = (
     const baseWidth = getHtmlElemWidth(refBaseLine.current);
     const sliderWidth = getHtmlElemWidth(refSlider.current);
     step.current = (baseWidth - sliderWidth) / ((params.rightPos - params.leftPos) / params.step);
+    console.log(step.current);
     window.addEventListener('resize', forceUpdate);
     return () => window.removeEventListener('resize', forceUpdate);
-  }, [forceUpdate, params, refBaseLine, refSlider, step]);
+  });
 };
 
 export default useWindowSize;

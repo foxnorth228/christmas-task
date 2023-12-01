@@ -1,12 +1,12 @@
 import React from 'react';
 import './filter-size.scss';
 import FilterUnit from '@src/components/filter-block/filter-unit/filter-unit';
-import useFilter from '@hooks/use-filter';
 import clickIcon from '@src/utils/icons/clickIcon';
-import { filterPositions } from '@contexts/filter-context';
+import { filterPositions } from '@store/slices/filterSlice/types';
+import { useFilterChangeBool } from '@src/store/slices/filterSlice/hooks';
 
 const FilterSize = () => {
-  const [filter, setFilter] = useFilter();
+  const [filter, setFilter] = useFilterChangeBool();
   const sizes = filter.sizes;
   return (
     <FilterUnit title="Размер">
@@ -21,10 +21,7 @@ const FilterSize = () => {
               }`}
               onClick={(e) => {
                 clickIcon(e.currentTarget);
-                setFilter({
-                  type: 'CHANGE_BOOL_SECTION',
-                  payload: { section: 'sizes', position: el[0] as filterPositions },
-                });
+                setFilter({ section: 'sizes', value: el[0] as filterPositions });
               }}
             ></div>
           ))}

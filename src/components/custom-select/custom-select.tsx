@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import './custom-select.scss';
-import useFilter from '@hooks/use-filter';
+import { useFilterChangeValue } from '@src/store/slices/filterSlice/hooks';
 
 const CustomSelect = () => {
-  const [filter, setFilter] = useFilter();
+  const [filter, setFilter] = useFilterChangeValue();
   const listItems = [
     'По названию от А до Я',
     'По названию от Я до А',
@@ -30,7 +30,7 @@ const CustomSelect = () => {
                 order: filter.sort === i ? -1 : 0,
               }}
               onClick={() => {
-                setFilter({ type: 'CHANGE_VALUE', payload: { section: 'sort', value: i } });
+                setFilter({ section: 'sort', value: i });
               }}
               className="customSelect__item"
             >

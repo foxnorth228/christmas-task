@@ -1,11 +1,11 @@
 import React from 'react';
 import './filter-color.scss';
 import FilterUnit from '../filter-unit/filter-unit';
-import useFilter from '@hooks/use-filter';
-import { filterPositions } from '@contexts/filter-context';
+import { filterPositions } from '@store/slices/filterSlice/types';
+import { useFilterChangeBool } from '@src/store/slices/filterSlice/hooks';
 
 const FilterColor = () => {
-  const [filter, setFilter] = useFilter();
+  const [filter, setFilter] = useFilterChangeBool();
   const colors = filter.colors;
   return (
     <FilterUnit title="Цвет">
@@ -18,10 +18,7 @@ const FilterColor = () => {
             }`}
             onClick={(e) => {
               e.currentTarget.classList.toggle('filterColor_clicked');
-              setFilter({
-                type: 'CHANGE_BOOL_SECTION',
-                payload: { section: 'colors', position: el[0] as filterPositions },
-              });
+              setFilter({ section: 'colors', value: el[0] as filterPositions });
             }}
           ></div>
         ))}

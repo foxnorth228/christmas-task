@@ -21,7 +21,7 @@ const Slider = ({
 
   useEffect(() => {
     setShift(shiftFunc(params, pos));
-  }, [params, pos, shiftFunc]);
+  }, [shiftFunc]);
 
   useEffect(() => {
     //enable moving every rerender
@@ -42,6 +42,7 @@ const Slider = ({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function onSliderMove(event: MouseEvent) {
+    console.log('onmove', { pos, secondPos, params, step, setPos });
     sliderMove(event, ref, { pos, secondPos, params, step, setPos }, isLeftPos);
   }
 
@@ -123,11 +124,13 @@ function sliderMove(
   const rect = ref?.current?.getBoundingClientRect();
   if (rect?.left && rect.left - event.pageX > step.current / 2) {
     if (pos > params.leftPos && (pos > secondPos || isLeftMoving)) {
+      console.log(rect.left, event.pageX, rect.left - event.pageX, step.current / 2);
       setPos(pos - params.step);
     }
   }
   if (rect?.right && event.pageX - rect.right > step.current / 2) {
     if (pos < params.rightPos && (pos < secondPos || !isLeftMoving)) {
+      console.log('r', rect.right, event.pageX - rect.right, step.current / 2);
       setPos(pos + params.step);
     }
   }

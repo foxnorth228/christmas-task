@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './left-menu-tree-page.scss';
 import FilterPageInteractions from '@components/filter-page-interactions/filter-page-interactions';
 import SelectorTree from '@components/selectors/selector-tree/selector-tree';
@@ -8,22 +8,10 @@ import TreeResetBlock from '@components/tree-reset-block';
 import SelectorGarland from '@components/selectors/selector-garland/selector-garland';
 import SelectorDecoratedTree from '@components/selectors/selector-decorated-tree/selector-decorated-tree';
 import SelectorStar from '@components/selectors/SelectorStar';
+import useMatchMedia from '@hooks/useMatchMedia';
 
 const LeftMenuTreePage = () => {
-  const query = 'screen and (max-width: 991px)';
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (matches !== media.matches) {
-      setMatches(media.matches);
-    }
-
-    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [matches, query]);
-
+  const matches = useMatchMedia('screen and (max-width: 991px)');
   return (
     <>
       {matches && (

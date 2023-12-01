@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './right-menu-tree-page.scss';
 import SelectorToys from '@components/selectors/selector-toys/selector-toys';
 import SelectorDecoratedTree from '@components/selectors/selector-decorated-tree/selector-decorated-tree';
 import SelectorGarland from '@components/selectors/selector-garland/selector-garland';
 import SelectorPresents from '@components/selectors/SelectorPresents';
 import SelectorCandles from '@components/selectors/SelectorCandles';
+import useMatchMedia from '@hooks/useMatchMedia';
 
 const RightMenuTreePage = () => {
-  const query = 'screen and (max-width: 991px)';
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (matches !== media.matches) {
-      setMatches(media.matches);
-    }
-
-    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [matches, query]);
+  const matches = useMatchMedia('screen and (max-width: 991px)');
   return (
     <>
       {matches && (

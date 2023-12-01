@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import './filter-range-count.scss';
 import FilterUnit from '@components/filter-block/filter-unit/filter-unit';
 import Range from '@components/range/range';
-import useFilter from '@hooks/use-filter';
+import { useFilter } from '@src/store/slices/filterSlice/hooks';
 
 const FilterRangeCount = () => {
-  const [filter] = useFilter();
+  const filter = useFilter();
   const params = useRef({
     leftPos: 1,
     rightPos: 12,

@@ -1,12 +1,12 @@
 import React from 'react';
 import './style.scss';
 import useActivePresent from '@hooks/useActivePresent';
-import usePresents from '@hooks/usePresents';
+import { usePresents } from '@store/slices/treeSlice/hooks';
 import usePageLoaded from '@hooks/usePageLoaded';
 
 const SelectorPresents = () => {
   const isPageLoaded = usePageLoaded();
-  const [presents] = usePresents();
+  const presents = usePresents();
   const [, setActivePresent] = useActivePresent();
   return (
     <div className="selectorPresents">

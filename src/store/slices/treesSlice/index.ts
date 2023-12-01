@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ITree } from '@contexts/tree-context';
+import { ITree } from '@store/slices/treeSlice/types';
 
 const treesKeyWord = 'christmasTaskTrees';
 const localData = localStorage.getItem(treesKeyWord);

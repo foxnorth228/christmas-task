@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICandleTree, ITree, ITreeToy, TreeCreation } from '@contexts/tree-context';
+import { ICandleTree, ITree, ITreeToy, TreeCreation } from '@store/slices/treeSlice/types';
 import globalConfig from '@src/config/globalConfig';
 
 type PayloadSection<T, P> = PayloadAction<{ section: T; value: P }>;

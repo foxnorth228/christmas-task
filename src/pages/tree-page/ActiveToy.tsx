@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import useActiveToy from '@hooks/use-active-toy';
+import useActiveToy from '@hooks/useActiveToy';
 import { useToysReturned, useToysUse } from '@src/store/slices/toysSlice/hooks';
 import { useTreeChangeToy } from '@src/store/slices/treeSlice/hooks';
 

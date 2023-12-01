@@ -1,10 +1,10 @@
 import React from 'react';
 import './filter-page-interactions.scss';
-import useFilter from '@hooks/use-filter';
 import clickIcon from '@utils/icons/clickIcon';
+import { useFilterChangeValue } from '@src/store/slices/filterSlice/hooks';
 
 const FilterPageInteractions = () => {
-  const [filter, setFilter] = useFilter();
+  const [filter, setFilter] = useFilterChangeValue();
   return (
     <>
       <div
@@ -12,14 +12,14 @@ const FilterPageInteractions = () => {
           !filter.music ? 'filterInteraction__music_muted' : ''
         }`}
         onClick={() => {
-          setFilter({ type: 'CHANGE_VALUE', payload: { section: 'music', value: !filter.music } });
+          setFilter({ section: 'music', value: !filter.music });
         }}
       ></div>
       <div
         className={`filterInteraction__snow ${filter.snow ? 'iconSvg_clicked' : ''}`}
         onClick={(e) => {
           clickIcon(e.currentTarget);
-          setFilter({ type: 'CHANGE_VALUE', payload: { section: 'snow', value: !filter.snow } });
+          setFilter({ section: 'snow', value: !filter.snow });
         }}
       ></div>
     </>

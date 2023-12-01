@@ -1,9 +1,9 @@
 import React from 'react';
 import './searcher.scss';
-import useFilter from '@hooks/use-filter';
+import { useFilterChangeValue } from '@src/store/slices/filterSlice/hooks';
 
 function Searcher() {
-  const [filter, setFilter] = useFilter();
+  const [filter, setFilter] = useFilterChangeValue();
   return (
     <div className="searcher">
       <input
@@ -12,10 +12,7 @@ function Searcher() {
         placeholder="Поиск..."
         className="searcher__input"
         onChange={(e) => {
-          setFilter({
-            type: 'CHANGE_VALUE',
-            payload: { section: 'searchSample', value: e.target.value },
-          });
+          setFilter({ section: 'searchSample', value: e.target.value });
         }}
       />
       <div className="searcher__icon"></div>
