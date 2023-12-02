@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './snowflake.scss';
+import './style.scss';
 
 const Snowflake = () => {
   const opacity = useRef(Math.random() * (1 - 0.7) + 0.7);

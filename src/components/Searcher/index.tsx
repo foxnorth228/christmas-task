@@ -1,9 +1,16 @@
-import React from 'react';
-import './searcher.scss';
+import React, { useCallback } from 'react';
+import './style.scss';
 import { useFilterChangeValue } from '@src/store/slices/filterSlice/hooks';
 
 function Searcher() {
   const [filter, setFilter] = useFilterChangeValue();
+
+  const onChangeSample = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFilter({ section: 'searchSample', value: e.target.value });
+    },
+    [setFilter]
+  );
   return (
     <div className="searcher">
       <input
@@ -11,9 +18,7 @@ function Searcher() {
         type="text"
         placeholder="Поиск..."
         className="searcher__input"
-        onChange={(e) => {
-          setFilter({ section: 'searchSample', value: e.target.value });
-        }}
+        onChange={onChangeSample}
       />
       <div className="searcher__icon"></div>
     </div>

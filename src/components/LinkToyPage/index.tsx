@@ -1,11 +1,11 @@
 import React from 'react';
-import './link-toy-page.scss';
-import { useNavigate } from 'react-router';
+import './style.scss';
+import useNavigateTo from '@hooks/useNavigateTo';
 
 const LinkToyPage = () => {
-  const navigate = useNavigate();
+  const moveToToys = useNavigateTo('/toys');
   return (
-    <div className="linkToyPage" onClick={() => navigate('/toys')}>
+    <div className="linkToyPage" onClick={moveToToys}>
       <div className="linkToyPage__arrow"></div>
       <span className="linkToyPage__text">Игрушки</span>
     </div>

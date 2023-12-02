@@ -1,6 +1,6 @@
 import React from 'react';
 import './snowfall.scss';
-import Snowflake from '@components/snowflake/snowflake';
+import Snowflake from '@components/Snowflake';
 import { useFilter } from '@src/store/slices/filterSlice/hooks';
 import useMatchMedia from '@hooks/useMatchMedia';
 

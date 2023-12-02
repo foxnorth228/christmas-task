@@ -1,10 +1,10 @@
 import React from 'react';
 import './menu-toy-page.scss';
 import FilterPageInteractions from '@components/Interactions';
-import Searcher from '@components/searcher/searcher';
+import Searcher from '@components/Searcher';
 import CustomSelect from '@components/CustomSelect';
 import FilterBlock from '@components/filter-block/filter-block';
-import FilterResetBlock from '@components/filter-reset-block/filter-reset-block';
+import ResetFilterBlock from 'src/components/ResetFilterBlock';
 
 const MenuToyPage = () => {
   return (
@@ -15,7 +15,7 @@ const MenuToyPage = () => {
       </div>
       <CustomSelect />
       <FilterBlock />
-      <FilterResetBlock />
+      <ResetFilterBlock />
     </div>
   );
 };

@@ -3,10 +3,9 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
-}
-
-.linkToyPage:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .linkToyPage__arrow {
