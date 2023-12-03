@@ -3,8 +3,8 @@ import './menu-toy-page.scss';
 import FilterPageInteractions from '@components/Interactions';
 import Searcher from '@components/Searcher';
 import CustomSelect from '@components/CustomSelect';
-import FilterBlock from '@components/filter-block/filter-block';
-import ResetFilterBlock from 'src/components/ResetFilterBlock';
+import FilterBlock from '@components/FilterBlock';
+import ResetFilterBlock from '@components/ResetFilterBlock';
 
 const MenuToyPage = () => {
   return (

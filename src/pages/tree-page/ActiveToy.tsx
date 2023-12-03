@@ -30,6 +30,7 @@ const ActiveToy = ({ refActiveElement, e, setE }: IActiveToy) => {
             value: { old: activeToy.old, newX: (x / width) * 100, newY: (y / height) * 100 },
           });
         } else {
+          console.log('add');
           setTreeToy({
             section: 'add',
             value: { x: (x / width) * 100, y: (y / height) * 100, type: activeToy.type },

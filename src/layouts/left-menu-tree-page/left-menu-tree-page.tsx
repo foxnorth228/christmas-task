@@ -1,13 +1,13 @@
 import React from 'react';
 import './left-menu-tree-page.scss';
 import FilterPageInteractions from '@components/Interactions';
-import SelectorTree from '@components/selectors/selector-tree/selector-tree';
-import SelectorBg from '@components/selectors/selector-bg/selector-bg';
+import SelectorTree from '@components/Selectors/SelectorTree';
+import SelectorBg from '@components/Selectors/SelectorBg';
 import LinkToyPage from '@components/LinkToyPage';
-import TreeResetBlock from 'src/components/ResetTreeBlock';
-import SelectorGarland from '@components/selectors/selector-garland/selector-garland';
-import SelectorDecoratedTree from '@components/selectors/selector-decorated-tree/selector-decorated-tree';
-import SelectorStar from '@components/selectors/SelectorStar';
+import TreeResetBlock from '@components/ResetTreeBlock';
+import SelectorGarland from '@components/Selectors/SelectorGarland';
+import SelectorDecoratedTree from '@components/Selectors/SelectorDecoratedTree';
+import SelectorStar from '@components/Selectors/SelectorStar';
 import useMatchMedia from '@hooks/useMatchMedia';
 
 const LeftMenuTreePage = () => {

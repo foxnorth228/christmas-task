@@ -21,12 +21,18 @@
     color: white;
     font-size: 1rem;
     &::placeholder,
-    &:-ms-input-placeholder,
-    &::-ms-input-placeholder {
+    &::-ms-input-placeholder,
+    &:-moz-placeholder {
+        color: white;
+        opacity: 0.7;
+    }
+    &::-webkit-input-placeholder {
         color: white;
         opacity: 0.7;
     }
 }
+
+
 
 .searcher__icon {
     width: 1.2rem;

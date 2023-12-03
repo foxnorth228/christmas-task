@@ -15,10 +15,12 @@ export const toysSlice = createSlice({
       return state;
     },
     use: (state, action: PayloadAction<number>) => {
+      console.log('use', action.payload);
       const toyIndex = state.findIndex((el) => el.num === action.payload);
       if (!(typeof toyIndex === 'undefined' || state[toyIndex].countFreeToys === 0)) {
         state[toyIndex] = { ...state[toyIndex], countFreeToys: --state[toyIndex].countFreeToys };
       }
+      console.log(JSON.stringify(state));
       return state;
     },
     returned: (state, action: PayloadAction<number>) => {

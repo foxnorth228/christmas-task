@@ -46,6 +46,7 @@ const treeSlice = createSlice({
       let index;
       switch (section) {
         case 'add':
+          console.log(value);
           if ('old' in value) {
             return state;
           }
